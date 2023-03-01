@@ -469,3 +469,25 @@ svg {
   height: 2rem;
   fill: var(--color-light-2);
 }
+
+/* Scrollbar */
+
+/* body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-dark-2) var(--color-light-2);
+}
+
+body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--color-light-2);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--color-dark-2);
+  border-radius: 1rem;
+  border: 0.3rem solid var(--color-light-2);
+} */
+
