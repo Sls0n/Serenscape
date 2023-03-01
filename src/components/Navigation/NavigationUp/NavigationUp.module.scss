@@ -1,0 +1,22 @@
+.aside__up {
+  flex-basis: 11.4%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+
+  &-icon {
+    width: 4rem;
+    height: 4rem;
+    fill: var(--color-dark-2);
+    margin-bottom: 1rem;
+  }
+}
+
+.menu {
+  cursor: pointer;
+}
