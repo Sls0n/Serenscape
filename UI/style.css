@@ -1,40 +1,24 @@
+:root {
+  --color-primary-1: #664AFF;
+
+  --color-light-1: #FFFDFA;
+  --color-light-2: #F0F2F7;
+  --color-light-3: #E8E8F8;
+  --color-light-4: #E0E0EC;
+
+  --color-dark-1: #08080A;
+  --color-dark-2: #333;
+  --color-dark-3: #444444;
+  --color-dark-4: #868696;
+  --color-dark-5: #62626e;
+
+  --color-secondary-1: #67A4FF;
+  --color-tertiary-1: #CF435D;
+}
+
 * {
   margin: 0;
   padding: 0;
-}
-
-::selection {
-  background-color: #664AFF;
-  color: #FFFDFA;
-}
-
-body::-webkit-scrollbar {
-  width: 1rem;
-}
-
-body::-webkit-scrollbar-track {
-  background: #fff;
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: rgba(63, 64, 68, 0.5);
-  border-radius: 0.3rem;
-}
-
-body::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(63, 64, 68, 0.8);
-}
-
-body::-webkit-scrollbar-thumb:active {
-  background-color: #3f4044;
-}
-
-body::-webkit-scrollbar-thumb:window-inactive {
-  background-color: #3f4044;
-}
-
-body::-webkit-scrollbar-thumb:window-inactive:hover {
-  background-color: #262629;
 }
 
 
@@ -48,16 +32,13 @@ html {
   box-sizing: border-box;
   font-size: 62.5%;
   scroll-behavior: smooth;
-
-  scrollbar-width: thin;
-  scrollbar-color: rgba(63, 64, 68, 0.5) #fff;
 }
 
 
 body {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  color: #08080A;
+  color: var(--color-dark-1);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -100,7 +81,7 @@ svg {
 }
 
 .header {
-  background-color: #FFFDFA;
+  background-color: var(--color-light-1);
   font-size: 2rem;
   flex-basis: 15rem;
   width: 100%;
@@ -142,8 +123,8 @@ svg {
 .header__btn {
   font-size: 1.6rem;
   font-weight: 500;
-  background-color: #664AFF;
-  color: #FFFDFA;
+  background-color: var(--color-primary-1);
+  color: var(--color-light-1);
   border-radius: 1rem;
   padding: 1rem 2rem;
   cursor: pointer;
@@ -153,8 +134,8 @@ svg {
 .header__up-icon {
   width: 2.8rem;
   height: 2.8rem;
-  /* background-color: #E8E8F8; */
-  fill: #333;
+  /* background-color: var(--color-light-3); */
+  fill: var();
 
   display: flex;
   justify-content: center;
@@ -163,27 +144,23 @@ svg {
 
 .header__up-logo {
   font-size: 3.2rem;
-  color: #333;
+  color: var(--color-dark-2);
   font-weight: 500;
 }
 
 .scape {
+  color: var(--color-dark-2);
   font-size: 3.2rem;
-  color: #333;
   font-weight: 700;
 }
 
-
-/* .header__up-icon:not(:first-child) {
-  color: #828293;
-} */
 
 .header__up-volume {
   /* customize the volume slider input */
   all: unset;
   width: 20rem;
   height: 0.5rem;
-  background: #444444;
+  background: var(--color-dark-3);
   opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s;
@@ -194,7 +171,7 @@ svg {
   appearance: none;
   width: 3rem;
   height: 2.2rem;
-  background: #664AFF;
+  background: var(--color-primary-1);
   cursor: pointer;
 
   border-radius: 1rem;
@@ -204,17 +181,17 @@ svg {
   width: 3rem;
   height: 2.2rem;
   border: none;
-  background: #664AFF;
+  background: var(--color-primary-1);
   cursor: pointer;
 }
 
 .header__up-volume::-moz-range-progress {
-  background: #6a50fd;
+  background: var(--color-primary-1);
 }
 
 
 .main {
-  background-color: #FFFDFA;
+  background-color: var(--color-light-1);
   flex: 1;
 }
 
@@ -236,7 +213,7 @@ svg {
   justify-content: center;
 
   border-radius: 1rem;
-  background-color: #E8E8F8;
+  background-color: var(--color-light-3);
   padding: 1rem;
   cursor: pointer;
   margin-right: 1rem;
@@ -245,24 +222,24 @@ svg {
 .header__down-arrow {
   width: 2.5rem;
   height: 2.5rem;
-  fill: #333;
+  fill: var(--color-dark-2);
 }
 
 .header__down-breadcrumb {
   display: flex;
   align-items: center;
   gap: 1rem;
-  color: #868696;
+  color: var(--color-dark-4);
 }
 
 .header__down-item {
   font-size: 1.8rem;
-  color: #868696;
+  color: var(--color-dark-4);
 }
 
 .header__down-item:last-of-type {
   font-size: 1.8rem;
-  color: #333;
+  color: var(--color-dark-2);
 }
 
 .chevron-right {
@@ -275,17 +252,17 @@ svg {
   width: 2rem;
   height: 2rem;
 
-  fill: #868696;
+  fill: var(--color-dark-4);
 }
 
 .last-chevron {
-  fill: #333;
+  fill: var(--color-dark-2);
 }
 
 .aside {
   position: fixed;
 
-  background-color: #F0F2F7;
+  background-color: var(--color-light-2);
   width: 32rem;
   font-size: 2rem;
 
@@ -320,7 +297,7 @@ svg {
 .aside__up-icon {
   width: 4rem;
   height: 4rem;
-  fill: #333;
+  fill: var(--color-dark-2);
   margin-bottom: 1rem;
 }
 
@@ -337,7 +314,7 @@ svg {
 }
 
 .active {
-  background: #E0E0EC;
+  background: var(--color-light-4);
   border-radius: 1rem;
 }
 
@@ -356,7 +333,7 @@ svg {
   font-size: 1.6rem;
   text-decoration: none;
 
-  color: #333;
+  color: var(--color-dark-2);
   font-weight: 500;
 
   display: flex;
@@ -367,7 +344,7 @@ svg {
 .aside__link-svg {
   width: 2rem;
   height: 2rem;
-  fill: #333;
+  fill: var(--color-dark-2);
 
   display: flex;
   justify-content: center;
@@ -377,7 +354,7 @@ svg {
 .aside__header {
   font-size: 1.4rem;
   font-weight: 600;
-  color: #868696;
+  color: var(--color-dark-4);
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
@@ -392,7 +369,7 @@ svg {
 .main__header {
   font-size: 1.6rem;
   font-weight: 600;
-  color: #62626e;
+  color: var(--color-dark-5);
   margin-top: 2rem;
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -407,7 +384,7 @@ svg {
 }
 
 .main__sound {
-  background-color: #67A4FF;
+  background-color: var(--color-secondary-1);
   border-radius: 2rem;
   width: 100%;
   max-width: 38rem;
@@ -425,7 +402,7 @@ svg {
 }
 
 .main__sound-2 {
-  background-color: #CF435D;
+  background-color: var(--color-tertiary-1);
 }
 
 .box {
@@ -466,15 +443,15 @@ svg {
 
   font-size: 1.6rem;
   font-weight: 400;
-  color: #fff;
-  text-shadow: 0 0 1rem #33333334;
+  color: var(--color-light-2);
+  text-shadow: 0 0 1rem var(--color-dark-2)33334;
 
 }
 
 .play svg {
   width: 2.2rem;
   height: 2.2rem;
-  fill: #F0F2F7;
+  fill: var(--color-light-2);
   cursor: pointer;
 }
 
@@ -490,5 +467,5 @@ svg {
 .heart svg {
   width: 2rem;
   height: 2rem;
-  fill: #F0F2F7;
+  fill: var(--color-light-2);
 }
