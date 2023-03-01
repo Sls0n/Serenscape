@@ -1,0 +1,11 @@
+.header {
+  background-color: var(--color-light-1);
+  font-size: 2rem;
+  flex-basis: 15rem;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
