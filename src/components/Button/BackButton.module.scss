@@ -1,0 +1,17 @@
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 1rem;
+  background-color: var(--color-light-3);
+  padding: 1rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.arrowSvg {
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: var(--color-dark-2);
+}

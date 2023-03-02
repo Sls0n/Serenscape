@@ -1,18 +1,5 @@
 .header__down {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
 
-  flex: 1;
-  width: 100%;
-  font-size: 2rem;
-  font-weight: 500;
-
-  &-arrow {
-    width: 2.5rem;
-    height: 2.5rem;
-    fill: var(--color-dark-2);
-  }
 
   &-breadcrumb {
     display: flex;
@@ -26,7 +13,7 @@
     color: var(--color-dark-4);
 
     &:last-of-type {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       color: var(--color-dark-2);
     }
   }
@@ -48,16 +35,4 @@
   width: 2rem;
   height: 2rem;
   fill: var(--color-dark-2);
-}
-
-.arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 1rem;
-  background-color: var(--color-light-3);
-  padding: 1rem;
-  cursor: pointer;
-  margin-right: 1rem;
 }

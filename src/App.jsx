@@ -1,12 +1,15 @@
-import Section from './components/Section/Section';
-import Navigation from './components/Navigation/Navigation';
+
+
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import HomePage from './pages/Home';
+
+const router = createBrowserRouter([{ path: '/', element: <HomePage /> }]);
 
 function App() {
   return (
-    <>
-      <Navigation />
-      <Section />
-    </>
+    <RouterProvider router={router}>
+      
+    </RouterProvider>
   );
 }
 
