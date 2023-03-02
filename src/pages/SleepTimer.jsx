@@ -6,7 +6,7 @@ import Header from '../components/Header/Header';
 const SleepTimerPage = () => {
   return (
     <Section>
-      <Header />
+      <Header firstNav={'User'} secondNav={'Timer'} />
     </Section>
   );
 };

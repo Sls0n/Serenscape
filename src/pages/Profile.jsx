@@ -6,7 +6,7 @@ import Header from '../components/Header/Header';
 const Profile = () => {
   return (
     <Section>
-      <Header />
+      <Header firstNav={'User'} secondNav={'Profile'} />
     </Section>
   );
 };

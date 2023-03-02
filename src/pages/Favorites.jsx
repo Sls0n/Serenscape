@@ -6,7 +6,7 @@ import Header from '../components/Header/Header';
 const FavoritesPage = () => {
   return (
     <Section>
-      <Header />
+      <Header firstNav={'Navigation'} secondNav={'Favorites'} />
     </Section>
   );
 };

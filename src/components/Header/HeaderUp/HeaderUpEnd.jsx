@@ -28,7 +28,7 @@ const HeaderUpEnd = () => {
           onChange={() => {}}
         />
 
-        <Button value={'Sign In'} />
+        <Button value={'Sign In -->'} />
       </div>
     </div>
   );

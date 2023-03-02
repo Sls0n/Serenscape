@@ -6,7 +6,7 @@ import Header from '../components/Header/Header';
 const SetGoalsPage = () => {
   return (
     <Section>
-      <Header />
+      <Header firstNav={'User'} secondNav={'Goals'} />
     </Section>
   );
 };

@@ -6,7 +6,7 @@ import Header from '../components/Header/Header';
 const ErrorPage = () => {
   return (
     <Section>
-      <Header />
+      <Header firstNav={'Navigation'} secondNav={'NOT_FOUND'} />
     </Section>
   );
 };

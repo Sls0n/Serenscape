@@ -1,5 +1,5 @@
 .main__sound {
-  background-color: var(--color-secondary-1);
+  // background-color: var(--color-secondary-1);
   border-radius: 2rem;
   width: 100%;
   max-width: 38rem;
@@ -10,7 +10,7 @@
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    // object-fit: cover;
     border-radius: 2rem;
     background-position: center;
   }
@@ -19,17 +19,19 @@
 .box {
   position: absolute;
   z-index: 10;
-  bottom: 0;
+  bottom: 0px;
   left: 0;
   width: 100%;
   height: 30%;
-  backdrop-filter: blur(20px);
+
   border-radius: 0 0 2rem 2rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease-in-out;
+
+  backdrop-filter: blur(5rem);
 }
 
 .play {
@@ -62,5 +64,5 @@
   font-size: 1.6rem;
   font-weight: 400;
   color: var(--color-light-2);
-  text-shadow: 0 0 1rem var(--color-dark-2) 33334;
+  text-shadow: 0 0 1rem var(--color-dark-2);
 }

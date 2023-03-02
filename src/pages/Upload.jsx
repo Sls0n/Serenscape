@@ -6,7 +6,7 @@ import Header from '../components/Header/Header';
 const UploadPage = () => {
   return (
     <Section>
-      <Header />
+      <Header firstNav={'Navigation'} secondNav={'Upload'} />
     </Section>
   );
 };

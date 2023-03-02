@@ -7,7 +7,7 @@ const HomePage = () => {
   return (
     <>
       <Section>
-        <Header />
+        <Header firstNav={'Navigation'} secondNav={'Home'} />
         <Main />
       </Section>
     </>

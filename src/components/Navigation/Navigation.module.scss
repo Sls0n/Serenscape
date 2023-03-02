@@ -2,7 +2,7 @@
   position: fixed;
 
   background-color: var(--color-light-2);
-  width: 32rem;
+  width: 30rem;
   height: 100vh;
   font-size: 2rem;
 
@@ -12,9 +12,22 @@
   justify-content: flex-start;
 
   padding: 2rem 4rem;
+  transition: all 0.3s ease-in-out;
 }
 
-.active {
-  background: var(--color-light-4);
-  border-radius: 1rem;
+.asideClosed {
+  position: fixed;
+
+  background-color: var(--color-light-2);
+  width: 15rem;
+  height: 100vh;
+  font-size: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  transition: all 0.3s ease-in-out;
+  padding: 2rem 4rem;
 }

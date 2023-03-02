@@ -6,7 +6,6 @@ import svg from '../../../../assets/svg/sprite.svg';
 const MainSound = ({ src, text }) => {
   return (
     <li className={classes['main__sound']}>
-      <img className={classes['main__img']} src={src} alt={text} />
       <div className={classes.box}>
         <div className={classes.play}>
           <svg className={classes['main__play-svg']}>
@@ -15,6 +14,7 @@ const MainSound = ({ src, text }) => {
         </div>
         <div className={classes.text}>{text}</div>
       </div>
+      <img className={classes['main__img']} src={src} alt={text} />
     </li>
   );
 };

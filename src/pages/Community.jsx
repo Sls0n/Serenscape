@@ -6,7 +6,7 @@ import Header from '../components/Header/Header';
 const CommunityPage = () => {
   return (
     <Section>
-      <Header />
+      <Header firstNav={'Navigation'} secondNav={'Community'}/>
     </Section>
   );
 };
