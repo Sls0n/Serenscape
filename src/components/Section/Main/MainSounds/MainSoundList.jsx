@@ -10,7 +10,7 @@ import leafRain from '../../../../assets/images/leaf-rain.jpg';
 import storm from '../../../../assets/images/storm.jpg';
 import valdemaras from '../../../../assets/images/valdemaras.jpg';
 
-const MainSoundList = () => {
+const MainSoundList = ({}) => {
   return (
     <ul className={classes['main__sounds']}>
       <MainSound src={forest} text={'Forest'} />
