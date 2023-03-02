@@ -1,16 +1,10 @@
 import React from 'react';
 
 import classes from './Section.module.scss';
-import Header from './Header/Header';
-import Main from './Main/Main';
 
-const Section = () => {
-  return (
-    <section className={classes.section}>
-      <Header />
-      <Main />
-    </section>
-  );
+const Section = ({ children }) => {
+  return <section className={classes.section}>{children}</section>;
+  // Passed in a children prop to use 'Header' and 'Main' components separately
 };
 
 export default Section;

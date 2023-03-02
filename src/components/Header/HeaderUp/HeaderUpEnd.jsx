@@ -1,8 +1,8 @@
 import React from 'react';
 
 import classes from './HeaderUpEnd.module.scss';
-import svg from '../../../../assets/svg/sprite.svg';
-import Button from '../../../Button/Button';
+import svg from '../../../assets/svg/sprite.svg';
+import Button from '../../Button/Button';
 
 const HeaderUpEnd = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import svg from '../../../../assets/svg/sprite.svg';
+import svg from '../../../assets/svg/sprite.svg';
 import classes from './HeaderBreadcrumb.module.scss';
 
 const HeaderBreadcrumb = ({ first, second, last }) => {
@@ -13,12 +13,12 @@ const HeaderBreadcrumb = ({ first, second, last }) => {
         </svg>
       </div>
       <span className={classes['header__down-item']}>{second}</span>
-      <div className={classes['chevron-right']}>
+      {/* <div className={classes['chevron-right']}>
         <svg className={classes['header__down-chevron'] + ' ' + classes['last-chevron']}>
           <use xlinkHref={`${svg}#icon-chevron-right`}></use>
         </svg>
       </div>
-      <span className={classes['header__down-item']}>{last}</span>
+      <span className={classes['header__down-item']}>{last}</span> */}
     </div>
   );
 };

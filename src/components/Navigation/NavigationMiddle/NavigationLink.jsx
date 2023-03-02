@@ -2,11 +2,12 @@ import React from 'react';
 
 import svg from '../../../assets/svg/sprite.svg';
 import classes from './NavigationLink.module.scss';
+import { NavLink } from 'react-router-dom';
 
-const NavigationLink = ({ name, icon }) => {
+const NavigationLink = ({ name, icon, link }) => {
   return (
     <li className={classes['aside__list']}>
-      <a href="#a" className={classes['aside__link']}>
+      <NavLink to={link} className={classes['aside__link']}>
         <div className={classes['aside__icon']}>
           <svg className={classes['aside__link-svg']}>
             <use xlinkHref={`${svg}#${icon}`} />
@@ -14,7 +15,7 @@ const NavigationLink = ({ name, icon }) => {
         </div>
 
         <div className={classes['aside__text']}>{name}</div>
-      </a>
+      </NavLink>
     </li>
   );
 };

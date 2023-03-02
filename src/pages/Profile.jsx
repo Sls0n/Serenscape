@@ -3,7 +3,7 @@ import React from 'react';
 import Section from '../components/Section/Section';
 import Header from '../components/Header/Header';
 
-const FavoritesPage = () => {
+const Profile = () => {
   return (
     <Section>
       <Header />
@@ -11,4 +11,4 @@ const FavoritesPage = () => {
   );
 };
 
-export default FavoritesPage;
+export default Profile;

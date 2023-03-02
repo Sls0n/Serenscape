@@ -1,12 +1,15 @@
 import React from 'react';
 import Section from '../components/Section/Section';
-import Navigation from '../components/Navigation/Navigation';
+import Header from '../components/Header/Header';
+import Main from '../components/Section/Main/Main';
 
 const HomePage = () => {
   return (
     <>
-      <Navigation />
-      <Section />
+      <Section>
+        <Header />
+        <Main />
+      </Section>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import BackButton from '../../../Button/BackButton';
+import BackButton from '../../Button/BackButton';
 
 import HeaderBreadcrumb from './HeaderBreadcrumb';
 import classes from './HeaderDown.module.scss';

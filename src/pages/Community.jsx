@@ -1,7 +1,14 @@
 import React from 'react';
 
+import Section from '../components/Section/Section';
+import Header from '../components/Header/Header';
+
 const CommunityPage = () => {
-  return <div> CommunityPage</div>;
+  return (
+    <Section>
+      <Header />
+    </Section>
+  );
 };
 
 export default CommunityPage;
