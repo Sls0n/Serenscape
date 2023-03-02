@@ -1,6 +1,6 @@
 # Serenscape
 
-Combined from the words "serenity" & "soundscape" - Serenscape is a webapp that allows you to indulge in the serene soundscapes and immerse yourself to a world of pure tranquility. Feel the nature's melodic harmony and let your imagination transcend reality.
+Combined from the words "serenity" & "soundscape" - Serenscape is a webapp that allows you to indulge in serene soundscapes and immerse yourself to a world of pure tranquility. Feel the nature's melodic harmony and let your imagination transcend reality.
 
 ## Features
 

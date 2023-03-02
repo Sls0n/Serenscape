@@ -1,0 +1,132 @@
+.main {
+  background-color: var(--color-light-1);
+  flex: 1;
+}
+
+.main__titlebox {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.main__header {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-dark-5);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.main__sounds {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  grid-gap: 2rem;
+  margin-top: 2rem;
+}
+
+.main__sound {
+  background-color: var(--color-secondary-1);
+  border-radius: 2rem;
+  width: 100%;
+  max-width: 38rem;
+  height: 35rem;
+  max-height: 20rem;
+  position: relative;
+}
+
+.main__sound img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2rem;
+  background-position: center;
+}
+
+.main__sound-2 {
+  background-color: var(--color-tertiary-1);
+}
+
+.box {
+  position: absolute;
+  z-index: 10;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  backdrop-filter: blur(20px);
+  border-radius: 0 0 2rem 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.play {
+  position: absolute;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 2rem;
+}
+
+.text {
+  position: absolute;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--color-light-2);
+  text-shadow: 0 0 1rem var(--color-dark-2) 33334;
+}
+
+.play svg {
+  width: 2.2rem;
+  height: 2.2rem;
+  fill: var(--color-light-2);
+  cursor: pointer;
+}
+
+.heart {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  padding: 1.5rem;
+}
+
+.heart svg {
+  width: 2rem;
+  height: 2rem;
+  fill: var(--color-light-2);
+}
+
+/* Scrollbar */
+
+/* body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-dark-2) var(--color-light-2);
+}
+
+body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--color-light-2);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--color-dark-2);
+  border-radius: 1rem;
+  border: 0.3rem solid var(--color-light-2);
+} */
