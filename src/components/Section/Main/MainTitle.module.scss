@@ -1,0 +1,14 @@
+.main__titlebox {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.main__header {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-dark-5);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}

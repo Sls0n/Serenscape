@@ -1,26 +1,25 @@
 :root {
-  --color-primary-1: #664AFF;
+  --color-primary-1: #664aff;
 
-  --color-light-1: #FFFDFA;
-  --color-light-2: #F0F2F7;
-  --color-light-3: #E8E8F8;
-  --color-light-4: #E0E0EC;
+  --color-light-1: #fffdfa;
+  --color-light-2: #f0f2f7;
+  --color-light-3: #e8e8f8;
+  --color-light-4: #e0e0ec;
 
-  --color-dark-1: #08080A;
+  --color-dark-1: #08080a;
   --color-dark-2: #333;
   --color-dark-3: #444444;
   --color-dark-4: #868696;
   --color-dark-5: #62626e;
 
-  --color-secondary-1: #67A4FF;
-  --color-tertiary-1: #CF435D;
+  --color-secondary-1: #67a4ff;
+  --color-tertiary-1: #cf435d;
 }
 
 * {
   margin: 0;
   padding: 0;
 }
-
 
 *,
 *::before,
@@ -66,4 +65,21 @@ body {
   color: var(--color-dark-1);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-dark-2) var(--color-light-2);
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-light-2);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-dark-2);
+    border-radius: 1rem;
+    border: 0.3rem solid var(--color-light-2);
+  }
 }
