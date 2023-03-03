@@ -31,9 +31,11 @@
   justify-content: center;
   transition: all 0.3s ease-in-out;
 
+  background-color: rgba(#333, 0.3);
   backdrop-filter: blur(5rem);
-  -webkit-backdrop-filter: blur(5rem);
-  
+  -webkit-backdrop-filter: blur(4rem);
+
+
 }
 
 .play {

@@ -11,7 +11,8 @@
   justify-content: flex-start;
 
   padding: 2rem 4rem;
-  transition: all 0.1s ease-in;
+  transition: padding 0.1s ease-out;
+  will-change: padding;
 }
 
 .asideClosed {
@@ -26,6 +27,8 @@
   align-items: center;
   justify-content: center;
 
-  transition: all 0.3s ease-in;
-  padding: 2rem 2rem;
+  transition: padding 0.1s ease-in;
+  will-change: padding;
+
+  padding: 2rem;
 }

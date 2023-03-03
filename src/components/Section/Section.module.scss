@@ -7,4 +7,19 @@
   padding: 2rem 4rem;
 
   margin-left: 30rem;
+  transition: margin-left 0.1s ease-out;
+  will-change: margin-left;
+}
+
+.close {
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+
+  flex: 1;
+  padding: 2rem 4rem;
+
+  margin-left: 10.1rem;
+  transition: margin-left 0.1s ease-out;
+  will-change: margin-left;
 }

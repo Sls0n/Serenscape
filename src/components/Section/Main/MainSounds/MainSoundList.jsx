@@ -11,16 +11,17 @@ import storm from '../../../../assets/images/storm.jpg';
 import valdemaras from '../../../../assets/images/valdemaras.jpg';
 import galaxy from '../../../../assets/images/galaxy.jpg';
 
-const MainSoundList = ({}) => {
+const MainSoundList = () => {
   return (
     <ul className={classes['main__sounds']}>
-      <MainSound src={galaxy} text={'Forest'} />
+      <MainSound src={galaxy} text={'Galaxy'} />
       <MainSound src={mountain} text={'Mountain'} />
       <MainSound src={hillForest} text={'Hill forest'} />
       <MainSound src={landscape} text={'Landscape'} />
       <MainSound src={leafRain} text={'Leaf Rain'} />
       <MainSound src={storm} text={'Storm'} />
       <MainSound src={valdemaras} text={'Valdemaras'} />
+      <MainSound src={forest} text={'Forest'} />
     </ul>
   );
 };

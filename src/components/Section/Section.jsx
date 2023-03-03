@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import classes from './Section.module.scss';
+import NavContext from '../../context/NavContext';
 
 const Section = ({ children }) => {
-  return <section className={classes.section}>{children}</section>;
-  // Passed in a children prop to use 'Header' and 'Main' components separately
+  const { isOpen } = useContext(NavContext);
+
+  return (
+    <section className={!isOpen ? classes.section : classes.close}>
+      {isOpen && <div>Hi</div>}
+      {children}
+    </section>
+  );
 };
 
 export default Section;

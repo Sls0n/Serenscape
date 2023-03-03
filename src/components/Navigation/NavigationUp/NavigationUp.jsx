@@ -12,7 +12,7 @@ const NavigationUp = () => {
   };
 
   return (
-    <div className={!isOpen ? classes['aside__up'] : classes.close}>
+    <div className={`${classes.aside__up} ${isOpen ? classes.close : ''}`}>
       <div className={classes.menu} onClick={clickHandler}>
         <svg className={classes['aside__up-icon']}>
           <use xlinkHref={`${svg}#icon-align-left`} />
