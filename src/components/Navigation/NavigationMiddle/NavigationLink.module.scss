@@ -29,18 +29,18 @@
   width: 2.1rem;
   height: 2.1rem;
   fill: var(--color-dark-2);
-  padding: 1rem;
+  padding: 0.5rem 0rem;
 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.aside__list:nth-child(5) {
+.aside__list:nth-of-type(4) {
   margin-bottom: 3rem;
 }
 
-.aside__list:nth-child(10) {
+.aside__list:nth-of-type(8) {
   margin-top: 3rem;
 }
 
@@ -50,5 +50,7 @@
 
 .active {
   background: var(--color-light-4);
+  padding: 1rem;
   border-radius: 1rem;
+  transition: all 0.3s;
 }

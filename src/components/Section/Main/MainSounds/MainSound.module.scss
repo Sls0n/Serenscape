@@ -32,6 +32,8 @@
   transition: all 0.3s ease-in-out;
 
   backdrop-filter: blur(5rem);
+  -webkit-backdrop-filter: blur(5rem);
+  
 }
 
 .play {

@@ -11,7 +11,7 @@ const NavigationLink = ({ name, icon }) => {
     <li className={classes['aside__list']}>
       <a href="/" onClick={(e) => e.preventDefault()}>
         <div className={classes['aside__icon']}>
-          <svg className={classes['aside__link-svg']}>
+          <svg className={!isOpen ? classes['aside__link-svg'] : classes.close}>
             <use xlinkHref={`${svg}#${icon}`} />
           </svg>
         </div>

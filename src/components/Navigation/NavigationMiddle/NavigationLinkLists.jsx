@@ -38,7 +38,7 @@ const NavigationLinkLists = () => {
       <NavigationLinkLast name="Dark mode" icon="icon-moon" />
       <NavigationLinkLast name="Settings" icon="icon-settings" />
 
-      {!isOpen ? <Button value={'Create a account -->'} /> : <Button value={'-->'} />}
+      {!isOpen && <Button value={'Create a account -->'} />}
     </ul>
   );
 };
