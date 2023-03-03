@@ -7,8 +7,7 @@
   padding: 2rem 4rem;
 
   margin-left: 30rem;
-  transition: margin-left 0.3s ease-out;
-  will-change: margin-left;
+  transition: all 0.2s ease-out;
 }
 
 .close {
@@ -17,9 +16,8 @@
   font-size: 2rem;
 
   flex: 1;
-  padding: 2rem 4rem;
+  padding: 2rem 6rem;
 
-  margin-left: 10.1rem;
-  transition: margin-left 0.3s ease-in;
-  will-change: margin-left;
+  margin-left: 12rem;
+  transition: all 0.2s ease-in;
 }

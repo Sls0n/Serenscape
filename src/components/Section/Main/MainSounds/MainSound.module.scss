@@ -4,7 +4,7 @@
   width: 100%;
   max-width: 35rem;
   height: 35rem;
-  max-height: 20rem;
+  max-height: 21rem;
   position: relative;
 
   img {
@@ -30,9 +30,9 @@
   align-items: center;
   justify-content: center;
 
-  background-color: rgba(#333, 0.3);
-  backdrop-filter: blur(5rem);
-  -webkit-backdrop-filter: blur(4rem);
+  background-color: rgba(#333, 0.4);
+  backdrop-filter: blur(3rem);
+  -webkit-backdrop-filter: blur(3rem);
 }
 
 .play {

@@ -12,9 +12,6 @@ const Main = () => {
 
       <MainTitle title="Piano loops" />
       <MainSoundList />
-
-      <MainTitle title="Ambience" />
-      <MainSoundList />
     </main>
   );
 };

@@ -7,6 +7,11 @@ const SetGoalsPage = () => {
   return (
     <Section>
       <Header firstNav={'User'} secondNav={'Goals'} />
+
+      <h1>My goals</h1>
+      <ul>
+        <li>Implement Signing In feature</li>
+      </ul>
     </Section>
   );
 };

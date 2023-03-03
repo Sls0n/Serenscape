@@ -36,7 +36,6 @@ const router = createBrowserRouter([
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(isOpen);
 
   return (
     <NavContext.Provider value={{ isOpen, setIsOpen }}>
