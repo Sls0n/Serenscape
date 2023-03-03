@@ -7,7 +7,7 @@
   align-items: flex-start;
 
   margin-top: 1.5rem;
-  transition: width 250ms;
+  transition: width 0.3s ease;
   will-change: width;
 
   &-icon {
@@ -24,7 +24,7 @@
     align-items: center;
     margin-top: 1.5rem;
 
-    transition: width 250ms;
+    transition: width 0.3s ease;
     will-change: width;
   }
 }

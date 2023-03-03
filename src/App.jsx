@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomePage from './pages/Home';
 import RootLayout from './pages/Root';
@@ -9,6 +9,12 @@ import UploadPage from './pages/Upload';
 import SleepTimerPage from './pages/SleepTimer';
 import SetGoalsPage from './pages/SetGoals';
 import ProfilePage from './pages/Profile';
+
+import NavContext from './context/NavContext';
+import Navigation from './components/Navigation/Navigation';
+import Section from './components/Section/Section';
+import Header from './components/Header/Header';
+import Main from './components/Section/Main/Main';
 
 const router = createBrowserRouter([
   {
@@ -29,7 +35,20 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router}></RouterProvider>;
+  const [isOpen, setIsOpen] = useState(false);
+  console.log(isOpen);
+
+  return (
+    <NavContext.Provider value={{ isOpen, setIsOpen }}>
+      <RouterProvider router={router}>
+        <Navigation />
+        <Section>
+          <Header />
+          <Main />
+        </Section>
+      </RouterProvider>
+    </NavContext.Provider>
+  );
 }
 
 export default App;
