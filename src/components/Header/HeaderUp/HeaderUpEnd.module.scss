@@ -2,8 +2,8 @@
   all: unset;
   width: 15rem;
   height: 0.5rem;
-  background: var(--color-dark-3);
-  opacity: 0.7;
+  background: var(--color-vol-track);
+  opacity: 1;
   -webkit-transition: 0.2s;
   transition: opacity 0.2s;
   margin-right: 2rem;
@@ -44,8 +44,7 @@
 .header__up-icon {
   width: 2.8rem;
   height: 2.8rem;
-  /* background-color: var(--color-light-3); */
-  fill: var(--color-dark-2);
+  fill: var(--color-header-icon);
 
   display: flex;
   justify-content: center;
@@ -58,4 +57,17 @@
   justify-content: center;
   gap: 2rem;
   flex-basis: auto;
+}
+
+.moon {
+  // remove the default style of button
+
+  cursor: pointer;
+  border: none;
+  outline: transparent;
+  background: transparent;
+
+  svg {
+    pointer-events: none;
+  }
 }

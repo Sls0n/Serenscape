@@ -5,7 +5,9 @@ import NavigationHeader from './NavigationHeader';
 import classes from './NavigationLinkLists.module.scss';
 import NavigationLinkLast from './NavigationLinkLast';
 import Button from '../../Button/Button';
-import NavContext from '../../../context/NavContext';
+
+import NavContext from '../../../context/nav-context';
+import ThemeContext from '../../../context/theme-context';
 
 const NAVIGATION_1 = [
   { name: 'Home', icon: 'icon-home', link: '/' },
@@ -22,6 +24,11 @@ const NAVIGATION_2 = [
 
 const NavigationLinkLists = () => {
   const { isOpen } = useContext(NavContext);
+  const { isDark, setDark } = useContext(ThemeContext);
+
+  const clickHandler = () => {
+    setDark(!isDark);
+  };
 
   return (
     <ul className={classes['aside__lists']}>
@@ -35,8 +42,12 @@ const NavigationLinkLists = () => {
         <NavigationLink key={item.name} name={item.name} icon={item.icon} link={item.link} />
       ))}
 
-      <NavigationLinkLast name="Dark mode" icon="icon-moon" />
-      <NavigationLinkLast name="Settings" icon="icon-settings" />
+      {isDark ? (
+        <NavigationLinkLast onClick={clickHandler} name="Light mode" icon="icon-sun" />
+      ) : (
+        <NavigationLinkLast onClick={clickHandler} name="Dark mode" icon="icon-moon" />
+      )}
+      <NavigationLinkLast onClick={() => {}} name="Settings" icon="icon-settings" />
 
       {!isOpen && <Button value={'Create a account -->'} />}
     </ul>

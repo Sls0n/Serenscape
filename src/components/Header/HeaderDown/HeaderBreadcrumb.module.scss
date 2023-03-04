@@ -1,27 +1,24 @@
 .header__down {
-
-
   &-breadcrumb {
     display: flex;
     align-items: center;
     gap: 1rem;
-    color: var(--color-dark-4);
   }
 
   &-item {
     font-size: 1.8rem;
-    color: var(--color-dark-4);
+    color: var(--color-crumb-1);
 
     &:last-of-type {
       font-size: 1.8rem;
-      color: var(--color-dark-2);
+      color: var(--color-crumb-2);
     }
   }
 
   &-chevron {
     width: 2rem;
     height: 2rem;
-    fill: var(--color-dark-4);
+    fill: var(--color-chevron);
   }
 }
 
@@ -29,10 +26,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.last-chevron {
-  width: 2rem;
-  height: 2rem;
-  fill: var(--color-dark-2);
 }

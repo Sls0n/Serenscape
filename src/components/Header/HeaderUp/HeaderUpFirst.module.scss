@@ -1,11 +1,13 @@
 .header__up-logo {
-  font-size: 3.2rem;
-  color: var(--color-dark-2);
+  font-size: 3rem;
+  color: var(--color-header-logo);
   font-weight: 500;
-}
+  letter-spacing: 0.025rem;
 
-.scape {
-  color: var(--color-dark-2);
-  font-size: 3.2rem;
-  font-weight: 700;
+  .scape {
+    color: var(--color-header-logo);
+    font-size: 3rem;
+    letter-spacing: 0.025rem;
+    font-weight: 600;
+  }
 }

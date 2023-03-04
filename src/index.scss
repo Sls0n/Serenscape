@@ -1,38 +1,71 @@
-:root {
+:root body.light {
   --color-primary-1: #664aff;
 
-  --color-light-1: #fffdfa;
-  --color-light-2: #f0f2f7;
-  --color-light-3: #e8e8f8;
-  --color-light-4: #e0e0ec;
+  --color-bg: #f0f2f7;
+  --color-bg-sidebar: #e8e8f8;
+  --color-sidebar-icon: #333;
 
-  --color-dark-1: #08080a;
-  --color-dark-2: #333;
-  --color-dark-3: #444444;
-  --color-dark-4: #868696;
-  --color-dark-5: #62626e;
+  --color-icon: #333;
+  --color-header-icon: #333;
+  --color-header-logo: #333;
+  --color-bg-arrow: #e0e0ec;
+  --color-arrow-icon: #333;
+  --color-btn-text: #fffdfa;
+
+  --color-vol-track: #444444;
+
+  --color-crumb-1: #62626e;
+  --color-crumb-2: #333;
+  --color-chevron: #444;
+
+  --color-nav-link: #424242;
+  --color-nav-header: #4c4c55;
+  --color-bg-nav-active: #c9c9ca;
+  --color-nav-active: #232323;
+
+  --color-main-header: #62626e;
+  --color-main-icon: #f0f2f7;
+  --color-main-box: hsla(0, 0%, 20%, 0.55);
+  --color-main-text: #f0f2f7;
 
   --color-secondary-1: #67a4ff;
   --color-tertiary-1: #cf435d;
 }
 
-// :root {
-//   --color-primary-1: #9695b7;
+:root body.dark {
+  //   --color-primary-1: #9695b7;
+  --color-primary-1: #664aff;
 
-//   --color-light-1: #17171b;
-//   --color-light-2: #1c1c1f;
-//   --color-light-3: #2F2F34;
-//   --color-light-4: #2F2F34;
+  --color-bg: #111115;
+  --color-bg-sidebar: #0c0c0f;
+  --color-sidebar-icon: #f2f2f2;
 
-//   --color-dark-1:  #D5D5D6;
-//   --color-dark-2: #D5D5D6;
-//   --color-dark-3: #8a8787;
-//   --color-dark-4: #D5D5D6;
-//   --color-dark-5: #333;
+  --color-icon: #575866;
+  --color-header-icon: #e2e2e3;
+  --color-header-logo: #f2f2f2;
+  --color-bg-arrow: #34343d;
+  --color-arrow-icon: #f5f5f5;
+  --color-btn-text: #fff;
 
-//   --color-secondary-1: #67a4ff;
-//   --color-tertiary-1: #cf435d;
-// }
+  --color-vol-track: #444444;
+
+  --color-crumb-1: #8f8f91;
+  --color-crumb-2: #ffffff;
+  --color-chevron: #8f8f91;
+
+  --color-nav-link: #9393a5;
+  --color-nav-header: #767678;
+  --color-bg-nav-active: #191920;
+  --color-nav-active: #f2f2f2;
+
+  --color-main-header: #8f8f91;
+  --color-main-icon: #f0f2f7;
+  --color-main-box: hsla(240, 11%, 11%, 0.7);
+  --color-main-text: #fff;
+
+  --color-secondary-1: #67a4ff;
+  --color-tertiary-1: #cf435d;
+}
 
 * {
   margin: 0;
@@ -58,16 +91,6 @@ select {
   font: inherit;
 }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-}
-
 svg {
   pointer-events: none;
 }
@@ -75,15 +98,13 @@ svg {
 .wrapper {
   display: flex;
   min-height: 100vh;
-  background-color: var(--color-light-1);
+  background: var(--color-bg);
+  transition: background 0.2s;
 }
 
 body {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  color: var(--color-dark-1);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-
-  overflow: scroll;
 }

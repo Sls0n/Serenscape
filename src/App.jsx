@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 import HomePage from './pages/Home';
 import RootLayout from './pages/Root';
 import ErrorPage from './pages/Error';
@@ -10,11 +11,13 @@ import SleepTimerPage from './pages/SleepTimer';
 import SetGoalsPage from './pages/SetGoals';
 import ProfilePage from './pages/Profile';
 
-import NavContext from './context/NavContext';
 import Navigation from './components/Navigation/Navigation';
 import Section from './components/Section/Section';
 import Header from './components/Header/Header';
 import Main from './components/Section/Main/Main';
+
+import NavContext from './context/nav-context';
+import ThemeContext from './context/theme-context';
 
 const router = createBrowserRouter([
   {
@@ -36,16 +39,29 @@ const router = createBrowserRouter([
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDark, setDark] = useState(true);
+
+  useEffect(() => {
+    if (isDark) {
+      document.body.classList.add('dark');
+      document.body.classList.remove('light');
+    } else {
+      document.body.classList.add('light');
+      document.body.classList.remove('dark');
+    }
+  }, [isDark]);
 
   return (
     <NavContext.Provider value={{ isOpen, setIsOpen }}>
-      <RouterProvider router={router}>
-        <Navigation />
-        <Section>
-          <Header />
-          <Main />
-        </Section>
-      </RouterProvider>
+      <ThemeContext.Provider value={{ isDark, setDark }}>
+        <RouterProvider router={router}>
+          <Navigation />
+          <Section>
+            <Header />
+            <Main />
+          </Section>
+        </RouterProvider>
+      </ThemeContext.Provider>
     </NavContext.Provider>
   );
 }

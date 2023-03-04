@@ -1,7 +1,9 @@
 .aside {
   position: fixed;
 
-  background-color: var(--color-light-2);
+  z-index: 1000;
+
+  background: var(--color-bg-sidebar);
   height: 100vh;
   font-size: 2rem;
 
@@ -11,15 +13,14 @@
   justify-content: flex-start;
 
   padding: 2rem 4rem;
-  transition: padding 0.2s ease-out;
+  transition: padding 0.2s, background 0.2s;
   will-change: padding;
-  overflow: hidden;
 }
 
 .asideClosed {
   position: fixed;
 
-  background-color: var(--color-light-2);
+  background: var(--color-bg-sidebar);
   height: 100vh;
   font-size: 2rem;
 
@@ -28,7 +29,7 @@
   align-items: center;
   justify-content: center;
 
-  transition: padding 0.2s ease-in;
+  transition: padding 0.2s, background 0.2s;
   will-change: padding;
 
   padding: 2rem;

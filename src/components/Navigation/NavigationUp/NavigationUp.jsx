@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import svg from '../../../assets/svg/sprite.svg';
 import classes from './NavigationUp.module.scss';
-import NavContext from '../../../context/NavContext';
+import NavContext from '../../../context/nav-context';
 
 const NavigationUp = () => {
   const { isOpen, setIsOpen } = useContext(NavContext);

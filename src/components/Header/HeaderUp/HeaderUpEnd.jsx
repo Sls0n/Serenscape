@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import classes from './HeaderUpEnd.module.scss';
 import svg from '../../../assets/svg/sprite.svg';
 import Button from '../../Button/Button';
 
+import ThemeContext from '../../../context/theme-context';
+
 const HeaderUpEnd = () => {
+  const { isDark, setDark } = useContext(ThemeContext);
+
+  const clickHandler = (e) => {
+    e.preventDefault();
+    setDark(!isDark);
+  };
+
   return (
     <div className={classes['header__up-end']}>
       <div className={classes['header__up-icons']}>
-        <div className={classes.moon}>
+        <button className={classes.moon} onClick={clickHandler}>
           <svg className={classes['header__up-icon']}>
-            <use xlinkHref={`${svg}#icon-moon`}></use>
+            <use xlinkHref={`${svg}#${isDark ? 'icon-sun' : 'icon-moon'}`}></use>
           </svg>
-        </div>
+        </button>
         <div className={classes.volume}>
           <svg className={classes['header__up-icon']}>
             <use xlinkHref={`${svg}#icon-volume-2`}></use>
