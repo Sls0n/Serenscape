@@ -4,7 +4,7 @@ import NavigationLink from './NavigationLink';
 import NavigationHeader from './NavigationHeader';
 import classes from './NavigationLinkLists.module.scss';
 import NavigationLinkLast from './NavigationLinkLast';
-import Button from '../../Button/Button';
+import AuthButton from '../../Button/AuthButton';
 
 import NavContext from '../../../context/nav-context';
 import ThemeContext from '../../../context/theme-context';
@@ -49,7 +49,7 @@ const NavigationLinkLists = () => {
       )}
       <NavigationLinkLast onClick={() => {}} name="Settings" icon="icon-settings" />
 
-      {!isOpen && <Button value={'Create a account -->'} />}
+      {!isOpen && <AuthButton text={'Create an account -->'} to={'/signup'}/>}
     </ul>
   );
 };

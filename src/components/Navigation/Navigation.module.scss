@@ -1,5 +1,6 @@
 .aside {
   position: fixed;
+  width: 30rem;
 
   z-index: 1000;
 
@@ -13,8 +14,8 @@
   justify-content: flex-start;
 
   padding: 2rem 4rem;
-  transition: padding 0.2s, background 0.2s;
-  will-change: padding;
+  transition: padding 0.2s, background 0.2s, width 0.2s;
+  will-change: padding, width;
 }
 
 .asideClosed {
@@ -29,8 +30,8 @@
   align-items: center;
   justify-content: center;
 
-  transition: padding 0.2s, background 0.2s;
-  will-change: padding;
+  transition: padding 0.2s, background 0.2s, width 0.2s;
+  will-change: padding, width;
 
   padding: 2rem;
 }

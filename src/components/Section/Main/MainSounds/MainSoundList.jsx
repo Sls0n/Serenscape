@@ -14,7 +14,7 @@ import galaxy from '../../../../assets/images/galaxy-min.jpg';
 const MainSoundList = () => {
   return (
     <ul className={classes['main__sounds']}>
-      <MainSound src={valdemaras} text={'Immersive galaxy'} />
+      <MainSound src={storm} text={'Immersive galaxy'} />
       <MainSound src={landscape} text={'Awesome landscape'} />
       <MainSound src={leafRain} text={'Leaf Rain'} />
       <MainSound src={galaxy} text={'Storm hit'} />

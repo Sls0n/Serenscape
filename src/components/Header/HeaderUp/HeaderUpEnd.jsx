@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import classes from './HeaderUpEnd.module.scss';
 import svg from '../../../assets/svg/sprite.svg';
-import Button from '../../Button/Button';
+import AuthButton from '../../Button/AuthButton';
 
 import ThemeContext from '../../../context/theme-context';
 
@@ -37,7 +37,7 @@ const HeaderUpEnd = () => {
           onChange={() => {}}
         />
 
-        <Button value={'Sign In -->'} />
+        <AuthButton text={'Sign In -->'} to={'/signin'} />
       </div>
     </div>
   );
