@@ -8,6 +8,7 @@ const Main = () => {
     <main className="main">
       <MainTitle title="Nature Sounds" />
       <MainSoundList />
+
       <br />
 
       <MainTitle title="Piano loops" />

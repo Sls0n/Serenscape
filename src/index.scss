@@ -33,19 +33,19 @@
 }
 
 :root body.dark {
-  //   --color-primary-1: #9695b7;
-  --color-primary-1: #664aff;
+  --color-primary-1: #525199;
+  // --color-primary-1: #548adb;
 
-  --color-bg: #111115;
-  --color-bg-sidebar: #0c0c0f;
-  --color-sidebar-icon: #f2f2f2;
+  --color-bg: #151517;
+  --color-bg-sidebar: #18181a;
+  --color-sidebar-icon: #999;
 
-  --color-icon: #575866;
-  --color-header-icon: #e2e2e3;
-  --color-header-logo: #f2f2f2;
-  --color-bg-arrow: #34343d;
+  --color-icon: #fff;
+  --color-header-icon: #f2f2f2;
+  --color-header-logo: #f1f1f2;
+  --color-bg-arrow: #1d1d1f;
   --color-arrow-icon: #f5f5f5;
-  --color-btn-text: #fff;
+  --color-btn-text: #f2f2f2;
 
   --color-vol-track: #444444;
 
@@ -53,19 +53,55 @@
   --color-crumb-2: #ffffff;
   --color-chevron: #8f8f91;
 
-  --color-nav-link: #9393a5;
-  --color-nav-header: #767678;
-  --color-bg-nav-active: #191920;
+  --color-nav-link: #8a8d92;
+  --color-nav-header: #6c6c6e;
+  --color-bg-nav-active: #262628;
   --color-nav-active: #f2f2f2;
 
-  --color-main-header: #8f8f91;
+  --color-main-header: #999;
   --color-main-icon: #f0f2f7;
-  --color-main-box: hsla(240, 11%, 11%, 0.7);
+  // --color-main-box: hsla(240, 11%, 11%, 0.5);
+  --color-main-box: hsla(240, 2%, 8%, 0.2);
   --color-main-text: #fff;
 
   --color-secondary-1: #67a4ff;
   --color-tertiary-1: #cf435d;
 }
+
+// :root body.dark {
+//   //   --color-primary-1: #9695b7;
+//   --color-primary-1: #664aff;
+
+//   --color-bg: #111115;
+//   --color-bg-sidebar: #0c0c0f;
+//   --color-sidebar-icon: #f2f2f2;
+
+//   --color-icon: #575866;
+//   --color-header-icon: #e2e2e3;
+//   --color-header-logo: #f2f2f2;
+//   --color-bg-arrow: #34343d;
+//   --color-arrow-icon: #f5f5f5;
+//   --color-btn-text: #fff;
+
+//   --color-vol-track: #444444;
+
+//   --color-crumb-1: #8f8f91;
+//   --color-crumb-2: #ffffff;
+//   --color-chevron: #8f8f91;
+
+//   --color-nav-link: #9393a5;
+//   --color-nav-header: #767678;
+//   --color-bg-nav-active: #191920;
+//   --color-nav-active: #f2f2f2;
+
+//   --color-main-header: #8f8f91;
+//   --color-main-icon: #f0f2f7;
+//   --color-main-box: hsla(240, 11%, 11%, 0.7);
+//   --color-main-text: #fff;
+
+//   --color-secondary-1: #67a4ff;
+//   --color-tertiary-1: #cf435d;
+// }
 
 * {
   margin: 0;

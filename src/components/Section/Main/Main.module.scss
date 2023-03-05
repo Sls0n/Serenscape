@@ -2,16 +2,4 @@
   flex: 1;
 }
 
-.heart {
-  position: absolute;
-  z-index: 10;
-  top: 0;
-  right: 0;
-  padding: 1.5rem;
-}
 
-.heart svg {
-  width: 2rem;
-  height: 2rem;
-  fill: var(--color-main-icon);
-}

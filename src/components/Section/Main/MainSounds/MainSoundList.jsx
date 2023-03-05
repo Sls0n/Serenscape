@@ -14,14 +14,10 @@ import galaxy from '../../../../assets/images/galaxy-min.jpg';
 const MainSoundList = () => {
   return (
     <ul className={classes['main__sounds']}>
-      <MainSound src={galaxy} text={'Immersive galaxy'} />
-      <MainSound src={mountain} text={'Snowy mountain'} />
-      <MainSound src={hillForest} text={'Hill forest'} />
+      <MainSound src={valdemaras} text={'Immersive galaxy'} />
       <MainSound src={landscape} text={'Awesome landscape'} />
       <MainSound src={leafRain} text={'Leaf Rain'} />
-      <MainSound src={storm} text={'Storm hit'} />
-      <MainSound src={valdemaras} text={'Valdemaras'} />
-      <MainSound src={forest} text={'Forest birds'} />
+      <MainSound src={galaxy} text={'Storm hit'} />
     </ul>
   );
 };
