@@ -71,3 +71,26 @@
     pointer-events: none;
   }
 }
+
+.user {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__pfp {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 1rem;
+    background-color: var(--color-bg-arrow);
+    border: 3px solid var(--color-bg-arrow);
+  }
+
+  svg {
+    pointer-events: none;
+    width: 2.5rem;
+    height: 2.5rem;
+
+    fill: var(--color-icon);
+  }
+}

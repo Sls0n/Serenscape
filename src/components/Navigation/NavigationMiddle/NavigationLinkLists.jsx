@@ -8,6 +8,7 @@ import AuthButton from '../../Button/AuthButton';
 
 import NavContext from '../../../context/nav-context';
 import ThemeContext from '../../../context/theme-context';
+import { getAuth } from 'firebase/auth';
 
 const NAVIGATION_1 = [
   { name: 'Home', icon: 'icon-home', link: '/' },
@@ -25,6 +26,8 @@ const NAVIGATION_2 = [
 const NavigationLinkLists = () => {
   const { isOpen } = useContext(NavContext);
   const { isDark, setDark } = useContext(ThemeContext);
+
+  const auth = getAuth();
 
   const clickHandler = () => {
     setDark(!isDark);
@@ -49,7 +52,7 @@ const NavigationLinkLists = () => {
       )}
       <NavigationLinkLast onClick={() => {}} name="Settings" icon="icon-settings" />
 
-      {!isOpen && <AuthButton text={'Create an account -->'} to={'/signup'}/>}
+      {!isOpen && <AuthButton text={auth.currentUser ? 'Customize profile-->' : 'Create an account -->'} to={'/signup'} />}
     </ul>
   );
 };

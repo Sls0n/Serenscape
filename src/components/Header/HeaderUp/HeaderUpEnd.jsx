@@ -39,7 +39,22 @@ const HeaderUpEnd = () => {
           onChange={() => {}}
         />
 
-        {auth.currentUser ? <AuthButton text={'Sign Out -->'} /> : <AuthButton text={'Sign In -->'} to={'/signin'} />}
+        {auth.currentUser ? (
+          <div className={classes.user}>
+            {/* <svg className={classes['header__up-icon']}>
+              <use xlinkHref={`${svg}#icon-user`}></use>
+            </svg> */}
+            <img
+              src={
+                'https://yt3.googleusercontent.com/Pt0qgndozm7ssgyu5pyQ4hgpZ5giIl7B2viR3Q8APutWYMNxFMHye0QJkyVxvFLkuOXrzStsRw=s900-c-k-c0x00ffffff-no-rj'
+              }
+              alt="user"
+              className={classes['user__pfp']}
+            />
+          </div>
+        ) : (
+          <AuthButton text={'Sign In -->'} to={'/signin'} />
+        )}
       </div>
     </div>
   );

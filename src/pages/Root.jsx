@@ -1,13 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navigation from '../components/Navigation/Navigation';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { PropagateLoader } from 'react-spinners';
 
 const RootLayout = () => {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [isAuthFetched, setIsAuthFetched] = useState(false);
+
+  const auth = getAuth();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+      setIsAuthFetched(true);
+    });
+
+    return () => unsubscribe();
+  }, [auth]);
+
   return (
     <>
-      <Navigation />
+      <PropagateLoader
+        color={'#5950d6'}
+        height={50}
+        width={15}
+        loading={!isAuthFetched}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: '1000',
+        }}
+      />
 
-      <Outlet />
+      {isAuthFetched && (
+        <>
+          <Navigation />
+          <Outlet />
+        </>
+      )}
     </>
   );
 };
