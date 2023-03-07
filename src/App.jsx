@@ -10,8 +10,8 @@ import UploadPage from './pages/Upload';
 import SleepTimerPage from './pages/SleepTimer';
 import SetGoalsPage from './pages/SetGoals';
 import ProfilePage from './pages/Profile';
-import SignInPage from './pages/SigningPage/SignIn';
-import SignUpPage from './pages/SigningPage/Signup';
+import SignInPage from './pages/SignInPage/SignIn';
+import SignUpPage from './pages/SignUpPage/Signup';
 
 import Navigation from './components/Navigation/Navigation';
 import Section from './components/Section/Section';

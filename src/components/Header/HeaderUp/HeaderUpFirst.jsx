@@ -6,7 +6,7 @@ const HeaderUpFirst = () => {
   return (
     <div className={classes['header__up-first']}>
       <div className={classes['header__up-logo']}>
-        Seren<span className={classes.scape}>scape</span>
+        seren<span className={classes.scape}>scape</span>
       </div>
     </div>
   );

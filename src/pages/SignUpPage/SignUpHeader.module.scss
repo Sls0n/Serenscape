@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  flex-basis: 10%;
+  width: 100%;
+  align-items: center;
+
+  &__logo {
+    all: unset;
+    font-size: 3.2rem;
+    font-weight: 600;
+    letter-spacing: -0.05rem;
+    color: #333;
+    cursor: pointer;
+  }
+}
