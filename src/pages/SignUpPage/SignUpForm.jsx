@@ -2,6 +2,8 @@ import React, { useId } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import classes from './SignUpForm.module.scss';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth } from '../../config/firebase-config';
 
 const SignUpForm = () => {
   const {
@@ -9,16 +11,34 @@ const SignUpForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const id = useId();
+
+  const registerUser = async (data) => {
+    try {
+      const userCredentials = await createUserWithEmailAndPassword(auth, data.email, data.password);
+      const user = userCredentials.user;
+      console.log(user);
+      await updateProfile(user, {
+        displayName: data.username,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const onSubmit = (data) => {
+    console.log(data);
+    registerUser(data);
+  };
 
   return (
     <main className={classes.main}>
       <div className={classes.main__textbox}>
         <h1 className={classes.main__title}>Create your account</h1>
-        {/* <p className={classes.main__description}>Fill the details</p> */}
       </div>
 
-      <form action="submit" className={classes.form} onSubmit={handleSubmit((data) => console.log(data))}>
+      <form action="submit" className={classes.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={classes.form__group}>
           <label htmlFor={`${id}-username`} className={classes.form__label}>
             Username
@@ -77,7 +97,7 @@ const SignUpForm = () => {
                 message: 'Password must be at least 8 characters long',
               },
               pattern: {
-                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>/?]*$/,
+                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/,
                 message: 'Password must contain at least a uppercase letter and a number',
               },
             })}

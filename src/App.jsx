@@ -12,6 +12,7 @@ import SetGoalsPage from './pages/SetGoals';
 import ProfilePage from './pages/Profile';
 import SignInPage from './pages/SignInPage/SignIn';
 import SignUpPage from './pages/SignUpPage/Signup';
+import Success from './pages/Success';
 
 import Navigation from './components/Navigation/Navigation';
 import Section from './components/Section/Section';
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
   {
     path: '/signup',
     element: <SignUpPage />,
+  },
+  {
+    path: '/success',
+    element: <Success />,
   },
 ]);
 
