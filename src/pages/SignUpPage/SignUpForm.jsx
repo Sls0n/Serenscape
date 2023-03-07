@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom';
 import classes from './SignUpForm.module.scss';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../config/firebase-config';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -30,6 +33,7 @@ const SignUpForm = () => {
   const onSubmit = (data) => {
     console.log(data);
     registerUser(data);
+    navigate('/success');
   };
 
   return (
