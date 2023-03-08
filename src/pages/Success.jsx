@@ -1,12 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import classes from './CSS/Success.module.scss';
+import poppers from '../assets/images/poppers.png';
+import Confetti from 'react-confetti';
 
 const Success = () => {
   return (
-    <div>
-      <h1>Success! You're logged in</h1>
-      <Link to="/">Go back to home</Link>
-      <Link to="/profile">Go to profile</Link>
+    <div className={classes.container}>
+      <Confetti width={window.innerWidth} height={window.innerHeight} />
+      <div className={classes.container__box}>
+        <div className={classes.container__poppers}>
+          <img src={poppers} alt="Party Poppers" />
+        </div>
+        <h1 className={classes.container__header}>You have successfully registered!</h1>
+        <p className={classes.container__paragraph}>You can now customize your profile and start using the app.</p>
+        <div className={classes.container__link}>
+          <Link to="/profile">Customize profile</Link>
+          <Link to="/">Go back to home</Link>
+        </div>
+      </div>
     </div>
   );
 };

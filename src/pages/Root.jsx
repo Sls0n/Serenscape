@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navigation from '../components/Navigation/Navigation';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, setPersistence, browserLocalPersistence } from 'firebase/auth';
 import { PropagateLoader } from 'react-spinners';
 
 const RootLayout = () => {
@@ -17,6 +17,10 @@ const RootLayout = () => {
     });
 
     return () => unsubscribe();
+  }, [auth]);
+
+  useEffect(() => {
+    setPersistence(auth, browserLocalPersistence);
   }, [auth]);
 
   return (

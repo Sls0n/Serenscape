@@ -1,15 +1,49 @@
-import React, { useId } from 'react';
+import React, { useState, useId } from 'react';
 import { Link } from 'react-router-dom';
 import classes from './SignInForm.module.scss';
 import { useForm } from 'react-hook-form';
 
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import PropagateLoader from 'react-spinners/PropagateLoader';
+
 const SignInForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const id = useId();
+
+  const navigate = useNavigate();
+
+  const auth = getAuth();
+
+  const signInUser = async (data) => {
+    try {
+      setIsLoading(true);
+      await signInWithEmailAndPassword(auth, data.email, data.password);
+
+      navigate('/');
+    } catch (error) {
+      if (error.code === 'auth/user-not-found') {
+        setErrorMessage('User does not exist!');
+      } else if (error.code === 'auth/wrong-password') {
+        setErrorMessage('The password is invalid!');
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const onSubmit = (data) => {
+    signInUser(data);
+  };
+
   return (
     <main className={classes.main}>
       <div className={classes.main__textbox}>
@@ -17,7 +51,8 @@ const SignInForm = () => {
         <p className={classes.main__description}>To continue</p>
       </div>
 
-      <form action="submit" className={classes.form} onSubmit={handleSubmit((data) => console.log(data))}>
+      <form action="submit" className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+        {errorMessage && <p className={classes.form__error}>{errorMessage}</p>}
         <div className={classes.form__group}>
           <label htmlFor={`${id}-email`} className={classes.form__label}>
             Email
@@ -34,7 +69,9 @@ const SignInForm = () => {
             className={`${classes.form__input} ${errors.email && classes.error}`}
             placeholder="Enter your email"
           />
+          {errors.email && <p className={classes.form__error}>{errors.email.message}</p>}
         </div>
+
         <div className={classes.form__group}>
           <label htmlFor={`${id}-password`} className={classes.form__label}>
             Password
@@ -42,13 +79,38 @@ const SignInForm = () => {
           <input
             {...register('password', {
               required: { value: true, message: 'Password is required' },
+              minLength: {
+                value: 8,
+                message: 'Password must be at least 8 characters long',
+              },
+              pattern: {
+                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/,
+                message: 'Password must contain at least a uppercase letter and a number',
+              },
             })}
+            type="password"
             id={`${id}-password`}
             className={`${classes.form__input} ${errors.password && classes.error}`}
-            placeholder="Enter the password"
+            placeholder="Create a password"
           />
+          {errors.password && <p className={classes.form__error}>{errors.password.message}</p>}
         </div>
-        <button className={classes.btn}>Sign In</button>
+
+        <button className={classes.btn}>
+          {isLoading ? (
+            <PropagateLoader
+              color="#f2f2f2"
+              size={15}
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            />
+          ) : (
+            'Sign In'
+          )}
+        </button>
       </form>
       <Link to="/signup" className={classes.form__link}>
         Don't have an account?

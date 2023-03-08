@@ -134,6 +134,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  min-height: 5.4rem;
   background-color: var(--color-primary-1);
   color: #f2f2f2;
   font-size: 1.6rem;
@@ -141,4 +142,5 @@
   padding: 1.5rem;
   cursor: pointer;
   transition: all 0.2s;
+  transform: translateY(-2rem);
 }

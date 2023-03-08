@@ -1,13 +1,15 @@
-import React, { useId } from 'react';
+import React, { useState, useId } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import classes from './SignUpForm.module.scss';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../config/firebase-config';
 import { useNavigate } from 'react-router-dom';
+import PropagateLoader from 'react-spinners/PropagateLoader';
 
 const SignUpForm = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -19,21 +21,23 @@ const SignUpForm = () => {
 
   const registerUser = async (data) => {
     try {
+      setIsLoading(true);
       const userCredentials = await createUserWithEmailAndPassword(auth, data.email, data.password);
       const user = userCredentials.user;
-      console.log(user);
       await updateProfile(user, {
         displayName: data.username,
       });
+
+      navigate('/success');
     } catch (error) {
       console.log(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const onSubmit = (data) => {
-    console.log(data);
     registerUser(data);
-    navigate('/success');
   };
 
   return (
@@ -120,7 +124,21 @@ const SignUpForm = () => {
           </Link>{' '}
           Terms of Service and Privacy Policy.
         </p>
-        <button className={classes.btn}>Create your account</button>
+        <button className={classes.btn}>
+          {isLoading ? (
+            <PropagateLoader
+              color="#f2f2f2"
+              size={15}
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            />
+          ) : (
+            'Continue'
+          )}
+        </button>
         <Link to="/signin" className={classes.form__link}>
           Already have an account?
         </Link>
