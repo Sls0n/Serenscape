@@ -1,19 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import MainSound from './MainSound';
 
 import classes from './MainSoundList.module.scss';
-import forest from '../../../../assets/images/forest-min.jpg';
-import mountain from '../../../../assets/images/mountain-min.jpg';
-import hillForest from '../../../../assets/images/hill-forest-min.jpg';
-import valdemaras from '../../../../assets/images/valdemaras-min.jpg';
+
+import { storage } from '../../../../config/firebase-config';
+import { db } from '../../../../config/firebase-config';
+import { getDocs, collection } from 'firebase/firestore';
 
 const MainSoundList = () => {
+  const [sounds, setSounds] = useState([]);
+
+  useEffect(() => {
+    const getSounds = async () => {
+      try {
+        const data = await getDocs(collection(db, 'sounds'));
+        const sounds = data.docs.map((doc) => doc.data());
+        console.log(sounds);
+        setSounds(sounds);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getSounds();
+  }, []);
+
   return (
     <ul className={classes['main__sounds']}>
-      <MainSound src={forest} text={'Forest'} />
-      <MainSound src={valdemaras} text={'Awesome valdemaras'} />
-      <MainSound src={hillForest} text={'Hill sound'} />
-      <MainSound src={mountain} text={'Cold mountain'} />
+      {sounds.map((sound) => (
+        <MainSound
+          key={sound.title}
+          title={sound.title}
+          imageSource={sound.imageSource}
+          audioSource={sound.audioSource}
+        />
+      ))}
     </ul>
   );
 };

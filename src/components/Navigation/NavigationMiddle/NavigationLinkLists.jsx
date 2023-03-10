@@ -40,7 +40,7 @@ const NavigationLinkLists = () => {
         <NavigationLink key={item.name} name={item.name} icon={item.icon} link={item.link} />
       ))}
 
-      {!isOpen && <NavigationHeader heading="Navigation" />}
+      {!isOpen && <NavigationHeader heading="User settings" />}
       {NAVIGATION_2.map((item) => (
         <NavigationLink key={item.name} name={item.name} icon={item.icon} link={item.link} />
       ))}

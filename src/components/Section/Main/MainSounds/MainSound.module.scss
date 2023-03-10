@@ -1,3 +1,16 @@
+.main__sounds {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr));
+  grid-gap: 2.5rem;
+  margin-top: 2rem;
+
+  list-style: none;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  }
+}
+
 .box {
   border-radius: 2rem;
   width: 100%;
@@ -5,12 +18,27 @@
   height: 35rem;
   max-height: 21rem;
   position: relative;
+  background-color: var(--color-bg-nav-active);
 
   transition: all 0.3s ease-out;
 
+  &.isPlaying {
+    .box__img {
+      filter: brightness(0.5);
+    }
+
+    .box__hearticon {
+      opacity: 1;
+    }
+
+    .box__playicon {
+      opacity: 1;
+    }
+  }
+
   &:hover {
     .box__img {
-      filter: brightness(0.7);
+      filter: brightness(0.5);
     }
 
     .box__hearticon {
@@ -51,6 +79,7 @@
     transition: all 0.3s ease-out;
     opacity: 0;
     z-index: 10;
+    filter: drop-shadow(0 0 1rem #ffffff3b);
 
     &:hover {
       transform: scale(1.1);
@@ -77,8 +106,7 @@
     justify-content: flex-end;
     padding: 2rem;
     transition: all 0.3s ease-out;
-
-
+    filter: drop-shadow(0 0 1rem #ffffff3b);
 
     svg {
       width: 2.2rem;

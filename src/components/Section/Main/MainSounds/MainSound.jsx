@@ -3,18 +3,30 @@ import React, { useState } from 'react';
 import classes from './MainSound.module.scss';
 import svg from '../../../../assets/svg/sprite.svg';
 
-const MainSound = ({ src, text }) => {
+const MainSound = ({ imageSource, title, audioSource }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const audio = React.useRef(new Audio(audioSource));
+
   const playClickHandler = () => {
+    if (isPlaying) {
+      audio.current.pause();
+    } else {
+      audio.current.play();
+    }
+
+    audio.current.onended = () => setIsPlaying(false);
+
     setIsPlaying((prevState) => !prevState);
-    console.log(isPlaying);
   };
 
   return (
     <li className={classes['main__sound']}>
-      <div className={classes.box}>
-        <img className={classes['box__img']} src={src} alt={text} />
+      <div
+        className={`
+        ${classes.box} ${isPlaying ? classes.isPlaying : ''}
+      `}>
+        <img className={classes['box__img']} src={imageSource} alt={title} />
 
         <button onClick={playClickHandler} className={classes.box__playicon}>
           <svg>
@@ -38,7 +50,7 @@ const MainSound = ({ src, text }) => {
       </div>
 
       <div className={classes['main__text']}>
-        <h3 className={classes['main__title']}>{text}</h3>
+        <h3 className={classes['main__title']}>{title}</h3>
         <p className={classes['main__author']}>by Valdemaras</p>
       </div>
     </li>
