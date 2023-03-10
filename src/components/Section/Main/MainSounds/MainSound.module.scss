@@ -1,16 +1,3 @@
-.main__sounds {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr));
-  grid-gap: 2.5rem;
-  margin-top: 2rem;
-
-  list-style: none;
-
-  @media screen and (max-width: 768px) {
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  }
-}
-
 .box {
   border-radius: 2rem;
   width: 100%;
@@ -19,6 +6,7 @@
   max-height: 21rem;
   position: relative;
   background-color: var(--color-bg-nav-active);
+  border: none;
 
   transition: all 0.3s ease-out;
 

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+
 import MainSound from './MainSound';
+import MainSoundSkeleton from './MainSoundSkeleton';
 
 import classes from './MainSoundList.module.scss';
 
@@ -9,16 +11,19 @@ import { getDocs, collection } from 'firebase/firestore';
 
 const MainSoundList = () => {
   const [sounds, setSounds] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getSounds = async () => {
       try {
+        setIsLoading(true);
         const data = await getDocs(collection(db, 'sounds'));
         const sounds = data.docs.map((doc) => doc.data());
-        console.log(sounds);
         setSounds(sounds);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -26,16 +31,24 @@ const MainSoundList = () => {
   }, []);
 
   return (
-    <ul className={classes['main__sounds']}>
-      {sounds.map((sound) => (
-        <MainSound
-          key={sound.title}
-          title={sound.title}
-          imageSource={sound.imageSource}
-          audioSource={sound.audioSource}
-        />
-      ))}
-    </ul>
+    <>
+      {isLoading ? (
+        <>
+          <MainSoundSkeleton />
+        </>
+      ) : (
+        <ul className={classes['main__sounds']}>
+          {sounds.map((sound) => (
+            <MainSound
+              key={sound.title}
+              title={sound.title}
+              imageSource={sound.imageSource}
+              audioSource={sound.audioSource}
+            />
+          ))}
+        </ul>
+      )}
+    </>
   );
 };
 

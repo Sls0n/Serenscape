@@ -1,7 +1,6 @@
 import React from 'react';
 
 import MainSoundList from './MainSounds/MainSoundList';
-import MainFavList from './MainSounds/MainFavList';
 import MainTitle from './MainTitle';
 
 const Main = () => {
@@ -12,7 +11,7 @@ const Main = () => {
 
       <br />
       <MainTitle title="My favorites" />
-      <MainFavList />
+      <MainSoundList />
     </main>
   );
 };
