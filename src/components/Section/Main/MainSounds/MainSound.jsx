@@ -1,19 +1,23 @@
-import React, { useContext, useRef, useState } from 'react';
+import React from 'react';
 
 import classes from './MainSound.module.scss';
 import svg from '../../../../assets/svg/sprite.svg';
 
-import PlayingContext from '../../../../context/playing-context';
+import { useDispatch, useSelector } from 'react-redux';
+import { isPlayingActions } from '../../../../store/playing';
 
 const MainSound = ({ imageSource, title, audioSource, onClick }) => {
-  // const [isPlaying, setIsPlaying] = useState(false);
-  const { isPlaying, setIsPlaying } = useContext(PlayingContext);
+  const { isPlaying } = useSelector((state) => state.isPlaying);
+  console.log(isPlaying);
+  const dispatch = useDispatch();
+
   console.log('is mounted');
 
   // const audio = React.useRef(new Audio(audioSource));
 
   const playClickHandler = () => {
     onClick();
+    dispatch(isPlayingActions.setIsPlaying());
   };
 
   return (

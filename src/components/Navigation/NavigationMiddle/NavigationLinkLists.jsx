@@ -37,12 +37,22 @@ const NavigationLinkLists = () => {
     <ul className={classes['aside__lists']}>
       {!isOpen && <NavigationHeader heading="Navigation" />}
       {NAVIGATION_1.map((item) => (
-        <NavigationLink key={item.name} name={item.name} icon={item.icon} link={item.link} />
+        <NavigationLink
+          key={Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}
+          name={item.name}
+          icon={item.icon}
+          link={item.link}
+        />
       ))}
 
       {!isOpen && <NavigationHeader heading="User settings" />}
       {NAVIGATION_2.map((item) => (
-        <NavigationLink key={item.name} name={item.name} icon={item.icon} link={item.link} />
+        <NavigationLink
+          key={Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}
+          name={item.name}
+          icon={item.icon}
+          link={item.link}
+        />
       ))}
 
       {isDark ? (

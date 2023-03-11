@@ -20,7 +20,6 @@ import Main from './components/Section/Main/Main';
 
 import NavContext from './context/nav-context';
 import ThemeContext from './context/theme-context';
-import PlayingContext from './context/playing-context';
 
 const router = createBrowserRouter([
   {
@@ -52,7 +51,6 @@ const router = createBrowserRouter([
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDark, setDark] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     if (isDark) {
@@ -67,15 +65,13 @@ function App() {
   return (
     <NavContext.Provider value={{ isOpen, setIsOpen }}>
       <ThemeContext.Provider value={{ isDark, setDark }}>
-        <PlayingContext.Provider value={{ isPlaying, setIsPlaying }}>
-          <RouterProvider router={router}>
-            <Navigation />
-            <Section>
-              <Header />
-              <Main />
-            </Section>
-          </RouterProvider>
-        </PlayingContext.Provider>
+        <RouterProvider router={router}>
+          <Navigation />
+          <Section>
+            <Header />
+            <Main />
+          </Section>
+        </RouterProvider>
       </ThemeContext.Provider>
     </NavContext.Provider>
   );
