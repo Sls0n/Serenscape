@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import MainSound from './MainSound';
 import MainSoundSkeleton from './MainSoundSkeleton';
@@ -9,9 +9,14 @@ import { storage } from '../../../../config/firebase-config';
 import { db } from '../../../../config/firebase-config';
 import { getDocs, collection } from 'firebase/firestore';
 
+import PlayingContext from '../../../../context/playing-context';
+
 const MainSoundList = () => {
   const [sounds, setSounds] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { isPlaying, setIsPlaying } = useContext(PlayingContext);
+
+  console.log('is mounted');
 
   useEffect(() => {
     const getSounds = async () => {
@@ -30,6 +35,18 @@ const MainSoundList = () => {
     getSounds();
   }, []);
 
+  const soundsList = sounds.map((sound) => (
+    <MainSound
+      key={Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}
+      // title={sound.title}
+      // imageSource={sound.imageSource}
+      // audioSource={sound.audioSource}
+      onClick={() => {
+        setIsPlaying(!isPlaying);
+      }}
+    />
+  ));
+
   return (
     <>
       {isLoading ? (
@@ -37,16 +54,7 @@ const MainSoundList = () => {
           <MainSoundSkeleton />
         </>
       ) : (
-        <ul className={classes['main__sounds']}>
-          {sounds.map((sound) => (
-            <MainSound
-              key={sound.title}
-              title={sound.title}
-              imageSource={sound.imageSource}
-              audioSource={sound.audioSource}
-            />
-          ))}
-        </ul>
+        <ul className={classes['main__sounds']}>{soundsList}</ul>
       )}
     </>
   );

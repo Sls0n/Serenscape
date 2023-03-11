@@ -52,7 +52,9 @@ const NavigationLinkLists = () => {
       )}
       <NavigationLinkLast onClick={() => {}} name="Settings" icon="icon-settings" />
 
-      {!isOpen && <AuthButton text={auth.currentUser ? 'Customize profile-->' : 'Create an account -->'} to={'/signup'} />}
+      {!isOpen && (
+        <AuthButton text={auth.currentUser ? 'Customize profile -->' : 'Create an account -->'} to={'/signup'} />
+      )}
     </ul>
   );
 };

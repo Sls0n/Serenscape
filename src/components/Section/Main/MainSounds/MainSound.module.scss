@@ -67,7 +67,6 @@
     transition: all 0.3s ease-out;
     opacity: 0;
     z-index: 10;
-    filter: drop-shadow(0 0 1rem #ffffff3b);
 
     &:hover {
       transform: scale(1.1);
@@ -94,7 +93,6 @@
     justify-content: flex-end;
     padding: 2rem;
     transition: all 0.3s ease-out;
-    filter: drop-shadow(0 0 1rem #ffffff3b);
 
     svg {
       width: 2.2rem;
@@ -102,7 +100,6 @@
       fill: var(--color-icon);
       cursor: pointer;
       pointer-events: auto;
-      filter: drop-shadow(0 0 2rem #000);
     }
   }
 
@@ -148,7 +145,7 @@
       fill: var(--color-main-icon);
       cursor: pointer;
       pointer-events: auto;
-      transition: transform 0.3s;
+      transition: transform 0.2s;
       will-change: transform;
 
       &:hover {
@@ -169,7 +166,7 @@
   p {
     margin-top: 0.5rem;
     font-size: 1.4rem;
-    font-weight: 400;
+    font-weight: 500;
     color: var(--color-nav-link);
   }
 }

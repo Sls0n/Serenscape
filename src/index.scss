@@ -152,3 +152,8 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
+
+::selection {
+  background-color: var(--color-primary-1);
+  color: #fff;
+}

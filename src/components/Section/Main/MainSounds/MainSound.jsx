@@ -1,23 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 
 import classes from './MainSound.module.scss';
 import svg from '../../../../assets/svg/sprite.svg';
 
-const MainSound = ({ imageSource, title, audioSource }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+import PlayingContext from '../../../../context/playing-context';
 
-  const audio = React.useRef(new Audio(audioSource));
+const MainSound = ({ imageSource, title, audioSource, onClick }) => {
+  // const [isPlaying, setIsPlaying] = useState(false);
+  const { isPlaying, setIsPlaying } = useContext(PlayingContext);
+  console.log('is mounted');
+
+  // const audio = React.useRef(new Audio(audioSource));
 
   const playClickHandler = () => {
-    if (isPlaying) {
-      audio.current.pause();
-    } else {
-      audio.current.play();
-    }
-
-    audio.current.onended = () => setIsPlaying(false);
-
-    setIsPlaying((prevState) => !prevState);
+    onClick();
   };
 
   return (

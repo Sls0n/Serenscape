@@ -11,7 +11,6 @@ import SleepTimerPage from './pages/SleepTimer';
 import SetGoalsPage from './pages/SetGoals';
 import ProfilePage from './pages/Profile';
 import SignInPage from './pages/SignInPage/SignIn';
-import SignUpPage from './pages/SignUpPage/Signup';
 import Success from './pages/Success';
 
 import Navigation from './components/Navigation/Navigation';
@@ -21,6 +20,7 @@ import Main from './components/Section/Main/Main';
 
 import NavContext from './context/nav-context';
 import ThemeContext from './context/theme-context';
+import PlayingContext from './context/playing-context';
 
 const router = createBrowserRouter([
   {
@@ -42,10 +42,7 @@ const router = createBrowserRouter([
     path: '/signin',
     element: <SignInPage />,
   },
-  {
-    path: '/signup',
-    element: <SignUpPage />,
-  },
+
   {
     path: '/success',
     element: <Success />,
@@ -55,6 +52,7 @@ const router = createBrowserRouter([
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDark, setDark] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     if (isDark) {
@@ -69,13 +67,15 @@ function App() {
   return (
     <NavContext.Provider value={{ isOpen, setIsOpen }}>
       <ThemeContext.Provider value={{ isDark, setDark }}>
-        <RouterProvider router={router}>
-          <Navigation />
-          <Section>
-            <Header />
-            <Main />
-          </Section>
-        </RouterProvider>
+        <PlayingContext.Provider value={{ isPlaying, setIsPlaying }}>
+          <RouterProvider router={router}>
+            <Navigation />
+            <Section>
+              <Header />
+              <Main />
+            </Section>
+          </RouterProvider>
+        </PlayingContext.Provider>
       </ThemeContext.Provider>
     </NavContext.Provider>
   );
