@@ -10,6 +10,7 @@ export const AudioContext = createContext({
 const AudioContextProvider = ({ children }) => {
   const [currentSoundId, setCurrentSoundId] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
 
   const audioRef = useRef(new Audio());
 
@@ -19,6 +20,7 @@ const AudioContextProvider = ({ children }) => {
       setIsPlaying(false);
     } else {
       audioRef.current.src = audioSource;
+      audioRef.current.currentTime = currentSoundId === soundId ? currentTime : 0;
       audioRef.current.play();
       setIsPlaying(true);
       setCurrentSoundId(soundId);
@@ -27,11 +29,16 @@ const AudioContextProvider = ({ children }) => {
     audioRef.current.onended = () => {
       setIsPlaying(false);
     };
+
+    audioRef.current.ontimeupdate = () => {
+      setCurrentTime(audioRef.current.currentTime);
+    };
   };
 
   const pauseAudio = () => {
     audioRef.current.pause();
     setIsPlaying(false);
+    setCurrentTime(audioRef.current.currentTime);
   };
 
   return (
