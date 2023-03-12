@@ -8,13 +8,7 @@ import classes from './MainSoundList.module.scss';
 import { db } from '../../../../config/firebase-config';
 import { getDocs, collection } from 'firebase/firestore';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { isPlayingActions } from '../../../../store/playing';
-
 const MainSoundList = () => {
-  const dispatch = useDispatch();
-  const currentSoundId = useSelector((state) => state.isPlaying.currentSoundId);
-  const isPlaying = useSelector((state) => state.isPlaying.isPlaying);
   const [sounds, setSounds] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -35,10 +29,6 @@ const MainSoundList = () => {
     getSounds();
   }, []);
 
-  const playClickHandler = () => {
-    dispatch(isPlayingActions.setIsPlaying());
-  };
-
   return (
     <>
       {isLoading ? (
@@ -51,8 +41,6 @@ const MainSoundList = () => {
               imageSource={sound.imageSource}
               title={sound.title}
               audioSource={sound.audioSource}
-              onClick={playClickHandler}
-              isPlaying={isPlaying && sound.id === currentSoundId}
               id={sound.id}
             />
           ))}

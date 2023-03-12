@@ -1,44 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import classes from './MainSound.module.scss';
 import svg from '../../../../assets/svg/sprite.svg';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { isPlayingActions } from '../../../../store/playing';
+import { AudioContext } from '../../../../context/audio-context';
 
-const MainSound = ({ imageSource, title, audioSource, onClick, isPlaying, id }) => {
-  const dispatch = useDispatch();
-  const currentSoundId = useSelector((state) => state.isPlaying.currentSoundId);
-
-  console.log('IsMounted');
-  const audio = React.useRef(new Audio(audioSource));
+const MainSound = ({ imageSource, title, audioSource, id }) => {
+  const { currentSoundId, isPlaying, playAudio, pauseAudio } = useContext(AudioContext);
 
   const playClickHandler = () => {
     if (isPlaying && id === currentSoundId) {
-      audio.current.pause();
-      dispatch(isPlayingActions.setIsPlaying());
+      pauseAudio();
     } else {
-      audio.current.play();
-      dispatch(isPlayingActions.setIsPlaying());
-      dispatch(isPlayingActions.setCurrentSoundId(id));
+      playAudio(audioSource, id);
     }
-
-    audio.current.onended = () => {
-      dispatch(isPlayingActions.setIsPlaying());
-    };
   };
-
   return (
     <li className={classes['main__sound']}>
       <div
         className={`
-        ${classes.box} ${isPlaying ? classes.isPlaying : ''}
+        ${classes.box} ${isPlaying && id === currentSoundId ? classes.isPlaying : ''}
       `}>
         <img className={classes['box__img']} src={imageSource} alt={title} />
 
         <button onClick={playClickHandler} className={classes.box__playicon}>
           <svg>
-            <use xlinkHref={`${svg}#icon-${isPlaying ? 'pause' : 'play'}`}></use>
+            <use xlinkHref={`${svg}#icon-${isPlaying && id === currentSoundId ? 'pause' : 'play'}`}></use>
           </svg>
         </button>
 
@@ -48,7 +35,7 @@ const MainSound = ({ imageSource, title, audioSource, onClick, isPlaying, id }) 
           </svg>
         </button>
 
-        <div className={`${classes.box__menu} ${isPlaying ? '' : classes.hidden}`}>
+        <div className={`${classes.box__menu} ${isPlaying && id === currentSoundId ? '' : classes.hidden}`}>
           <div className={classes.box__icons}>
             <svg className={classes['icon__volume']}>
               <use xlinkHref={`${svg}#icon-volume-2`}></use>

@@ -21,6 +21,7 @@ import Main from './components/Section/Main/Main';
 
 import NavContext from './context/nav-context';
 import ThemeContext from './context/theme-context';
+import AudioContextProvider from './context/audio-context';
 
 const router = createBrowserRouter([
   {
@@ -68,17 +69,19 @@ function App() {
   }, [isDark]);
 
   return (
-    <NavContext.Provider value={{ isOpen, setIsOpen }}>
-      <ThemeContext.Provider value={{ isDark, setDark }}>
-        <RouterProvider router={router}>
-          <Navigation />
-          <Section>
-            <Header />
-            <Main />
-          </Section>
-        </RouterProvider>
-      </ThemeContext.Provider>
-    </NavContext.Provider>
+    <AudioContextProvider>
+      <NavContext.Provider value={{ isOpen, setIsOpen }}>
+        <ThemeContext.Provider value={{ isDark, setDark }}>
+          <RouterProvider router={router}>
+            <Navigation />
+            <Section>
+              <Header />
+              <Main />
+            </Section>
+          </RouterProvider>
+        </ThemeContext.Provider>
+      </NavContext.Provider>
+    </AudioContextProvider>
   );
 }
 
