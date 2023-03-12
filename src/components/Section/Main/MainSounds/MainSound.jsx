@@ -3,21 +3,29 @@ import React from 'react';
 import classes from './MainSound.module.scss';
 import svg from '../../../../assets/svg/sprite.svg';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { isPlayingActions } from '../../../../store/playing';
 
-const MainSound = ({ imageSource, title, audioSource, onClick }) => {
-  const { isPlaying } = useSelector((state) => state.isPlaying);
-  console.log(isPlaying);
+const MainSound = ({ imageSource, title, audioSource, onClick, isPlaying, id }) => {
   const dispatch = useDispatch();
+  const currentSoundId = useSelector((state) => state.isPlaying.currentSoundId);
 
-  console.log('is mounted');
-
-  // const audio = React.useRef(new Audio(audioSource));
+  console.log('IsMounted');
+  const audio = React.useRef(new Audio(audioSource));
 
   const playClickHandler = () => {
-    onClick();
-    dispatch(isPlayingActions.setIsPlaying());
+    if (isPlaying && id === currentSoundId) {
+      audio.current.pause();
+      dispatch(isPlayingActions.setIsPlaying());
+    } else {
+      audio.current.play();
+      dispatch(isPlayingActions.setIsPlaying());
+      dispatch(isPlayingActions.setCurrentSoundId(id));
+    }
+
+    audio.current.onended = () => {
+      dispatch(isPlayingActions.setIsPlaying());
+    };
   };
 
   return (

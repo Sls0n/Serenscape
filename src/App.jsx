@@ -11,6 +11,7 @@ import SleepTimerPage from './pages/SleepTimer';
 import SetGoalsPage from './pages/SetGoals';
 import ProfilePage from './pages/Profile';
 import SignInPage from './pages/SignInPage/SignIn';
+import SignUpPage from './pages/SignUpPage/SignUp';
 import Success from './pages/Success';
 
 import Navigation from './components/Navigation/Navigation';
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: '/signin',
     element: <SignInPage />,
+  },
+  {
+    path: '/signup',
+    element: <SignUpPage />,
   },
 
   {

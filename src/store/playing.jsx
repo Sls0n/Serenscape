@@ -2,14 +2,18 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isPlaying: false,
+  currentSoundId: null,
 };
 
 const isPlayingSlice = createSlice({
   name: 'isPlaying',
   initialState,
   reducers: {
-    setIsPlaying(state, action) {
+    setIsPlaying(state) {
       state.isPlaying = !state.isPlaying;
+    },
+    setCurrentSoundId(state, action) {
+      state.currentSoundId = action.payload;
     },
   },
 });
