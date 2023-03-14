@@ -85,6 +85,13 @@
     border-radius: 1rem;
     background-color: var(--color-bg-arrow);
     border: 3px solid var(--color-bg-arrow);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
   }
 
   svg {

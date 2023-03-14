@@ -52,13 +52,16 @@ const HeaderUpEnd = () => {
 
         {isLogged ? (
           <div className={classes.user}>
-            <img
-              src={
-                'https://yt3.googleusercontent.com/Pt0qgndozm7ssgyu5pyQ4hgpZ5giIl7B2viR3Q8APutWYMNxFMHye0QJkyVxvFLkuOXrzStsRw=s900-c-k-c0x00ffffff-no-rj'
-              }
-              alt="user"
-              className={classes['user__pfp']}
-            />
+            <div className={classes.user__pfp}>
+              <img
+                src={
+                  auth.currentUser.photoURL
+                    ? auth.currentUser.photoURL
+                    : 'https://i.pinimg.com/originals/c9/0a/d7/c90ad748ff7e3287e52d138c6873d9c1.jpg'
+                }
+                alt="user"
+              />
+            </div>
 
             <div className={classes.user__dropdown}>
               <div className={classes['user__dropdown-item']}>
@@ -70,6 +73,7 @@ const HeaderUpEnd = () => {
               <div
                 onClick={() => {
                   auth.signOut();
+                  setIsLogged(false);
                 }}
                 className={classes['user__dropdown-item']}>
                 Logout

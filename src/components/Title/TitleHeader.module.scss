@@ -1,0 +1,38 @@
+.main__titlebox {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main__header {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-main-header);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.main__subheader {
+  all: unset;
+  gap: 0.5rem;
+
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-main-header);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.chevron {
+  width: 1.8rem;
+  height: 1.8rem;
+  fill: var(--color-main-header);
+  pointer-events: none;
+}

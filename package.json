@@ -16,7 +16,8 @@
     "react-hook-form": "^7.43.5",
     "react-router-dom": "^6.8.2",
     "react-spinners": "^0.13.8",
-    "sass": "^1.58.3"
+    "sass": "^1.58.3",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
