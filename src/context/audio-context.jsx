@@ -28,6 +28,7 @@ const AudioContextProvider = ({ children }) => {
 
     audioRef.current.onended = () => {
       setIsPlaying(false);
+      setCurrentTime(0);
     };
 
     audioRef.current.ontimeupdate = () => {
