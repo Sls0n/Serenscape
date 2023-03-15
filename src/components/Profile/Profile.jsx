@@ -25,6 +25,7 @@ const Profile = () => {
         .then(() => {
           console.log('Profile updated!');
           setLoading(false);
+          setImageUpload(null);
         })
         .catch((error) => {
           console.log(error);

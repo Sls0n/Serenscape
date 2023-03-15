@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const MainTitle = ({ title, link = 'View all' }) => {
   return (
     <div className={classes['main__titlebox']}>
-      <div className={classes['main__header']}>{title}</div>
+      <h2 className={classes['main__header']}>{title}</h2>
       <Link className={classes['main__subheader']}>
         <div className="text">{link}</div>
         <svg className={classes.chevron}>

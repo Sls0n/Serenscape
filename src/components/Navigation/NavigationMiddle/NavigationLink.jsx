@@ -17,7 +17,7 @@ const NavigationLink = ({ name, icon, link }) => {
             <use xlinkHref={`${svg}#${icon}`} />
           </svg>
         </div>
-        {!isOpen && <div className={classes['aside__text']}>{name}</div>}
+        {!isOpen && <h4 className={classes['aside__text']}>{name}</h4>}
       </NavLink>
     </li>
   );
