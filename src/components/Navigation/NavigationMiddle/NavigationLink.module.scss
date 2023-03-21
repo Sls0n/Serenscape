@@ -49,6 +49,11 @@ a.active svg {
   fill: var(--color-nav-active);
 }
 
+a.active svg.close {
+  color: var(--color-nav-active);
+  fill: var(--color-nav-active);
+}
+
 // spacing between items after header
 
 .aside__list:nth-of-type(4) {

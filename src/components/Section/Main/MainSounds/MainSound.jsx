@@ -52,4 +52,4 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
   );
 };
 
-export default MainSound;
+export default React.memo(MainSound);
