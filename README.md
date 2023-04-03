@@ -5,12 +5,10 @@ Combined from the words "serenity" & "soundscape" - Serenscape is a webapp that 
 ## Features
 
 - Pre-made high-quality, realistic soundscapes/ambience.
-- Not only soundscapes, but also melodic & soothing piano loops.
 - Create/save your own soundscape by combining sounds.
 - Access to community uploads by other users.
 - Elegant, minimalistic user interface.
 - Customize your listening experience with a range of options.
-- BONUS: 360° euphonic immersive audio experience. (Coming soon)
 
 And on top of all that, it's completely free!
 
