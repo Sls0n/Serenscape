@@ -6,11 +6,11 @@ import MainTitle from './MainTitle';
 const Main = () => {
   return (
     <main className="main">
-      <MainTitle title="Nature Sounds" />
       <MainSoundList />
 
       <br />
       <MainTitle title="My favorites" />
+      <MainSoundList />
     </main>
   );
 };

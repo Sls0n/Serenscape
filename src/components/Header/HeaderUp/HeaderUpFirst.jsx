@@ -1,15 +1,20 @@
 import React from 'react';
 
+import svg from '../../../assets/svg/sprite.svg';
 import classes from './HeaderUpFirst.module.scss';
 
-const HeaderUpFirst = () => {
+const HeaderBreadcrumb = ({ firstNav, secondNav }) => {
   return (
-    <div className={classes['header__up-first']}>
-      <h1 className={classes['header__up-logo']}>
-        seren<span className={classes.scape}>scape</span>
-      </h1>
+    <div className={classes['header__down-breadcrumb']}>
+      <span className={classes['header__down-item']}>{firstNav}</span>
+      <div className={classes['chevron-right']}>
+        <svg className={classes['header__down-chevron']}>
+          <use xlinkHref={`${svg}#icon-chevron-right`}></use>
+        </svg>
+      </div>
+      <span className={classes['header__down-item']}>{secondNav}</span>
     </div>
   );
 };
 
-export default HeaderUpFirst;
+export default HeaderBreadcrumb;

@@ -5,6 +5,7 @@ import AuthButton from '../../Button/AuthButton';
 import ThemeContext from '../../../context/theme-context';
 
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { Link } from 'react-router-dom';
 
 const HeaderUpEnd = () => {
   const { isDark, setDark } = useContext(ThemeContext);
@@ -40,7 +41,6 @@ const HeaderUpEnd = () => {
             <use xlinkHref={`${svg}#icon-volume-2`}></use>
           </svg>
         </div>
-
         <input
           type="range"
           min="0"
@@ -64,14 +64,15 @@ const HeaderUpEnd = () => {
             </div>
 
             <div className={classes.user__dropdown}>
-              <div className={classes['user__dropdown-item']}>
+              <Link to={'/profile'} className={classes['user__dropdown-item']}>
                 Profile
                 <svg className={classes['user__dropdown-icon']}>
                   <use xlinkHref={`${svg}#icon-user`}></use>
                 </svg>
-              </div>
-              <div
+              </Link>
+              <Link
                 onClick={() => {
+                  window.location.reload();
                   auth.signOut();
                   setIsLogged(false);
                 }}
@@ -80,7 +81,7 @@ const HeaderUpEnd = () => {
                 <svg className={classes['user__dropdown-icon']}>
                   <use xlinkHref={`${svg}#icon-log-out`}></use>
                 </svg>
-              </div>
+              </Link>
             </div>
           </div>
         ) : (
@@ -89,11 +90,7 @@ const HeaderUpEnd = () => {
               <>
                 <div className={classes['header__up-auth']}>
                   Sign In
-                  <svg style={
-                    {
-                      
-                    }
-                  } className={classes['header__up-auth-btn']}>
+                  <svg style={{}} className={classes['header__up-auth-btn']}>
                     <use xlinkHref={`${svg}#icon-log-in`}></use>
                   </svg>
                 </div>
