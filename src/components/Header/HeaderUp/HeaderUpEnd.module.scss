@@ -159,4 +159,19 @@
   }
 }
 
+.header__up-auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
 
+.header__up-auth-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: #F2F2F2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

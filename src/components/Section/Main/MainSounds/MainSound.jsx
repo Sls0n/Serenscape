@@ -29,9 +29,9 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
           </svg>
         </button>
 
-        <button className={classes.box__hearticon}>
+        <button className={classes.box__maximizeicon}>
           <svg>
-            <use xlinkHref={`${svg}#icon-heart`}></use>
+            <use xlinkHref={`${svg}#icon-maximize`}></use>
           </svg>
         </button>
 

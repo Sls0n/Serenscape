@@ -18,6 +18,11 @@ const NavigationUp = () => {
           <use xlinkHref={`${svg}#icon-align-left`} />
         </svg>
       </div>
+      <div className={classes['header__up-first']}>
+        <h1 className={classes['header__up-logo']}>
+          seren<span className={classes.scape}>scape</span>
+        </h1>
+      </div>
     </div>
   );
 };

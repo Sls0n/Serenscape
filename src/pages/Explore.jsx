@@ -3,12 +3,12 @@ import React from 'react';
 import Section from '../components/Section/Section';
 import Header from '../components/Header/Header';
 
-const CommunityPage = () => {
+const ExplorePage = () => {
   return (
     <Section>
-      <Header firstNav={'Navigation'} secondNav={'Community'}/>
+      <Header firstNav={'Navigation'} secondNav={'Explore'} />
     </Section>
   );
 };
 
-export default CommunityPage;
+export default ExplorePage;

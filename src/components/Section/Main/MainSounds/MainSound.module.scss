@@ -15,7 +15,7 @@
       filter: brightness(0.5);
     }
 
-    .box__hearticon {
+    .box__maximizeicon {
       opacity: 1;
     }
 
@@ -27,10 +27,6 @@
   &:hover {
     .box__img {
       filter: brightness(0.5);
-    }
-
-    .box__hearticon {
-      opacity: 1;
     }
 
     .box__playicon {
@@ -80,7 +76,7 @@
     }
   }
 
-  &__hearticon {
+  &__maximizeicon {
     position: absolute;
     top: 0;
     left: 0;

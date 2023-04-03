@@ -114,6 +114,7 @@
     text-decoration: none;
     transition: all 0.2s;
     text-decoration: underline;
+    transform: translateY(-3rem);
 
     &:hover {
       color: var(--color-primary-2);
@@ -123,7 +124,7 @@
   &__error {
     font-size: 1.4rem;
     font-weight: 600;
-    color: #ff0033;
+    color: #ff0033ec;
     margin-top: 1rem;
   }
 }
@@ -134,7 +135,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 5.4rem;
+  height: 5rem;
   background-color: var(--color-primary-1);
   color: #f2f2f2;
   font-size: 1.6rem;

@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import PropagateLoader from 'react-spinners/PropagateLoader';
+import { PropagateLoader } from 'react-spinners';
 
 const SignInForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -79,14 +79,6 @@ const SignInForm = () => {
           <input
             {...register('password', {
               required: { value: true, message: 'Password is required' },
-              minLength: {
-                value: 8,
-                message: 'Password must be at least 8 characters long',
-              },
-              pattern: {
-                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/,
-                message: 'Password must contain at least a uppercase letter and a number',
-              },
             })}
             type="password"
             id={`${id}-password`}

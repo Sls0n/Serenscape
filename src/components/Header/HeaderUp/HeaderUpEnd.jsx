@@ -84,7 +84,23 @@ const HeaderUpEnd = () => {
             </div>
           </div>
         ) : (
-          <AuthButton text={'Sign In -->'} to={'/signin'} />
+          <AuthButton
+            text={
+              <>
+                <div className={classes['header__up-auth']}>
+                  Sign In
+                  <svg style={
+                    {
+                      
+                    }
+                  } className={classes['header__up-auth-btn']}>
+                    <use xlinkHref={`${svg}#icon-log-in`}></use>
+                  </svg>
+                </div>
+              </>
+            }
+            to={'/signin'}
+          />
         )}
       </div>
     </div>

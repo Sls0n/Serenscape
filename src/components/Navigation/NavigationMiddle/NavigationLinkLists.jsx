@@ -4,7 +4,8 @@ import NavigationLink from './NavigationLink';
 import NavigationHeader from './NavigationHeader';
 import classes from './NavigationLinkLists.module.scss';
 import NavigationLinkLast from './NavigationLinkLast';
-import AuthButton from '../../Button/AuthButton';
+import Button from '../../Button/Button';
+import svg from '../../../assets/svg/sprite.svg';
 
 import NavContext from '../../../context/nav-context';
 import ThemeContext from '../../../context/theme-context';
@@ -12,15 +13,15 @@ import { getAuth } from 'firebase/auth';
 
 const NAVIGATION_1 = [
   { name: 'Home', icon: 'icon-home', link: '/' },
-  { name: 'Community', icon: 'icon-search', link: '/community' },
+  { name: 'Explore', icon: 'icon-headphones', link: '/explore' },
   { name: 'Favorites', icon: 'icon-heart', link: '/favorites' },
   { name: 'Upload', icon: 'icon-plus-square', link: '/upload' },
 ];
 
 const NAVIGATION_2 = [
-  { name: 'Sleep timer', icon: 'icon-clock', link: '/timer' },
-  { name: 'Set goals', icon: 'icon-edit', link: '/goals' },
   { name: 'Profile', icon: 'icon-award', link: '/profile' },
+  { name: 'Timer', icon: 'icon-clock', link: '/timer' },
+  { name: 'Set goals', icon: 'icon-edit', link: '/goals' },
 ];
 
 const NavigationLinkLists = () => {
@@ -63,7 +64,35 @@ const NavigationLinkLists = () => {
       <NavigationLinkLast onClick={() => {}} name="Settings" icon="icon-settings" />
 
       {!isOpen && (
-        <AuthButton text={auth.currentUser ? 'Customize profile -->' : 'Create an account -->'} to={'/signup'} />
+        <Button
+          text={
+            <>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '1rem',
+                }}
+                className={classes['header__up-auth']}>
+                Upload sound
+                <svg
+                  style={{
+                    width: '2rem',
+                    height: '2rem',
+                    fill: '#f2f2f2',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                  className={classes['header__up-auth-btn']}>
+                  <use xlinkHref={`${svg}#icon-music`}></use>
+                </svg>
+              </div>
+            </>
+          }
+          to={'/signup'}
+        />
       )}
     </ul>
   );

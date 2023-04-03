@@ -3,7 +3,6 @@
   width: 100%;
 
   display: flex;
-  flex-direction: column;
   align-items: flex-start;
 
   margin-top: 1.5rem;
@@ -29,6 +28,22 @@
   }
 }
 
-.menu {
-  cursor: pointer;
+.header__up-first {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: -1rem;
+}
+
+.header__up-logo {
+  color: var(--color-header-logo);
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: -0.05rem;
+
+  .scape {
+    color: var(--color-header-logo);
+    font-size: 3rem;
+    letter-spacing: -0.05rem;
+  }
 }

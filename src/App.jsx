@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomePage from './pages/Home';
 import RootLayout from './pages/Root';
 import ErrorPage from './pages/Error';
-import CommunityPage from './pages/Community';
+import ExplorePage from './pages/Explore';
 import FavoritesPage from './pages/Favorites';
 import UploadPage from './pages/Upload';
 import SleepTimerPage from './pages/SleepTimer';
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: '/community', element: <CommunityPage /> },
+      { path: '/explore', element: <ExplorePage /> },
       { path: '/favorites', element: <FavoritesPage /> },
       { path: '/upload', element: <UploadPage /> },
 

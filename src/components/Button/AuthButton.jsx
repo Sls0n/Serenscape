@@ -1,6 +1,6 @@
 import React from 'react';
 
-import classes from './Button.module.scss';
+import classes from './AuthButton.module.scss';
 import { Link } from 'react-router-dom';
 
 const AuthButton = ({ text, to = '' }) => {
