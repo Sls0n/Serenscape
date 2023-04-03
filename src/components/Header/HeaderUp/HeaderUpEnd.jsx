@@ -31,11 +31,11 @@ const HeaderUpEnd = () => {
   return (
     <div className={classes['header__up-end']}>
       <div className={classes['header__up-icons']}>
-        <button className={classes.moon} onClick={clickHandler}>
+        {/* <button className={classes.moon} onClick={clickHandler}>
           <svg className={classes['header__up-icon']}>
             <use xlinkHref={`${svg}#${isDark ? 'icon-sun' : 'icon-moon'}`}></use>
           </svg>
-        </button>
+        </button> */}
         <div className={classes.volume}>
           <svg className={classes['header__up-icon']}>
             <use xlinkHref={`${svg}#icon-volume-2`}></use>
