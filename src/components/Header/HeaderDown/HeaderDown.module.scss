@@ -1,6 +1,7 @@
 .header__down {
   display: flex;
-  gap: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
 
   &-btn {
     all: unset;
@@ -13,12 +14,35 @@
     background-color: var(--color-bg-arrow);
     color: var(--color-btn-text);
     border-radius: 1rem;
-    padding: .8rem 2rem;
+    padding: 0.8rem 2.2rem;
     cursor: pointer;
+    position: relative;
 
     &:first-child {
-      background-color: #f2f2f2;
+      background-color: #d3d1d1;
       color: #333;
+    }
+
+    &--last {
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 1rem;
+        background: linear-gradient(
+          90deg,
+          transparent 0,
+          rgba(0, 0, 0, 0.02) 20%,
+          rgba(0, 0, 0, 0.1) 40%,
+          rgba(0, 0, 0, 0.2) 60%,
+          rgb(21, 21, 23) 75%
+        );
+      }
     }
   }
 }

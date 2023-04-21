@@ -5,7 +5,6 @@ import React from 'react';
 import classes from './NavigationUp.module.scss';
 // import NavContext from '../../../context/nav-context';
 
-
 const NavigationUp = () => {
   // const { isOpen, setIsOpen } = useContext(NavContext);
 
@@ -24,7 +23,7 @@ const NavigationUp = () => {
 
       {/* {!isOpen ? <h1 className={classes['aside__up-logo']}>serenscape</h1> : null}
        */}
-      <h1 className={classes['aside__up-logo']}> ♪ &nbsp; serenscape</h1>
+      <h1 className={classes['aside__up-logo']}> Serenscape</h1>
     </div>
   );
 };

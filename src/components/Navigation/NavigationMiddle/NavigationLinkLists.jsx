@@ -65,6 +65,16 @@ const NavigationLinkLists = () => {
 
       {!isOpen && (
         <Button
+          onClick={
+            auth.currentUser
+              ? () => {
+                  window.location.reload();
+                  auth.signOut();
+                }
+              : () => {
+                  window.location.href = '/signup';
+                }
+          }
           text={
             <>
               <div
@@ -75,7 +85,7 @@ const NavigationLinkLists = () => {
                   gap: '1rem',
                 }}
                 className={classes['header__up-auth']}>
-                Upload sound
+                {auth.currentUser ? 'Exit account' : 'Create an account'}
                 <svg
                   style={{
                     width: '2rem',
@@ -86,12 +96,11 @@ const NavigationLinkLists = () => {
                     justifyContent: 'center',
                   }}
                   className={classes['header__up-auth-btn']}>
-                  <use xlinkHref={`${svg}#icon-music`}></use>
+                  <use xlinkHref={`${svg}#icon-${auth.currentUser ? 'log-out' : 'chevron-right'}`}></use>
                 </svg>
               </div>
             </>
           }
-          to={'/signup'}
         />
       )}
     </ul>

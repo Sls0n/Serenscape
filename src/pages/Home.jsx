@@ -1,6 +1,8 @@
 import React from 'react';
 import Section from '../components/Section/Section';
 import Header from '../components/Header/Header';
+import HeaderDown from '../components/Header/HeaderDown/HeaderDown';
+
 import Main from '../components/Section/Main/Main';
 import Footer from '../components/Footer/Footer';
 
@@ -8,7 +10,7 @@ const HomePage = () => {
   return (
     <>
       <Section>
-        <Header firstNav={'Navigation'} secondNav={'Home'} />
+        <Header firstNav={'Navigation'} secondNav={'Home'} filterShown={true} />
         <Main />
         <Footer />
       </Section>

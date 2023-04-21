@@ -31,11 +31,11 @@ const HeaderUpEnd = () => {
   return (
     <div className={classes['header__up-end']}>
       <div className={classes['header__up-icons']}>
-        {/* <button className={classes.moon} onClick={clickHandler}>
+        <button className={classes.moon} onClick={clickHandler}>
           <svg className={classes['header__up-icon']}>
             <use xlinkHref={`${svg}#${isDark ? 'icon-sun' : 'icon-moon'}`}></use>
           </svg>
-        </button> */}
+        </button>
         <div className={classes.volume}>
           <svg className={classes['header__up-icon']}>
             <use xlinkHref={`${svg}#icon-volume-2`}></use>
@@ -70,6 +70,12 @@ const HeaderUpEnd = () => {
                   <use xlinkHref={`${svg}#icon-user`}></use>
                 </svg>
               </Link>
+              <Link to={'/upload'} className={classes['user__dropdown-item']}>
+                Upload
+                <svg className={classes['user__dropdown-icon']}>
+                  <use xlinkHref={`${svg}#icon-music`}></use>
+                </svg>
+              </Link>
               <Link
                 onClick={() => {
                   window.location.reload();
@@ -86,6 +92,13 @@ const HeaderUpEnd = () => {
           </div>
         ) : (
           <AuthButton
+            onClick={
+              auth.currentUser
+                ? () => {}
+                : () => {
+                    window.location.href = '/signin';
+                  }
+            }
             text={
               <>
                 <div className={classes['header__up-auth']}>
@@ -96,7 +109,6 @@ const HeaderUpEnd = () => {
                 </div>
               </>
             }
-            to={'/signin'}
           />
         )}
       </div>
