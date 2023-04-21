@@ -16,4 +16,5 @@ And on top of all that, it's completely free!
 
 I am the sole developer of this project, so anyone who is willing to contribute is more than welcome to do so. If you have any suggestions/ideas, please feel free to open an [issue](https://github.com/Sls0n/serenscape/issues). To contribute to serenscape, please fork the repository and submit a pull request.
 
-...To be continued
+⚠ Not complete yet..
+[Live Demo](https://serenscape.netlify.app/)
