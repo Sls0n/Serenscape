@@ -35,75 +35,79 @@ const NavigationLinkLists = () => {
   };
 
   return (
-    <ul className={classes['aside__lists']}>
+    <>
       {!isOpen && <NavigationHeader heading="Navigation" />}
-      {NAVIGATION_1.map((item) => (
-        <NavigationLink
-          key={Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}
-          name={item.name}
-          icon={item.icon}
-          link={item.link}
-        />
-      ))}
 
-      {!isOpen && <NavigationHeader heading="User settings" />}
-      {NAVIGATION_2.map((item) => (
-        <NavigationLink
-          key={Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}
-          name={item.name}
-          icon={item.icon}
-          link={item.link}
-        />
-      ))}
+      <ul className={classes['aside__lists']}>
+        {NAVIGATION_1.map((item) => (
+          <NavigationLink
+            key={Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}
+            name={item.name}
+            icon={item.icon}
+            link={item.link}
+          />
+        ))}
 
-      {isDark ? (
-        <NavigationLinkLast onClick={clickHandler} name="Light mode" icon="icon-sun" />
-      ) : (
-        <NavigationLinkLast onClick={clickHandler} name="Dark mode" icon="icon-moon" />
-      )}
-      <NavigationLinkLast onClick={() => {}} name="Settings" icon="icon-settings" />
+        {!isOpen && <NavigationHeader heading="User settings" />}
 
-      {!isOpen && (
-        <Button
-          onClick={
-            auth.currentUser
-              ? () => {
-                  window.location.reload();
-                  auth.signOut();
-                }
-              : () => {
-                  window.location.href = '/signup';
-                }
-          }
-          text={
-            <>
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '1rem',
-                }}
-                className={classes['header__up-auth']}>
-                {auth.currentUser ? 'Exit account' : 'Create an account'}
-                <svg
+        {NAVIGATION_2.map((item) => (
+          <NavigationLink
+            key={Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}
+            name={item.name}
+            icon={item.icon}
+            link={item.link}
+          />
+        ))}
+
+        {isDark ? (
+          <NavigationLinkLast onClick={clickHandler} name="Light mode" icon="icon-sun" />
+        ) : (
+          <NavigationLinkLast onClick={clickHandler} name="Dark mode" icon="icon-moon" />
+        )}
+        <NavigationLinkLast onClick={() => {}} name="Settings" icon="icon-settings" />
+
+        {!isOpen && (
+          <Button
+            onClick={
+              auth.currentUser
+                ? () => {
+                    window.location.reload();
+                    auth.signOut();
+                  }
+                : () => {
+                    window.location.href = '/signup';
+                  }
+            }
+            text={
+              <>
+                <div
                   style={{
-                    width: '2rem',
-                    height: '2rem',
-                    fill: '#f2f2f2',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    gap: '1rem',
                   }}
-                  className={classes['header__up-auth-btn']}>
-                  <use xlinkHref={`${svg}#icon-${auth.currentUser ? 'log-out' : 'chevron-right'}`}></use>
-                </svg>
-              </div>
-            </>
-          }
-        />
-      )}
-    </ul>
+                  className={classes['header__up-auth']}>
+                  {auth.currentUser ? 'Exit account' : 'Create an account'}
+                  <svg
+                    style={{
+                      width: '2rem',
+                      height: '2rem',
+                      fill: '#f2f2f2',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                    className={classes['header__up-auth-btn']}>
+                    <use xlinkHref={`${svg}#icon-${auth.currentUser ? 'log-out' : 'chevron-right'}`}></use>
+                  </svg>
+                </div>
+              </>
+            }
+          />
+        )}
+      </ul>
+    </>
   );
 };
 
