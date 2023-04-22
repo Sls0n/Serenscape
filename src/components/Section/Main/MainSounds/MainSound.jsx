@@ -6,7 +6,7 @@ import svg from '../../../../assets/svg/sprite.svg';
 import { AudioContext } from '../../../../context/audio-context';
 
 const MainSound = ({ imageSource, title, audioSource, id }) => {
-  const { currentSoundId, isPlaying, playAudio, pauseAudio } = useContext(AudioContext);
+  const { currentSoundId, isPlaying, currentTime, totalTime, playAudio, pauseAudio } = useContext(AudioContext);
 
   const playClickHandler = () => {
     if (isPlaying && id === currentSoundId) {
@@ -15,6 +15,9 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
       playAudio(audioSource, id);
     }
   };
+
+  const currentTimePercentage = (currentTime / totalTime) * 100;
+
   return (
     <li className={classes['main__sound']}>
       <div
@@ -36,6 +39,11 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
         </button>
 
         <div className={`${classes.box__menu} ${isPlaying && id === currentSoundId ? '' : classes.hidden}`}>
+          <div
+            style={{
+              width: `${currentTimePercentage}%`,
+            }}
+            className={classes['time-tracker']}></div>
           <div className={classes.box__icons}>
             <svg className={classes['icon__volume']}>
               <use xlinkHref={`${svg}#icon-volume-2`}></use>

@@ -102,7 +102,7 @@ svg {
 
 .wrapper {
   display: flex;
-  min-height: 100vh;
+  min-height: 100svh;
   background: var(--color-bg);
   transition: background 0.2s;
 }
@@ -110,11 +110,11 @@ svg {
 body {
   font-family: 'Eudoxus Sans', sans-serif;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
   background-color: var(--color-primary-1);
-  color: #fff;
+  color: #e2e2e2;
 }

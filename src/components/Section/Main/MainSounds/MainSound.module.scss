@@ -120,6 +120,23 @@
 
     transition: all 0.2s;
 
+    .time-tracker {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+
+      border-radius: 0 0 0 2rem;
+
+
+      background-color: hsla(240, 2%, 8%, 0.8);
+
+      opacity: 0.6;
+
+      transition: all 0.2s;
+    }
+
     &.hidden {
       opacity: 0;
       height: 0%;
