@@ -36,16 +36,16 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
       `}>
         <img className={classes['box__img']} src={imageSource} alt={title} />
 
-        <button onClick={playClickHandler} className={classes.box__playicon}>
+        <button onClick={playClickHandler} className={classes.box__playIcon}>
           <svg>
             <use
               xlinkHref={`${svg}#icon-${(isPaused || isPlaying) && id === currentSoundId ? 'maximize' : 'play'}`}></use>
           </svg>
         </button>
 
-        <button className={classes.box__maximizeicon}>
+        <button className={classes.box__heartIcon}>
           <svg>
-            <use xlinkHref={`${svg}#icon-download-cloud`}></use>
+            <use xlinkHref={`${svg}#icon-heart`}></use>
           </svg>
         </button>
 
