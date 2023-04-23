@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import classes from './MainSound.module.scss';
 import svg from '../../../../assets/svg/sprite.svg';
@@ -6,7 +6,13 @@ import svg from '../../../../assets/svg/sprite.svg';
 import { AudioContext } from '../../../../context/audio-context';
 
 const MainSound = ({ imageSource, title, audioSource, id }) => {
-  const { currentSoundId, isPlaying, currentTime, totalTime, playAudio, pauseAudio } = useContext(AudioContext);
+  const { currentSoundId, isPlaying, isPaused, currentTime, totalTime, playAudio, pauseAudio } =
+    useContext(AudioContext);
+
+  useEffect(() => {
+    console.log('isPlaying : ' + isPlaying);
+    console.log('isPaused : ' + isPaused);
+  }, [isPlaying, isPaused]);
 
   const playClickHandler = () => {
     if (isPlaying && id === currentSoundId) {
@@ -16,37 +22,41 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
     }
   };
 
-  const currentTimePercentage = (currentTime / totalTime) * 100;
+  const currentTimePercentage = (currentTime / totalTime) * 89 + 5.5;
+
+  const timeTrackerStyle = {
+    width: `${currentTimePercentage}%`,
+  };
 
   return (
     <li className={classes['main__sound']}>
       <div
         className={`
-        ${classes.box} ${isPlaying && id === currentSoundId ? classes.isPlaying : ''}
+        ${classes.box} ${(isPaused || isPlaying) && id === currentSoundId ? classes.isPlaying : ''}
       `}>
         <img className={classes['box__img']} src={imageSource} alt={title} />
 
         <button onClick={playClickHandler} className={classes.box__playicon}>
           <svg>
-            <use xlinkHref={`${svg}#icon-${isPlaying && id === currentSoundId ? 'pause' : 'play'}`}></use>
+            <use
+              xlinkHref={`${svg}#icon-${(isPaused || isPlaying) && id === currentSoundId ? 'maximize' : 'play'}`}></use>
           </svg>
         </button>
 
         <button className={classes.box__maximizeicon}>
           <svg>
-            <use xlinkHref={`${svg}#icon-maximize`}></use>
+            <use xlinkHref={`${svg}#icon-download-cloud`}></use>
           </svg>
         </button>
 
-        <div className={`${classes.box__menu} ${isPlaying && id === currentSoundId ? '' : classes.hidden}`}>
-          <div
-            style={{
-              width: `${currentTimePercentage}%`,
-            }}
-            className={classes['time-tracker']}></div>
+        <div
+          className={`${classes.box__menu} ${(isPaused || isPlaying) && id === currentSoundId ? '' : classes.hidden}
+          
+        `}>
+          <div style={timeTrackerStyle} className={classes['time-tracker']}></div>
           <div className={classes.box__icons}>
-            <svg className={classes['icon__volume']}>
-              <use xlinkHref={`${svg}#icon-volume-2`}></use>
+            <svg onClick={playClickHandler} className={classes['icon__volume']}>
+              <use xlinkHref={`${svg}#icon-${isPaused && id === currentSoundId ? 'play' : 'pause'}`}></use>
             </svg>
           </div>
         </div>

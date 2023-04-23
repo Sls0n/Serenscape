@@ -12,7 +12,6 @@ const Main = () => {
 
         <br />
         <MainTitle title="My favorites" />
-        <MainSoundList />
       </main>
     </>
   );
