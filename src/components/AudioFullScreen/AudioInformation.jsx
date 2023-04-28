@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './AudioInformation.module.scss';
-import forest from '../../assets/images/landscape.jpg';
+import forest from '../../assets/images/storm.jpg';
 
 const AudioInformation = () => {
   return (
