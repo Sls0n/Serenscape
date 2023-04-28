@@ -4,6 +4,7 @@ import classes from './MainSound.module.scss';
 import svg from '../../../../assets/svg/sprite.svg';
 
 import { AudioContext } from '../../../../context/audio-context';
+import { Link } from 'react-router-dom';
 
 const MainSound = ({ imageSource, title, audioSource, id }) => {
   const { currentSoundId, isPlaying, isPaused, currentTime, totalTime, playAudio, pauseAudio } =
@@ -38,10 +39,21 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
 
         <button onClick={playClickHandler} className={classes.box__playIcon}>
           <svg>
-            <use
-              xlinkHref={`${svg}#icon-${(isPaused || isPlaying) && id === currentSoundId ? 'maximize' : 'play'}`}></use>
+            <use xlinkHref={`${svg}#icon-${(isPaused || isPlaying) && id === currentSoundId ? null : 'play'}`}></use>
           </svg>
         </button>
+
+        <Link
+          to={`/audio/${id}`}
+          state={{ imageSource, title, audioSource, id }}
+          style={{
+            display: `${(isPaused || isPlaying) && id === currentSoundId ? 'block' : 'none'}`,
+          }}
+          className={classes.box__maximizeIcon}>
+          <svg>
+            <use xlinkHref={`${svg}#icon-maximize`}></use>
+          </svg>
+        </Link>
 
         <button className={classes.box__heartIcon}>
           <svg>

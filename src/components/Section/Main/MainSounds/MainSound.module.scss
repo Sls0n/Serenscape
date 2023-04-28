@@ -61,7 +61,28 @@
     width: 100%;
     transition: all 0.3s ease-out;
     opacity: 0;
-    z-index: 1;
+    z-index: 10;
+
+    &:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    svg {
+      width: 4rem;
+      height: 4rem;
+      fill: var(--color-main-icon);
+      pointer-events: auto;
+    }
+  }
+
+  &__maximizeIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-out;
+    display: none;
+    z-index: 10;
 
     &:hover {
       transform: translate(-50%, -50%) scale(1.1);
@@ -78,13 +99,10 @@
   &__heartIcon {
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
 
-    width: 100%;
     opacity: 0;
 
-    display: flex;
-    justify-content: flex-end;
     padding: 2rem;
     z-index: 10;
 

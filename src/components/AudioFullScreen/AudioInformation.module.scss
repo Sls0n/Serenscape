@@ -1,0 +1,72 @@
+.container {
+  &__info {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 20;
+
+    &-cover {
+      width: 30rem;
+      height: 25rem;
+
+      filter: drop-shadow(0 0 1rem rgba(3, 3, 3, 0.5));
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background-position: center;
+        border-radius: 5rem;
+      }
+    }
+
+    &-title {
+      margin-top: 2rem;
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--color-main-text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-artist {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+
+      color: var(--color-nav-link);
+
+      transform: translateX(-1.2rem);
+
+      figure {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          background-position: center;
+          border-radius: 50%;
+        }
+      }
+
+      p {
+        font-size: 2rem;
+        font-weight: 400;
+
+        white-space: nowrap;
+
+        span {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

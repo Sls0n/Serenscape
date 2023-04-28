@@ -22,6 +22,7 @@ import Main from './components/Section/Main/Main';
 import NavContext from './context/nav-context';
 import ThemeContext from './context/theme-context';
 import AudioContextProvider from './context/audio-context';
+import SelectedAudio from './pages/SelectedAudio';
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: '/success',
     element: <Success />,
+  },
+  {
+    path: '/audio/:selectedAudioId',
+    element: <SelectedAudio />,
   },
 ]);
 

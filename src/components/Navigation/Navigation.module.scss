@@ -5,6 +5,7 @@
   z-index: 1000;
 
   background: var(--color-bg-sidebar);
+
   height: 100vh;
   font-size: 2rem;
 
@@ -13,7 +14,9 @@
   align-items: center;
   justify-content: flex-start;
 
-  padding: 2rem 3.5rem;
+  box-shadow: 0 0 1rem 0.1rem var(--color-main-box);
+
+  padding: 2rem 3rem;
   transition: background 0.3s;
 }
 
