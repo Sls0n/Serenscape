@@ -10,11 +10,6 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
   const { currentSoundId, isPlaying, isPaused, currentTime, totalTime, playAudio, pauseAudio } =
     useContext(AudioContext);
 
-  useEffect(() => {
-    console.log('isPlaying : ' + isPlaying);
-    console.log('isPaused : ' + isPaused);
-  }, [isPlaying, isPaused]);
-
   const playClickHandler = () => {
     if (isPlaying && id === currentSoundId) {
       pauseAudio();
@@ -28,6 +23,8 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
   const timeTrackerStyle = {
     width: `${currentTimePercentage}%`,
   };
+
+  const linkFormattedTitle = `/audio/${title.replace(/\s+/g, '-').toLowerCase()}-id${id}`;
 
   return (
     <li className={classes['main__sound']}>
@@ -44,8 +41,7 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
         </button>
 
         <Link
-          to={`/audio/${id}`}
-          state={{ imageSource, title, audioSource, id }}
+          to={linkFormattedTitle}
           style={{
             display: `${(isPaused || isPlaying) && id === currentSoundId ? 'block' : 'none'}`,
           }}
