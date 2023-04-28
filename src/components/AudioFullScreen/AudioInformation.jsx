@@ -1,16 +1,18 @@
 import React from 'react';
 
 import classes from './AudioInformation.module.scss';
-import forest from '../../assets/images/storm.jpg';
+import { useLocation } from 'react-router-dom';
 
 const AudioInformation = () => {
+  let { state } = useLocation();
+
   return (
     <div className={classes['container__info']}>
       <div className={classes['container__info-cover']}>
-        <img src={forest} alt="forest" />
+        <img src={state?.imageSource} alt="forest" />
       </div>
 
-      <h1 className={classes['container__info-title']}>Forest Storm</h1>
+      <h1 className={classes['container__info-title']}>{state?.title}</h1>
 
       <div className={classes['container__info-artist']}>
         <figure>

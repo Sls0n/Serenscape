@@ -24,7 +24,7 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
     width: `${currentTimePercentage}%`,
   };
 
-  const linkFormattedTitle = `/audio/${title.replace(/\s+/g, '-').toLowerCase()}-id${id}`;
+  const pathname = title.trim().replace(/\s+/g, '-').toLowerCase() + '-' + id;
 
   return (
     <li className={classes['main__sound']}>
@@ -41,7 +41,13 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
         </button>
 
         <Link
-          to={linkFormattedTitle}
+          to={`/audio/${pathname}`}
+          state={{
+            imageSource,
+            title,
+            audioSource,
+            id,
+          }}
           style={{
             display: `${(isPaused || isPlaying) && id === currentSoundId ? 'block' : 'none'}`,
           }}

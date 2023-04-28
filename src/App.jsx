@@ -54,7 +54,7 @@ const router = createBrowserRouter([
     element: <Success />,
   },
   {
-    path: '/audio/:selectedAudioId',
+    path: '/audio/:id',
     element: <SelectedAudio />,
   },
 ]);

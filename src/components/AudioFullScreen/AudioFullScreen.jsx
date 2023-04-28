@@ -1,18 +1,21 @@
 import React, { useContext, useState, useEffect } from 'react';
 
 import classes from './AudioFullScreen.module.scss';
-import forest from '../../assets/images/storm.jpg';
+
 import svg from '../../assets/svg/sprite.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import AudioInformation from './AudioInformation';
 
 import { AudioContext } from '../../context/audio-context';
+import { useLocation } from 'react-router-dom';
 
 const AudioFullScreen = () => {
   const navigate = useNavigate();
+  const { state } = useLocation();
 
-  const { currentSoundId, isPlaying, isPaused, currentTime, totalTime, playAudio, pauseAudio } =
-    useContext(AudioContext);
+  const { currentTime, totalTime } = useContext(AudioContext);
+
+  const currentTimePercentage = (currentTime / totalTime) * 95 + 3;
 
   return (
     <>
@@ -23,7 +26,7 @@ const AudioFullScreen = () => {
           </svg>
         </Link>
         <div className={classes['container__img']}>
-          <img src={forest} alt="forest" />
+          <img src={state?.imageSource} alt={state?.title} />
         </div>
 
         <AudioInformation />
@@ -49,7 +52,7 @@ const AudioFullScreen = () => {
         <div className={classes['container__progress']}>
           <div
             style={{
-              width: `${(currentTime / totalTime) * 100}%`,
+              width: `${currentTimePercentage}%`,
             }}
             className={classes['container__progress--bar']}></div>
         </div>
