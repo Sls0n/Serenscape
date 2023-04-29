@@ -100,6 +100,16 @@
         border-bottom: 1px solid #99999913;
       }
 
+      &:nth-child(2) {
+        border-radius: 0;
+      }
+
+      &:last-child {
+        &:hover {
+          background-color: rgba(235, 50, 66, 0.822);
+        }
+      }
+
       &:hover {
         background-color: var(--color-bg-nav-active);
       }

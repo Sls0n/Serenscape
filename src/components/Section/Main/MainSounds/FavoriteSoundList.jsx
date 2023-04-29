@@ -1,0 +1,64 @@
+import React, { useState, useEffect } from 'react';
+import { db } from '../../../../config/firebase-config';
+import { getDocs, collection, query, where } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+import MainSound from './MainSound';
+import MainSoundSkeleton from './MainSoundSkeleton';
+
+import classes from './FavoriteSoundList.module.scss';
+
+const FavoriteSoundList = () => {
+  const [favorites, setFavorites] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const auth = getAuth();
+
+  const favoriteCollectionRef = collection(db, 'favorites');
+
+  useEffect(() => {
+    const getFavorites = async () => {
+      try {
+        if (!auth.currentUser) throw new Error('You must be logged in to add to favorites');
+        setIsLoading(true);
+
+        const userId = auth.currentUser.uid;
+
+        const q = query(favoriteCollectionRef, where('userId', '==', userId));
+        const data = await getDocs(q);
+
+        const favoritesData = data.docs.map((doc) => doc.data());
+
+        setFavorites(favoritesData);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getFavorites();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <>
+      {isLoading ? (
+        <MainSoundSkeleton total={4} />
+      ) : (
+        <ul className={classes.favorite__sounds}>
+          {favorites.map((favorite) => (
+            <MainSound
+              key={favorite.id}
+              imageSource={favorite.imageSource}
+              title={favorite.title}
+              audioSource={favorite.audioSource}
+              id={favorite.id}
+            />
+          ))}
+        </ul>
+      )}
+    </>
+  );
+};
+
+export default FavoriteSoundList;
