@@ -19,6 +19,7 @@ const MainSoundList = () => {
         const data = await getDocs(collection(db, 'sounds'));
         const soundsData = data.docs.map((doc) => doc.data());
         setSounds(soundsData);
+        console.log(soundsData);
       } catch (error) {
         console.log(error);
       } finally {

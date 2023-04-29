@@ -6,15 +6,43 @@ import svg from '../../../../assets/svg/sprite.svg';
 import { AudioContext } from '../../../../context/audio-context';
 import { Link } from 'react-router-dom';
 
+import { db } from '../../../../config/firebase-config';
+import { getDocs, collection, addDoc } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+
 const MainSound = ({ imageSource, title, audioSource, id }) => {
+  const auth = getAuth();
+
   const { currentSoundId, isPlaying, isPaused, currentTime, totalTime, playAudio, pauseAudio } =
     useContext(AudioContext);
+
+  const favoriteCollectionRef = collection(db, 'favorites');
 
   const playClickHandler = () => {
     if (isPlaying && id === currentSoundId) {
       pauseAudio();
     } else {
       playAudio(audioSource, id);
+    }
+  };
+
+  const favoriteClickHandler = async () => {
+    try {
+      if (!auth.currentUser) throw new Error('You must be logged in to add to favorites');
+
+      const userId = auth.currentUser.uid;
+
+      if (id === currentSoundId) {
+        await addDoc(favoriteCollectionRef, {
+          imageSource,
+          title,
+          audioSource,
+          id,
+          userId,
+        });
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -32,7 +60,14 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
         className={`
         ${classes.box} ${(isPaused || isPlaying) && id === currentSoundId ? classes.isPlaying : ''}
       `}>
-        <img className={classes['box__img']} src={imageSource} alt={title} />
+        <img
+          className={classes['box__img']}
+          src={imageSource} // add alt when the image loads
+          alt=""
+          onLoad={(e) => {
+            e.target.alt = title;
+          }}
+        />
 
         <button onClick={playClickHandler} className={classes.box__playIcon}>
           <svg>
@@ -57,7 +92,7 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
           </svg>
         </Link>
 
-        <button className={classes.box__heartIcon}>
+        <button onClick={favoriteClickHandler} className={classes.box__heartIcon}>
           <svg>
             <use xlinkHref={`${svg}#icon-heart`}></use>
           </svg>
