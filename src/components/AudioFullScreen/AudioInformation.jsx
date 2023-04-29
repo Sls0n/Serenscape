@@ -9,7 +9,7 @@ const AudioInformation = () => {
   return (
     <div className={classes['container__info']}>
       <div className={classes['container__info-cover']}>
-        <img src={state?.imageSource} alt="forest" />
+        <img src={state?.imageSource} alt={state?.title} />
       </div>
 
       <h1 className={classes['container__info-title']}>{state?.title}</h1>
@@ -20,7 +20,7 @@ const AudioInformation = () => {
             src={
               'https://yt3.googleusercontent.com/Fq7TTFgrg7h1M7oulRG75wxG5zz2s8DHt497NtJ3iZSZ5pv0QNu1Gup9AJNLGENYvQqu9QHD=s900-c-k-c0x00ffffff-no-rj'
             }
-            alt="forest"
+            alt="Artist"
           />
         </figure>
         <p>

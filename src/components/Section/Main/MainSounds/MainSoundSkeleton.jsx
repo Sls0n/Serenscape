@@ -8,8 +8,8 @@ const MainSoundList = () => {
       <div className={classes.box}></div>
 
       <div className={classes['main__text']}>
-        <h3 className={classes['main__title']}></h3>
-        <p className={classes['main__author']}></p>
+        <div className={classes['main__title']}></div>
+        <div className={classes['main__author']}></div>
       </div>
     </li>
   );

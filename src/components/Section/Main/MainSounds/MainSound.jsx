@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 
 import classes from './MainSound.module.scss';
 import svg from '../../../../assets/svg/sprite.svg';
