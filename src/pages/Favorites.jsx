@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
-
 import Section from '../components/Section/Section';
 import Header from '../components/Header/Header';
-
 import { db } from '../config/firebase-config';
-import { getDocs, collection } from 'firebase/firestore';
+import { getDocs, collection, query, where } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
 const FavoritesPage = () => {
@@ -19,11 +17,12 @@ const FavoritesPage = () => {
 
         const userId = auth.currentUser.uid;
 
-        const data = await getDocs(favoriteCollectionRef);
-        const favoritesData = data.docs.map((doc) => doc.data());
-        const filteredFavoritesData = favoritesData.filter((favorite) => favorite.userId === userId);
+        const q = query(favoriteCollectionRef, where('userId', '==', userId));
+        const data = await getDocs(q);
 
-        console.log(filteredFavoritesData);
+        const favoritesData = data.docs.map((doc) => doc.data());
+
+        console.log(favoritesData);
       } catch (error) {
         console.log(error);
       }

@@ -36,11 +36,7 @@ const NavigationLinkLists = () => {
 
   return (
     <>
-      {!isOpen && (
-        <li style={{ listStyle: 'none' }}>
-          <NavigationHeader heading="Navigation" />
-        </li>
-      )}
+      {!isOpen && <NavigationHeader heading="Navigation" />}
 
       <ul className={classes['aside__lists']}>
         {NAVIGATION_1.map((item) => (
@@ -52,11 +48,7 @@ const NavigationLinkLists = () => {
           />
         ))}
 
-        {!isOpen && (
-          <li style={{ listStyle: 'none' }}>
-            <NavigationHeader heading="User settings" />
-          </li>
-        )}
+        {!isOpen && <NavigationHeader heading="User settings" />}
 
         {NAVIGATION_2.map((item) => (
           <NavigationLink
