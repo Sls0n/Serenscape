@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import classes from './MainSound.module.scss';
 import svg from '../../../../assets/svg/sprite.svg';
@@ -7,7 +7,7 @@ import { AudioContext } from '../../../../context/audio-context';
 import { Link } from 'react-router-dom';
 
 import { db } from '../../../../config/firebase-config';
-import { getDocs, collection, addDoc } from 'firebase/firestore';
+import { getDocs, collection, addDoc, deleteDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
 const MainSound = ({ imageSource, title, audioSource, id }) => {
@@ -15,6 +15,9 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
 
   const { currentSoundId, isPlaying, isPaused, currentTime, totalTime, playAudio, pauseAudio } =
     useContext(AudioContext);
+
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavoriteLoading, setIsFavoriteLoading] = useState(false);
 
   const favoriteCollectionRef = collection(db, 'favorites');
 
@@ -26,20 +29,61 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
     }
   };
 
+  useEffect(() => {
+    const getFavorites = async () => {
+      try {
+        if (!auth.currentUser) throw new Error('You must be logged in to add to favorites');
+        setIsFavoriteLoading(true);
+
+        const data = await getDocs(favoriteCollectionRef);
+
+        const favoritesData = data.docs.map((doc) => doc.data());
+
+        setIsFavoriteLoading(false);
+
+        if (favoritesData.some((favorite) => favorite.id === id)) {
+          setIsFavorite(true);
+        } else {
+          setIsFavorite(false);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getFavorites();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const favoriteClickHandler = async () => {
     try {
       if (!auth.currentUser) throw new Error('You must be logged in to add to favorites');
+      setIsFavorite((prevState) => !prevState);
 
       const userId = auth.currentUser.uid;
 
       if (id === currentSoundId) {
-        await addDoc(favoriteCollectionRef, {
-          imageSource,
-          title,
-          audioSource,
-          id,
-          userId,
-        });
+        const data = await getDocs(favoriteCollectionRef);
+        const favoritesData = data.docs.map((doc) => doc.data());
+
+        if (favoritesData.some((favorite) => favorite.id === id)) {
+          const docToDelete = data.docs.find((doc) => doc.data().id === id);
+          await deleteDoc(docToDelete.ref);
+          return;
+        } else {
+          setIsFavorite(true);
+
+          await addDoc(favoriteCollectionRef, {
+            imageSource,
+            title,
+            audioSource,
+            id,
+            userId,
+          });
+
+          return;
+        }
       }
     } catch (error) {
       console.log(error);
@@ -68,13 +112,11 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
             e.target.alt = title;
           }}
         />
-
         <button onClick={playClickHandler} className={classes.box__playIcon}>
           <svg>
             <use xlinkHref={`${svg}#icon-${(isPaused || isPlaying) && id === currentSoundId ? null : 'play'}`}></use>
           </svg>
         </button>
-
         <Link
           to={`/audio/${pathname}`}
           state={{
@@ -91,12 +133,19 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
             <use xlinkHref={`${svg}#icon-maximize`}></use>
           </svg>
         </Link>
-
-        <button onClick={favoriteClickHandler} className={classes.box__heartIcon}>
-          <svg>
-            <use xlinkHref={`${svg}#icon-heart`}></use>
-          </svg>
-        </button>
+        {!isFavoriteLoading ? (
+          <button onClick={favoriteClickHandler} className={classes.box__heartIcon}>
+            <svg>
+              <use xlinkHref={`${svg}#icon-${!isFavorite && id === currentSoundId ? 'heart' : 'trash'}`}></use>
+            </svg>
+          </button>
+        ) : (
+          <button onClick={favoriteClickHandler} className={classes.box__loaderIcon}>
+            <svg>
+              <use xlinkHref={`${svg}#icon-loader`}></use>
+            </svg>
+          </button>
+        )}
 
         <div
           className={`${classes.box__menu} ${(isPaused || isPlaying) && id === currentSoundId ? '' : classes.hidden}

@@ -50,4 +50,4 @@ const MainSoundList = () => {
   );
 };
 
-export default MainSoundList;
+export default React.memo(MainSoundList);

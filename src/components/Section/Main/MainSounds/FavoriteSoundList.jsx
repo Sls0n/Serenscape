@@ -9,6 +9,7 @@ import classes from './FavoriteSoundList.module.scss';
 
 const FavoriteSoundList = () => {
   const [favorites, setFavorites] = useState([]);
+  const [isFavoriteLoading, setIsFavoriteLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const auth = getAuth();
@@ -19,6 +20,7 @@ const FavoriteSoundList = () => {
     const getFavorites = async () => {
       try {
         if (!auth.currentUser) throw new Error('You must be logged in to add to favorites');
+        setIsFavoriteLoading(true);
         setIsLoading(true);
 
         const userId = auth.currentUser.uid;
@@ -33,6 +35,7 @@ const FavoriteSoundList = () => {
         console.log(error);
       } finally {
         setIsLoading(false);
+        setIsFavoriteLoading(false);
       }
     };
 
@@ -42,8 +45,8 @@ const FavoriteSoundList = () => {
 
   return (
     <>
-      {isLoading ? (
-        <MainSoundSkeleton total={4} />
+      {isLoading && isFavoriteLoading ? (
+        <MainSoundSkeleton total={8} />
       ) : (
         <ul className={classes.favorite__sounds}>
           {favorites.map((favorite) => (

@@ -22,6 +22,10 @@
     .box__playIcon {
       opacity: 1;
     }
+
+    .box__loaderIcon {
+      opacity: 1;
+    }
   }
 
   &:hover {
@@ -105,6 +109,41 @@
 
     padding: 2rem;
     z-index: 10;
+
+    svg {
+      width: 2.2rem;
+      height: 2.2rem;
+      fill: var(--color-main-icon);
+      cursor: pointer;
+      pointer-events: auto;
+      transition: transform 0.3s ease-out;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__loaderIcon {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    opacity: 0;
+
+    padding: 2rem;
+    z-index: 10;
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(100deg);
+      }
+    }
+
+    animation: spin 1s linear infinite;
 
     svg {
       width: 2.2rem;
