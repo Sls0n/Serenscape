@@ -1,0 +1,12 @@
+.main__sounds {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr));
+  grid-gap: 2.5rem;
+  margin-top: 2rem;
+
+  list-style: none;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  }
+}

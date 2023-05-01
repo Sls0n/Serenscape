@@ -162,7 +162,7 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
 
       <div className={classes['main__text']}>
         <h2 className={classes['main__title']}>{title}</h2>
-        <p className={classes['main__author']}>by Valdemaras</p>
+        <p className={classes['main__author']}>by Slson</p>
       </div>
     </li>
   );
