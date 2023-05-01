@@ -9,7 +9,7 @@ const HomePage = () => {
   return (
     <>
       <Section>
-        <Header firstNav={'Navigation'} secondNav={'Home'} filterShown={true} />
+        <Header firstNav={'Navigation'} secondNav={'Home'} /> {/* put if filter wanna be shown filterShown={true} */}
         <Main />
         <Footer />
       </Section>

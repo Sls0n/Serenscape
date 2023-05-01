@@ -11,8 +11,6 @@ import { v4 } from 'uuid';
 import { PropagateLoader } from 'react-spinners';
 
 const Profile = () => {
-  console.log(auth.currentUser);
-
   const [imageUpload, setImageUpload] = useState(null);
   const [imageURL, setImageURL] = useState(null);
   const [loading, setLoading] = useState(false);

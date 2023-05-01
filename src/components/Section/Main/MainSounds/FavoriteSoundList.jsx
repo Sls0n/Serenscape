@@ -46,7 +46,7 @@ const FavoriteSoundList = () => {
   return (
     <>
       {isLoading && isFavoriteLoading ? (
-        <MainSoundSkeleton total={8} />
+        <MainSoundSkeleton />
       ) : (
         <ul className={classes.favorite__sounds}>
           {favorites.map((favorite) => (
