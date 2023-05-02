@@ -21,6 +21,10 @@ const MainSoundSkeleton = () => {
         {skeleton}
         {skeleton}
         {skeleton}
+        {skeleton}
+        {skeleton}
+        {skeleton}
+        {skeleton}
       </ul>
     </>
   );

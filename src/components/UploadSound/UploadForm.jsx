@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './UploadForm.module.scss';
 
 import { storage } from '../../config/firebase-config';
 import { ref, uploadBytes } from 'firebase/storage';
 import { getDownloadURL } from 'firebase/storage';
 import { db } from '../../../src/config/firebase-config';
-import { getDocs, collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { v4 } from 'uuid';
 
@@ -44,7 +44,6 @@ const UploadForm = () => {
 
   const uploadFiles = async (e) => {
     e.preventDefault();
-
     if (imageUpload === null || musicUpload === null) return;
 
     const imageStorageRef = ref(storage, `uthumbnails/${imageUpload.name + v4()}`);
@@ -73,28 +72,42 @@ const UploadForm = () => {
           console.log(error);
         });
     });
+  };
 
+  useEffect(() => {
     if (imageURL && musicURL) {
+      console.log('imageURL: ', imageURL);
+      console.log('musicURL: ', musicURL);
       const uploadsCollectionRef = collection(db, 'uploads');
 
-      await addDoc(uploadsCollectionRef, {
+      addDoc(uploadsCollectionRef, {
         imageSource: imageURL,
         title: title,
         audioSource: musicURL,
         id: v4(),
         userId: userId,
+      }).then(() => {
+        console.log('Document successfully written!');
       });
+
+      setImageUpload(null);
+      setMusicUpload(null);
 
       setImageURL(null);
       setMusicURL(null);
+      setTitle('');
+
+      document.getElementById('title').value = '';
+      document.getElementById('image').value = '';
+      document.getElementById('music').value = '';
     }
-  };
+  }, [imageURL, musicURL]);
 
   return (
     <>
       <h1>UploadSound</h1>
 
-      <form onSubmit={uploadFiles} action="submit">
+      <form action="submit">
         <label htmlFor="title">Title</label>
         <input onChange={titleChangeHandler} type="text" name="title" id="title" />
 
@@ -104,7 +117,7 @@ const UploadForm = () => {
         <label htmlFor="music">Music</label>
         <input onChange={musicChangeHandler} type="file" name="music" id="music" accept="audio/mpeg, audio/wav" />
 
-        <button type="submit">Submit</button>
+        <button onClick={uploadFiles}>Submit</button>
       </form>
     </>
   );
