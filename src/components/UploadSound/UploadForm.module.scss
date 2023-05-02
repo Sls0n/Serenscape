@@ -1,73 +1,162 @@
-/*
-This is the html code:
-
-<h1>UploadSound</h1>
-
-<form action="submit">
-  <label htmlFor="title">Title</label>
-  <input type="text" name="title" id="title" />
-
-  <label htmlFor="type">Type</label>
-  <input type="text" name="type" id="type" />
-
-  <label htmlFor="image">Image</label>
-  <input type="file" name="image" id="image" accept="image/png, image/jpeg" />
-
-  <label htmlFor="music">Music</label>
-  <input type="file" name="music" id="music" accept="audio/mpeg, audio/wav" />
-  <button type="submit">Submit</button>
-</form>
-
-*/
-
-h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #f2f2f2;
+.header {
+  font-size: 3rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--color-header-logo);
 }
 
-form {
+.form {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
+  gap: 1rem;
 
-  label {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    color: #f2f2f2;
+  &__error {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #ff0033b9;
   }
 
-  input {
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid #f2f2f2;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    color: #000;
+  &__label {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--color-main-header);
+  }
+
+  input[type='file'] {
+    display: none;
+  }
+
+  &__input {
+    font-size: 1.8rem;
+    color: #a6a6ad;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: 2px solid rgba(#969eaa, 0.2);
+    height: 5rem;
+    width: 100%;
+    background-color: transparent;
+    padding: 2.5rem 2.5rem;
+    transition: border 0.2s, background-color 0.2s;
+
+    &.error {
+      border: 2px solid rgba(#ff0033, 0.8);
+
+      &:focus {
+        border: 2px solid rgba(#ff0033, 0.8);
+      }
+    }
+
+    &:focus {
+      outline: none;
+      border: 2px solid var(--color-primary-1);
+    }
+
+    &:focus {
+      outline: none;
+      border: 2px solid var(--color-primary-1);
+    }
   }
 
   button {
-    padding: 0.5rem;
-    border: 1px solid #f2f2f2;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    color: #000;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 5rem;
+    background-color: var(--color-primary-1);
+    color: #f2f2f2;
+    font-size: 1.6rem;
+    border-radius: 3px;
+    padding: 1.5rem;
     cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 2rem;
+  }
+}
+
+.imageLabel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 8rem;
+  border-radius: 3px;
+  border: 2px dashed rgba(#969eaa, 0.2);
+  background-color: transparent;
+  transition: all 0.2s;
+
+  &.error {
+    border: 2px dashed rgba(#ff0033, 0.8);
+
+    &:focus {
+      border: 2px solid rgba(#ff0033, 0.8);
+    }
   }
 
-  button:hover {
-    background-color: #000;
-    color: #f2f2f2;
+  &:hover {
+    cursor: pointer;
+    border: 2px dashed var(--color-primary-1);
   }
 
-  button:active {
-    background-color: #000;
-    color: #f2f2f2;
+  svg {
+    width: 10rem;
+    height: 10rem;
+    color: var(--color-primary-1);
   }
 
-  button:focus {
-    outline: none;
+  p {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--color-main-header);
+  }
+
+  svg {
+    width: 4rem;
+    height: 4rem;
+    fill: limegreen;
+  }
+}
+
+.musicLabel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 8rem;
+  border-radius: 3px;
+  border: 2px dashed rgba(#969eaa, 0.2);
+  background-color: transparent;
+  transition: all 0.2s;
+
+  &.error {
+    border: 2px dashed rgba(#ff0033, 0.8);
+
+    &:focus {
+      border: 2px solid rgba(#ff0033, 0.8);
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    border: 2px dashed var(--color-primary-1);
+  }
+
+  svg {
+    width: 4rem;
+    height: 4rem;
+    fill: limegreen;
+  }
+
+  p {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--color-main-header);
   }
 }

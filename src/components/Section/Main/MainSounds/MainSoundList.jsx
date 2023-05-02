@@ -35,15 +35,21 @@ const MainSoundList = () => {
         <MainSoundSkeleton />
       ) : (
         <ul className={classes['main__sounds']}>
-          {sounds.map((sound) => (
-            <MainSound
-              key={sound.id}
-              imageSource={sound.imageSource}
-              title={sound.title}
-              audioSource={sound.audioSource}
-              id={sound.id}
-            />
-          ))}
+          {sounds.map(
+            (sound) =>
+              sound.imageSource &&
+              sound.title &&
+              sound.audioSource &&
+              sound.id && (
+                <MainSound
+                  key={sound?.id}
+                  imageSource={sound?.imageSource}
+                  title={sound?.title}
+                  audioSource={sound?.audioSource}
+                  id={sound?.id}
+                />
+              )
+          )}
         </ul>
       )}
     </>

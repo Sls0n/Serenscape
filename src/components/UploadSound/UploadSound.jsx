@@ -1,12 +1,11 @@
 import React from 'react';
 import UploadForm from './UploadForm';
+import { getAuth } from 'firebase/auth';
 
 const UploadSound = () => {
-  return (
-    <>
-      <UploadForm />
-    </>
-  );
+  const auth = getAuth();
+
+  return <>{auth.currentUser ? <UploadForm /> : <p>You need to be signed in to upload</p>}</>;
 };
 
 export default UploadSound;

@@ -49,15 +49,21 @@ const FavoriteSoundList = () => {
         <MainSoundSkeleton />
       ) : (
         <ul className={classes.favorite__sounds}>
-          {favorites.map((favorite) => (
-            <MainSound
-              key={favorite.id}
-              imageSource={favorite.imageSource}
-              title={favorite.title}
-              audioSource={favorite.audioSource}
-              id={favorite.id}
-            />
-          ))}
+          {favorites.map(
+            (favorite) =>
+              favorite.imageSource &&
+              favorite.title &&
+              favorite.audioSource &&
+              favorite.id && (
+                <MainSound
+                  key={favorite?.id}
+                  imageSource={favorite?.imageSource}
+                  title={favorite?.title}
+                  audioSource={favorite?.audioSource}
+                  id={favorite?.id}
+                />
+              )
+          )}
         </ul>
       )}
     </>

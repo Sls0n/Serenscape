@@ -8,6 +8,9 @@ import { db } from '../../../src/config/firebase-config';
 import { collection, addDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { v4 } from 'uuid';
+import { useForm } from 'react-hook-form';
+import svg from '../../assets/svg/sprite.svg';
+import { PropagateLoader } from 'react-spinners';
 
 const UploadForm = () => {
   const auth = getAuth();
@@ -19,6 +22,14 @@ const UploadForm = () => {
   const [imageURL, setImageURL] = useState(null);
   const [musicURL, setMusicURL] = useState(null);
   const [title, setTitle] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const titleChangeHandler = (e) => {
     setTitle(e.target.value);
@@ -42,9 +53,10 @@ const UploadForm = () => {
     setMusicUpload(e.target.files[0]);
   };
 
-  const uploadFiles = async (e) => {
-    e.preventDefault();
+  const uploadFiles = async () => {
     if (imageUpload === null || musicUpload === null) return;
+
+    setIsLoading(true);
 
     const imageStorageRef = ref(storage, `uthumbnails/${imageUpload.name + v4()}`);
     const musicStorageRef = ref(storage, `umusics/${musicUpload.name + v4()}`);
@@ -56,10 +68,12 @@ const UploadForm = () => {
             setImageURL(url);
           })
           .catch((error) => {
+            setErrorMessage(error.message);
             console.log(error);
           });
       })
       .catch((error) => {
+        setErrorMessage(error.message);
         console.log(error);
       });
 
@@ -69,6 +83,7 @@ const UploadForm = () => {
           setMusicURL(url);
         })
         .catch((error) => {
+          setErrorMessage(error.message);
           console.log(error);
         });
     });
@@ -76,8 +91,6 @@ const UploadForm = () => {
 
   useEffect(() => {
     if (imageURL && musicURL) {
-      console.log('imageURL: ', imageURL);
-      console.log('musicURL: ', musicURL);
       const uploadsCollectionRef = collection(db, 'uploads');
 
       addDoc(uploadsCollectionRef, {
@@ -86,9 +99,14 @@ const UploadForm = () => {
         audioSource: musicURL,
         id: v4(),
         userId: userId,
-      }).then(() => {
-        console.log('Document successfully written!');
-      });
+      })
+        .then(() => {
+          console.log('Document successfully written!');
+        })
+        .catch((error) => {
+          console.error('Error writing document: ', error);
+          setErrorMessage(error.message);
+        });
 
       setImageUpload(null);
       setMusicUpload(null);
@@ -100,24 +118,118 @@ const UploadForm = () => {
       document.getElementById('title').value = '';
       document.getElementById('image').value = '';
       document.getElementById('music').value = '';
+
+      setIsLoading(false);
     }
   }, [imageURL, musicURL]);
 
   return (
     <>
-      <h1>UploadSound</h1>
+      <h1 className={classes.header}>Upload Sound</h1>
 
-      <form action="submit">
-        <label htmlFor="title">Title</label>
-        <input onChange={titleChangeHandler} type="text" name="title" id="title" />
+      <form className={classes.form} action="submit" onSubmit={handleSubmit(uploadFiles)}>
+        {errorMessage && <p className={classes.form__error}>{errorMessage}</p>}
+        <label className={classes.form__label} htmlFor="title">
+          Title
+        </label>
+        <input
+          {...register('title', {
+            required: {
+              value: true,
+              message: 'Title is required',
+            },
+            minLength: {
+              value: 3,
+              message: 'Title must be at least 3 characters long',
+            },
+            maxLength: {
+              value: 25,
+              message: 'Title must be less than 25 characters long',
+            },
+          })}
+          className={`${classes.form__input} ${errors.title && classes.error}`}
+          onChange={titleChangeHandler}
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Enter suitable title"
+        />
+        {errors.title && <p className={classes.form__error}>{errors.title.message}</p>}
 
-        <label htmlFor="image">Image</label>
-        <input onChange={imageChangeHandler} type="file" name="image" id="image" accept="image/png, image/jpeg" />
+        <label className={classes.form__label} htmlFor="image">
+          Upload image
+        </label>
+        <label className={`${classes.imageLabel} ${errors.image && classes.error}`} htmlFor="image">
+          {imageUpload ? (
+            <svg>
+              <use xlinkHref={`${svg}#icon-check`}></use>
+            </svg>
+          ) : (
+            <p>
+              Select a image file <span>(.jpeg, .png)</span>
+            </p>
+          )}
+        </label>
+        <input
+          {...register('image', {
+            required: {
+              value: true,
+              message: 'Image is required',
+            },
+          })}
+          className={classes.form__input}
+          onChange={imageChangeHandler}
+          type="file"
+          name="image"
+          id="image"
+          accept="image/png, image/jpeg"
+        />
+        {errors.image && <p className={classes.form__error}>{errors.image.message}</p>}
 
-        <label htmlFor="music">Music</label>
-        <input onChange={musicChangeHandler} type="file" name="music" id="music" accept="audio/mpeg, audio/wav" />
+        <label className={classes.form__label} htmlFor="music">
+          Upload music
+        </label>
+        <label className={`${classes.musicLabel} ${errors.music && classes.error}`} htmlFor="music">
+          {musicUpload ? (
+            <svg>
+              <use xlinkHref={`${svg}#icon-check`}></use>
+            </svg>
+          ) : (
+            <p>
+              Select a music file <span>(.mp3, .wav)</span>{' '}
+            </p>
+          )}
+        </label>
+        <input
+          {...register('music', {
+            required: {
+              value: true,
+              message: 'Music is required',
+            },
+          })}
+          onChange={musicChangeHandler}
+          type="file"
+          name="music"
+          id="music"
+          accept="audio/mpeg, audio/wav"
+        />
+        {errors.music && <p className={classes.form__error}>{errors.music.message}</p>}
 
-        <button onClick={uploadFiles}>Submit</button>
+        <button className={classes.btn}>
+          {isLoading ? (
+            <PropagateLoader
+              color="#f2f2f2"
+              size={15}
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            />
+          ) : (
+            'Upload audio'
+          )}
+        </button>
       </form>
     </>
   );
