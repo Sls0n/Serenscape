@@ -75,6 +75,7 @@ const Profile = () => {
               }
               alt="user"
             />
+
             <form className={classes['profile__submit']}>
               <input
                 type="file"
