@@ -7,9 +7,13 @@ const MainSoundSkeleton = () => {
     <li className={classes['main__sound']}>
       <div className={classes.box}></div>
 
-      <div className={classes['main__text']}>
-        <h3 className={classes['main__title']}></h3>
-        <p className={classes['main__author']}></p>
+      <div className={classes.main__info}>
+        <div className={classes.main__pfp}></div>
+
+        <div className={classes['main__text']}>
+          <h3 className={classes['main__title']}></h3>
+          <p className={classes['main__author']}></p>
+        </div>
       </div>
     </li>
   );

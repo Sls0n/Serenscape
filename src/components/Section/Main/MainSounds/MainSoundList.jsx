@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import MainSound from './MainSound';
 import MainSoundSkeleton from './MainSoundSkeleton';
@@ -46,6 +46,7 @@ const MainSoundList = () => {
                   imageSource={sound?.imageSource}
                   title={sound?.title}
                   audioSource={sound?.audioSource}
+                  pfp={sound?.pfp}
                   id={sound?.id}
                 />
               )

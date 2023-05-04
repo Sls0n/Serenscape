@@ -10,7 +10,7 @@ import { db } from '../../../../config/firebase-config';
 import { getDocs, collection, addDoc, deleteDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
-const MainSound = ({ imageSource, title, audioSource, id }) => {
+const MainSound = ({ imageSource, title, audioSource, pfp, id }) => {
   const auth = getAuth();
 
   const { currentSoundId, isPlaying, isPaused, currentTime, totalTime, playAudio, pauseAudio } =
@@ -80,6 +80,7 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
             audioSource,
             id,
             userId,
+            pfp,
           });
 
           return;
@@ -162,10 +163,7 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
 
       <div className={classes.main__info}>
         <div className={classes.main__pfp}>
-          <img
-            src="https://i.pinimg.com/originals/a4/95/66/a49566041ebd171aa9f8db8277f16fa5.jpg"
-            alt="pfp"
-          />
+          <img src={pfp} alt={pfp} />
         </div>
 
         <div className={classes['main__text']}>
