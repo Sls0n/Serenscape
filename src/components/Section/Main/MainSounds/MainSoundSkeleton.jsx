@@ -11,6 +11,7 @@ const MainSoundSkeleton = () => {
         <div className={classes.main__pfp}></div>
 
         <div className={classes['main__text']}>
+          {/* eslint-disable-next-line jsx-a11y/heading-has-content */}
           <h3 className={classes['main__title']}></h3>
           <p className={classes['main__author']}></p>
         </div>

@@ -47,6 +47,7 @@ const MainSoundList = () => {
                   title={sound?.title}
                   audioSource={sound?.audioSource}
                   pfp={sound?.pfp}
+                  artist={sound?.artist}
                   id={sound?.id}
                 />
               )

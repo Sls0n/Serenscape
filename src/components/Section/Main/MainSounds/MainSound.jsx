@@ -10,7 +10,7 @@ import { db } from '../../../../config/firebase-config';
 import { getDocs, collection, addDoc, deleteDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
-const MainSound = ({ imageSource, title, audioSource, pfp, id }) => {
+const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
   const auth = getAuth();
 
   const { currentSoundId, isPlaying, isPaused, currentTime, totalTime, playAudio, pauseAudio } =
@@ -81,6 +81,7 @@ const MainSound = ({ imageSource, title, audioSource, pfp, id }) => {
             id,
             userId,
             pfp,
+            artist,
           });
 
           return;
@@ -125,6 +126,8 @@ const MainSound = ({ imageSource, title, audioSource, pfp, id }) => {
             title,
             audioSource,
             id,
+            artist,
+            pfp,
           }}
           style={{
             display: `${(isPaused || isPlaying) && id === currentSoundId ? 'block' : 'none'}`,
@@ -163,12 +166,14 @@ const MainSound = ({ imageSource, title, audioSource, pfp, id }) => {
 
       <div className={classes.main__info}>
         <div className={classes.main__pfp}>
-          <img src={pfp} alt={pfp} />
+          <img src={pfp} alt="" />
         </div>
 
         <div className={classes['main__text']}>
           <h2 className={classes['main__title']}>{title}</h2>
-          <p className={classes['main__author']}>by Slson</p>
+          <p className={classes['main__author']}>
+            Artist &mdash; <span>{artist}</span>
+          </p>
         </div>
       </div>
     </li>

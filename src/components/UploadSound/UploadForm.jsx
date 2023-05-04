@@ -97,6 +97,8 @@ const UploadForm = () => {
         imageSource: imageURL,
         title: title,
         audioSource: musicURL,
+        artist: auth.currentUser?.displayName,
+        pfp: auth.currentUser?.photoURL,
         id: v4(),
         userId: userId,
       })

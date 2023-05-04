@@ -61,6 +61,8 @@ const FavoriteSoundList = () => {
                   imageSource={favorite?.imageSource}
                   title={favorite?.title}
                   audioSource={favorite?.audioSource}
+                  pfp={favorite?.pfp}
+                  artist={favorite?.artist}
                   id={favorite?.id}
                 />
               )

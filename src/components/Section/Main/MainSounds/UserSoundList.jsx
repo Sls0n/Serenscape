@@ -46,6 +46,8 @@ const UserSoundList = () => {
                   imageSource={sound?.imageSource}
                   title={sound?.title}
                   audioSource={sound?.audioSource}
+                  artist={sound?.artist}
+                  pfp={sound?.pfp}
                   id={sound?.id}
                 />
               )

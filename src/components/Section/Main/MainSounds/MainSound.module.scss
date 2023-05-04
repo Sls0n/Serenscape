@@ -266,5 +266,9 @@
     font-size: 1.4rem;
     font-weight: 500;
     color: var(--color-nav-link);
+
+    span {
+      color: #ccc;
+    }
   }
 }
