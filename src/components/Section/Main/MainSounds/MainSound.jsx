@@ -160,9 +160,18 @@ const MainSound = ({ imageSource, title, audioSource, id }) => {
         </div>
       </div>
 
-      <div className={classes['main__text']}>
-        <h2 className={classes['main__title']}>{title}</h2>
-        <p className={classes['main__author']}>by Slson</p>
+      <div className={classes.main__info}>
+        <div className={classes.main__pfp}>
+          <img
+            src="https://i.pinimg.com/originals/a4/95/66/a49566041ebd171aa9f8db8277f16fa5.jpg"
+            alt="pfp"
+          />
+        </div>
+
+        <div className={classes['main__text']}>
+          <h2 className={classes['main__title']}>{title}</h2>
+          <p className={classes['main__author']}>by Slson</p>
+        </div>
       </div>
     </li>
   );

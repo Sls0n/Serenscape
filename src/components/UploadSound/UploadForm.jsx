@@ -121,6 +121,7 @@ const UploadForm = () => {
 
       setIsLoading(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imageURL, musicURL]);
 
   return (
