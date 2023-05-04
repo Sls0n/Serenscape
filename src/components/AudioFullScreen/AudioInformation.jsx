@@ -16,15 +16,10 @@ const AudioInformation = () => {
 
       <div className={classes['container__info-artist']}>
         <figure>
-          <img
-            src={
-              'https://yt3.googleusercontent.com/Fq7TTFgrg7h1M7oulRG75wxG5zz2s8DHt497NtJ3iZSZ5pv0QNu1Gup9AJNLGENYvQqu9QHD=s900-c-k-c0x00ffffff-no-rj'
-            }
-            alt="Artist"
-          />
+          <img src={state?.pfp} alt={state?.artist} />
         </figure>
         <p>
-          Artist: <span>Slson</span>
+          Artist: <span>{state?.artist}</span>
         </p>
       </div>
     </div>
