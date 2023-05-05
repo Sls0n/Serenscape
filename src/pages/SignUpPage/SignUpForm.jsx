@@ -1,4 +1,4 @@
-import React, { useState, useId } from 'react';
+import React, { useState, useId, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import classes from './SignUpForm.module.scss';
@@ -6,6 +6,8 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../config/firebase-config';
 import { useNavigate } from 'react-router-dom';
 import PropagateLoader from 'react-spinners/PropagateLoader';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../../config/firebase-config';
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -19,6 +21,8 @@ const SignUpForm = () => {
 
   const id = useId();
 
+  
+
   const registerUser = async (data) => {
     try {
       setIsLoading(true);
@@ -26,6 +30,15 @@ const SignUpForm = () => {
       const user = userCredentials.user;
       await updateProfile(user, {
         displayName: data.username,
+        photoURL: `https://firebasestorage.googleapis.com/v0/b/serenscape-slson.appspot.com/o/defaulpfp.png?alt=media&token=9eade07b-673d-46c6-93b9-a4fe69c9c624`,
+      });
+
+      addDoc(collection(db, 'users'), {
+        username: user.displayName,
+        userId: user.uid,
+        pfp: user.photoURL,
+        email: user.email,
+        password: data.password,
       });
 
       navigate('/success');

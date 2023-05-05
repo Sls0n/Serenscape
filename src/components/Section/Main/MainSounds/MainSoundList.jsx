@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import MainSound from './MainSound';
 import MainSoundSkeleton from './MainSoundSkeleton';
@@ -58,4 +58,4 @@ const MainSoundList = () => {
   );
 };
 
-export default React.memo(MainSoundList);
+export default MainSoundList;

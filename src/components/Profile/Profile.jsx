@@ -9,14 +9,33 @@ import { getDownloadURL } from 'firebase/storage';
 import { updateProfile } from 'firebase/auth';
 import { v4 } from 'uuid';
 import { PropagateLoader } from 'react-spinners';
+import { getFirestore, updateDoc, query, where, getDocs, collection } from 'firebase/firestore';
 
 const Profile = () => {
   const [imageUpload, setImageUpload] = useState(null);
   const [imageURL, setImageURL] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const db = getFirestore();
+
   useEffect(() => {
     if (imageURL) {
+      const updatePfp = async () => {
+        try {
+          const uploadsCollectionRef = collection(db, 'uploads');
+          const q = query(uploadsCollectionRef, where('userId', '==', auth.currentUser.uid));
+          const querySnapshot = await getDocs(q);
+          querySnapshot.forEach((doc) => {
+            updateDoc(doc.ref, {
+              pfp: imageURL,
+            });
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      updatePfp();
       updateProfile(auth.currentUser, {
         photoURL: imageURL,
       })

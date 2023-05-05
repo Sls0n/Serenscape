@@ -57,7 +57,7 @@ const HeaderUpEnd = () => {
                 src={
                   auth.currentUser.photoURL
                     ? auth.currentUser.photoURL
-                    : 'https://i.pinimg.com/originals/c9/0a/d7/c90ad748ff7e3287e52d138c6873d9c1.jpg'
+                    : 'https://firebasestorage.googleapis.com/v0/b/serenscape-slson.appspot.com/o/defaulpfp.png?alt=media&token=9eade07b-673d-46c6-93b9-a4fe69c9c624'
                 }
                 alt="user"
               />

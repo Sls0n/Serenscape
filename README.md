@@ -17,7 +17,7 @@ Anyone who is willing to contribute is more than welcome to do so. If you have a
 
 ## Takeaways
 
-This project served as an invaluable learning experience for me. It truly tested my abilities and pushed me outside of my comfort zone in the best of ways. Over the course of about a month, I was able to complete it, though not without some unexpected challenges along the way. Prior to this, I had only built a simple to-do app, so I went into this project knowing it would be an ambitious undertaking. I now feel confident in my ability to build anything I set my mind to. I also paid close attention to the details and aimed to create an engaging user experience. The skills I thoroughly developed during this time include:
+This project served as an invaluable learning experience for me. It truly tested my abilities and pushed me outside of my comfort zone in the best of ways. Over the course of about a month, I was able to complete it, though not without some unexpected challenges along the way. Prior to this, I had only built a simple to-do app, so I went into this project knowing it would be an ambitious undertaking. I now feel confident in my ability to build anything I set my mind to. I also paid close attention to the details and aimed to create an engaging user experience without rushing it. The skills I thoroughly developed during this time include:
 
 •React hooks, context API, React Router, React Hook Form, React-Query, Redux-toolkit, Firebase, Authentication, Audio API, Framer Motion, and more.
 
