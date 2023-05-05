@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import classes from './SignInForm.module.scss';
 import { useForm } from 'react-hook-form';
 
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { PropagateLoader } from 'react-spinners';
+import { googleProvider } from '../../config/firebase-config';
 
 const SignInForm = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   const {
@@ -40,6 +42,19 @@ const SignInForm = () => {
     }
   };
 
+  const signInGoogle = async () => {
+    try {
+      setIsGoogleLoading(true);
+      await signInWithPopup(auth, googleProvider);
+
+      navigate('/');
+
+      setIsGoogleLoading(false);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   const onSubmit = (data) => {
     signInUser(data);
   };
@@ -47,8 +62,7 @@ const SignInForm = () => {
   return (
     <main className={classes.main}>
       <div className={classes.main__textbox}>
-        <h1 className={classes.main__title}>Hey! welcome back.</h1>
-        <p className={classes.main__description}>To continue</p>
+        <h1 className={classes.main__title}>Log in</h1>
       </div>
 
       <form action="submit" className={classes.form} onSubmit={handleSubmit(onSubmit)}>
@@ -104,6 +118,35 @@ const SignInForm = () => {
           )}
         </button>
       </form>
+
+      <div className={classes.main__textbox}>
+        <p className={classes.main__description}>Or</p>
+      </div>
+
+      <button onClick={signInGoogle} className={classes['btn-2']}>
+        {isGoogleLoading ? (
+          <PropagateLoader
+            color="#333333e0"
+            size={15}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          />
+        ) : (
+          <div className={classes.btnImg}>
+            <div className={classes.img}>
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/32px-Google_%22G%22_Logo.svg.png"
+                alt=""
+              />
+            </div>
+            <p>Continue with Google</p>
+          </div>
+        )}
+      </button>
+
       <Link to="/signup" className={classes.form__link}>
         Don't have an account?
       </Link>

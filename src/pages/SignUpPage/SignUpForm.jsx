@@ -1,4 +1,4 @@
-import React, { useState, useId, useEffect } from 'react';
+import React, { useState, useId } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import classes from './SignUpForm.module.scss';
@@ -20,8 +20,6 @@ const SignUpForm = () => {
   } = useForm();
 
   const id = useId();
-
-  
 
   const registerUser = async (data) => {
     try {

@@ -23,9 +23,19 @@ const Profile = () => {
       const updatePfp = async () => {
         try {
           const uploadsCollectionRef = collection(db, 'uploads');
+          const usersCollectionRef = collection(db, 'users');
+
           const q = query(uploadsCollectionRef, where('userId', '==', auth.currentUser.uid));
           const querySnapshot = await getDocs(q);
           querySnapshot.forEach((doc) => {
+            updateDoc(doc.ref, {
+              pfp: imageURL,
+            });
+          });
+
+          const q2 = query(usersCollectionRef, where('userId', '==', auth.currentUser.uid));
+          const querySnapshot2 = await getDocs(q2);
+          querySnapshot2.forEach((doc) => {
             updateDoc(doc.ref, {
               pfp: imageURL,
             });
