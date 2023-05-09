@@ -8,12 +8,14 @@ const MainTitle = ({ title, link = 'View all', to }) => {
   return (
     <div className={classes['main__titlebox']}>
       <h2 className={classes['main__header']}>{title}</h2>
-      <Link to={to} className={classes['main__subheader']}>
-        <div className="text">{link}</div>
-        <svg className={classes.chevron}>
-          <use xlinkHref={`${svg}#icon-chevron-right`}></use>
-        </svg>
-      </Link>
+      {link && to && (
+        <Link to={to} className={classes['main__subheader']}>
+          <div className="text">{link}</div>
+          <svg className={classes.chevron}>
+            <use xlinkHref={`${svg}#icon-chevron-right`}></use>
+          </svg>
+        </Link>
+      )}
     </div>
   );
 };

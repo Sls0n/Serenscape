@@ -1,0 +1,50 @@
+.main__sounds {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr));
+  grid-gap: 2.5rem;
+  margin-top: 2rem;
+
+  list-style: none;
+
+  &--empty {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #ccc;
+    margin-top: 2rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  }
+}
+
+.errorbox {
+  display: flex;
+  margin-top: 4rem;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg {
+  width: 4rem;
+  height: 4rem;
+  fill: var(--color-header-logo);
+}
+
+.errorbox__message {
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--color-header-logo);
+}
+
+.errorbox__link {
+  font-size: 3rem;
+  color: var(--color-primary-1);
+  text-decoration: underline;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #ccc;
+  }
+}

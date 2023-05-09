@@ -6,6 +6,12 @@
 
   list-style: none;
 
+  &--empty {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #ccc;
+  }
+
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   }

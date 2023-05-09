@@ -7,6 +7,7 @@ import classes from './UserSoundList.module.scss';
 
 import { db } from '../../../../config/firebase-config';
 import { getDocs, collection } from 'firebase/firestore';
+import MainTitle from '../MainTitle';
 
 const UserSoundList = () => {
   const [sounds, setSounds] = useState([]);
@@ -31,6 +32,7 @@ const UserSoundList = () => {
 
   return (
     <>
+      <MainTitle title={'User uploads'} link={null} />
       {isLoading ? (
         <MainSoundSkeleton />
       ) : (
