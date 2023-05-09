@@ -3,12 +3,12 @@ import React from 'react';
 import Section from '../components/Section/Section';
 import Header from '../components/Header/Header';
 
-const SetGoalsPage = () => {
+const MyUploads = () => {
   return (
     <Section>
-      <Header firstNav={'User'} secondNav={'Goals'} />
+      <Header firstNav={'Serenscape'} secondNav={'Uploads'} />
     </Section>
   );
 };
 
-export default SetGoalsPage;
+export default MyUploads;

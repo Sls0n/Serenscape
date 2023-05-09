@@ -8,7 +8,7 @@ import ExplorePage from './pages/Explore';
 import FavoritesPage from './pages/Favorites';
 import UploadPage from './pages/Upload';
 import SleepTimerPage from './pages/SleepTimer';
-import SetGoalsPage from './pages/SetGoals';
+import MyUploads from './pages/MyUploads';
 import ProfilePage from './pages/Profile';
 import SignInPage from './pages/SignInPage/SignIn';
 import SignUpPage from './pages/SignUpPage/SignUp';
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       { path: '/upload', element: <UploadPage /> },
 
       { path: '/timer', element: <SleepTimerPage /> },
-      { path: '/goals', element: <SetGoalsPage /> },
+      { path: '/uploads', element: <MyUploads /> },
       { path: '/profile', element: <ProfilePage /> },
     ],
   },

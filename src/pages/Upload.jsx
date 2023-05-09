@@ -7,7 +7,7 @@ import UploadSound from '../components/UploadSound/UploadSound';
 const UploadPage = () => {
   return (
     <Section>
-      <Header firstNav={'Navigation'} secondNav={'Upload'} />
+      <Header firstNav={'Serenscape'} secondNav={'Upload'} />
 
       <UploadSound />
     </Section>

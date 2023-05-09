@@ -8,7 +8,7 @@ const SleepTimerPage = () => {
 
   return (
     <Section>
-      <Header firstNav={'User'} secondNav={'Timer'} />
+      <Header firstNav={'Serenscape'} secondNav={'Timer'} />
     </Section>
   );
 };

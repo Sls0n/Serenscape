@@ -7,7 +7,7 @@ import Profile from '../components/Profile/Profile';
 const ProfilePage = () => {
   return (
     <Section>
-      <Header firstNav={'User'} secondNav={'Profile'} />
+      <Header firstNav={'Serenscape'} secondNav={'Profile'} />
       <Profile />
     </Section>
   );

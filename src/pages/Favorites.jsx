@@ -6,7 +6,7 @@ import FavoriteSoundList from '../components/Section/Main/MainSounds/FavoriteSou
 const FavoritesPage = () => {
   return (
     <Section>
-      <Header firstNav={'Navigation'} secondNav={'Favorites'} />
+      <Header firstNav={'Serenscape'} secondNav={'Favorites'} />
 
       <FavoriteSoundList />
     </Section>

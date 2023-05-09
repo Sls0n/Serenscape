@@ -20,8 +20,8 @@ const NAVIGATION_1 = [
 
 const NAVIGATION_2 = [
   { name: 'Profile', icon: 'icon-award', link: '/profile' },
+  { name: 'Uploads', icon: 'icon-download-cloud', link: '/uploads' },
   { name: 'Timer', icon: 'icon-clock', link: '/timer' },
-  { name: 'Set goals', icon: 'icon-edit', link: '/goals' },
 ];
 
 const NavigationLinkLists = () => {
@@ -40,23 +40,13 @@ const NavigationLinkLists = () => {
 
       <ul className={classes['aside__lists']}>
         {NAVIGATION_1.map((item) => (
-          <NavigationLink
-            key={Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}
-            name={item.name}
-            icon={item.icon}
-            link={item.link}
-          />
+          <NavigationLink key={item.name} name={item.name} icon={item.icon} link={item.link} />
         ))}
 
         {!isOpen && <NavigationHeader heading="User settings" />}
 
         {NAVIGATION_2.map((item) => (
-          <NavigationLink
-            key={Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}
-            name={item.name}
-            icon={item.icon}
-            link={item.link}
-          />
+          <NavigationLink key={item.name} name={item.name} icon={item.icon} link={item.link} />
         ))}
 
         {isDark ? (
