@@ -49,7 +49,7 @@ const FavoriteSoundList = () => {
         <MainSoundSkeleton />
       ) : (
         <ul className={classes.favorite__sounds}>
-          {favorites.length === 0 && <p className={classes['favorite__sounds--empty']}>No favorites yet. </p>}
+          {favorites.length === 0 && <p className={classes['favorite__sounds--empty']}>No favorites yet.</p>}
           {favorites.map(
             (favorite) =>
               favorite.imageSource &&

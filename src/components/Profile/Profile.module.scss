@@ -10,6 +10,12 @@
     color: var(--color-header-logo);
   }
 
+  &__error {
+    font-size: 3.2rem;
+    font-weight: 400;
+    color: var(--color-header-logo);
+  }
+
   &__email {
     font-size: 2rem;
     font-weight: 500;
@@ -109,3 +115,35 @@
     cursor: not-allowed;
   }
 }
+
+.errorbox {
+  display: flex;
+  margin-top: 4rem;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg {
+  width: 4rem;
+  height: 4rem;
+  fill: var(--color-header-logo);
+}
+
+.errorbox__message {
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--color-header-logo);
+}
+
+.errorbox__link {
+  font-size: 3rem;
+  color: var(--color-primary-1);
+  text-decoration: underline;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #ccc;
+  }
+}
+

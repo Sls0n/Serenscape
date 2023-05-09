@@ -58,6 +58,8 @@ const Profile = () => {
           console.log(error);
         });
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imageURL]);
 
   const fileChangeHandler = (e) => {
@@ -138,9 +140,20 @@ const Profile = () => {
           </div>
         </div>
       ) : (
-        <div className={classes.profile}>
-          <h3 className={classes['profile__name']}>Sign in to customize profile</h3>
-        </div>
+        <>
+          <div className={classes.errorbox}>
+            <svg className={classes.svg}>
+              <use xlinkHref={`${svg}#icon-alert-circle`}></use>
+            </svg>
+            <p className={classes.errorbox__message}>
+              You need to{' '}
+              <a href="/signin" className={classes.errorbox__link}>
+                <span>sign in</span>
+              </a>{' '}
+              to view your profile
+            </p>
+          </div>
+        </>
       )}
     </>
   );

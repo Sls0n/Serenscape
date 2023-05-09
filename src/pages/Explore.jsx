@@ -7,7 +7,7 @@ import UserSoundList from '../components/Section/Main/MainSounds/UserSoundList';
 const ExplorePage = () => {
   return (
     <Section>
-      <Header firstNav={'Navigation'} secondNav={'Explore'} filterShown={true}/>
+      <Header firstNav={'Navigation'} secondNav={'Explore'} />
       <UserSoundList />
     </Section>
   );
