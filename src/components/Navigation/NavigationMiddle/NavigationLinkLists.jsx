@@ -13,14 +13,14 @@ import { getAuth } from 'firebase/auth';
 
 const NAVIGATION_1 = [
   { name: 'Home', icon: 'icon-home', link: '/' },
-  { name: 'Explore', icon: 'icon-headphones', link: '/explore' },
+  { name: 'Explore', icon: 'icon-search', link: '/explore' },
   { name: 'Favorites', icon: 'icon-heart', link: '/favorites' },
-  { name: 'Upload', icon: 'icon-plus-square', link: '/upload' },
+  { name: 'Upload', icon: 'icon-upload', link: '/upload' },
 ];
 
 const NAVIGATION_2 = [
   { name: 'Profile', icon: 'icon-award', link: '/profile' },
-  { name: 'Uploads', icon: 'icon-download-cloud', link: '/uploads' },
+  { name: 'Uploads', icon: 'icon-user-plus', link: '/uploads' },
   { name: 'Timer', icon: 'icon-clock', link: '/timer' },
 ];
 

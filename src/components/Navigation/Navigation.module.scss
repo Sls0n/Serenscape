@@ -16,6 +16,7 @@
 
   padding: 2rem 3rem;
   transition: background 0.3s;
+  will-change: background;
 }
 
 .asideClosed {
@@ -33,8 +34,8 @@
   align-items: center;
   justify-content: center;
 
-  transition: background 0.3s, width 0.3s;
-  will-change: width;
+  transition: background 0.3s;
+  will-change: background;
 
   padding: 2rem;
 }
