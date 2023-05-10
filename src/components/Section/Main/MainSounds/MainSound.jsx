@@ -89,7 +89,6 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
   };
 
   const pathname = useMemo(() => {
-    console.log(title);
     return title.trim().replace(/\s+/g, '-').toLowerCase() + '-' + id;
   }, [title, id]);
 
