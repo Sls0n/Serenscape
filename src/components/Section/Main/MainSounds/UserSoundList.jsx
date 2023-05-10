@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 import MainSound from './MainSound';
 import MainSoundSkeleton from './MainSoundSkeleton';
@@ -9,52 +10,42 @@ import { db } from '../../../../config/firebase-config';
 import { getDocs, collection } from 'firebase/firestore';
 
 const UserSoundList = () => {
-  const [sounds, setSounds] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const getUserSounds = async () => {
+    const data = await getDocs(collection(db, 'uploads'));
+    const soundsData = data.docs.map((doc) => doc.data());
+    return soundsData;
+  };
 
-  useEffect(() => {
-    const getSounds = async () => {
-      try {
-        setIsLoading(true);
-        const data = await getDocs(collection(db, 'uploads'));
-        const soundsData = data.docs.map((doc) => doc.data());
-        setSounds(soundsData);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  const { data, isError, isLoading, error } = useQuery(['userSounds'], getUserSounds);
 
-    getSounds();
-  }, []);
+  if (isLoading) {
+    return <MainSoundSkeleton />;
+  }
+
+  if (isError) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
-    <>
-      {isLoading ? (
-        <MainSoundSkeleton />
-      ) : (
-        <ul className={classes['main__sounds']}>
-          {sounds.map(
-            (sound) =>
-              sound.imageSource &&
-              sound.title &&
-              sound.audioSource &&
-              sound.id && (
-                <MainSound
-                  key={sound?.id}
-                  imageSource={sound?.imageSource}
-                  title={sound?.title}
-                  audioSource={sound?.audioSource}
-                  artist={sound?.artist}
-                  pfp={sound?.pfp}
-                  id={sound?.id}
-                />
-              )
-          )}
-        </ul>
+    <ul className={classes['main__sounds']}>
+      {data.map(
+        (sound) =>
+          sound.imageSource &&
+          sound.title &&
+          sound.audioSource &&
+          sound.id && (
+            <MainSound
+              key={sound?.id}
+              imageSource={sound?.imageSource}
+              title={sound?.title}
+              audioSource={sound?.audioSource}
+              artist={sound?.artist}
+              pfp={sound?.pfp}
+              id={sound?.id}
+            />
+          )
       )}
-    </>
+    </ul>
   );
 };
 
