@@ -20,7 +20,7 @@ const NAVIGATION_1 = [
 
 const NAVIGATION_2 = [
   { name: 'Profile', icon: 'icon-award', link: '/profile' },
-  { name: 'Uploads', icon: 'icon-user-plus', link: '/uploads' },
+  { name: 'Uploads', icon: 'icon-music', link: '/uploads' },
   { name: 'Timer', icon: 'icon-clock', link: '/timer' },
 ];
 
