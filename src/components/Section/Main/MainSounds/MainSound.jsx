@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 import classes from './MainSound.module.scss';
 import svg from '../../../../assets/svg/sprite.svg';
@@ -17,7 +18,6 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
     useContext(AudioContext);
 
   const [isFavorite, setIsFavorite] = useState(false);
-  const [isFavoriteLoading, setIsFavoriteLoading] = useState(false);
 
   const favoriteCollectionRef = collection(db, 'favorites');
 
@@ -29,32 +29,22 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
     }
   };
 
+  const getFavorites = async () => {
+    const data = await getDocs(favoriteCollectionRef);
+    const favoritesData = data.docs.map((doc) => doc.data());
+
+    return favoritesData;
+  };
+
+  const { data, isLoading } = useQuery(['favorites'], getFavorites);
+
   useEffect(() => {
-    const getFavorites = async () => {
-      try {
-        if (!auth.currentUser) throw new Error('You must be logged in to add to favorites');
-        setIsFavoriteLoading(true);
-
-        const data = await getDocs(favoriteCollectionRef);
-
-        const favoritesData = data.docs.map((doc) => doc.data());
-
-        setIsFavoriteLoading(false);
-
-        if (favoritesData.some((favorite) => favorite.id === id)) {
-          setIsFavorite(true);
-        } else {
-          setIsFavorite(false);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getFavorites();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (data?.some((favorite) => favorite.id === id)) {
+      setIsFavorite(true);
+    } else {
+      setIsFavorite(false);
+    }
+  }, [data]);
 
   const favoriteClickHandler = async () => {
     try {
@@ -98,7 +88,9 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
     width: `${currentTimePercentage}%`,
   };
 
-  const pathname = title.trim().replace(/\s+/g, '-').toLowerCase() + '-' + id;
+  const pathname = useMemo(() => {
+    return title.trim().replace(/\s+/g, '-').toLowerCase() + '-' + id;
+  }, [title, id]);
 
   return (
     <li className={classes['main__sound']}>
@@ -137,7 +129,7 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
             <use xlinkHref={`${svg}#icon-maximize`}></use>
           </svg>
         </Link>
-        {!isFavoriteLoading ? (
+        {!isLoading ? (
           <button onClick={favoriteClickHandler} className={classes.box__heartIcon}>
             <svg>
               <use xlinkHref={`${svg}#icon-${!isFavorite && id === currentSoundId ? 'heart' : 'trash'}`}></use>

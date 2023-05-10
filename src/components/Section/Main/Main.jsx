@@ -6,7 +6,11 @@ import MainTitle from './MainTitle';
 import FavoriteSoundList from './MainSounds/FavoriteSoundList';
 import UserSoundList from './MainSounds/UserSoundList';
 
+import { getAuth } from 'firebase/auth';
+
 const Main = () => {
+  const auth = getAuth();
+
   return (
     <>
       <main className={classes.main}>
@@ -17,9 +21,8 @@ const Main = () => {
         <MainTitle title="Community uploads" to={'/explore'} />
         <UserSoundList />
         <br />
-
-        <MainTitle title="My favorites" to={'/favorites'} />
-        <FavoriteSoundList />
+        {auth.currentUser && <MainTitle title="My favorites" to={'/favorites'} />}
+        {auth.currentUser && <FavoriteSoundList />}
       </main>
     </>
   );

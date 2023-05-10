@@ -1,4 +1,5 @@
 import React from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 import MainSound from './MainSound';
 import MainSoundSkeleton from './MainSoundSkeleton';
@@ -7,17 +8,15 @@ import classes from './MainSoundList.module.scss';
 
 import { db } from '../../../../config/firebase-config';
 import { getDocs, collection } from 'firebase/firestore';
-import { useQuery } from '@tanstack/react-query';
 
 const MainSoundList = () => {
-  const getSounds = async () => {
+  const getMainSounds = async () => {
     const data = await getDocs(collection(db, 'sounds'));
     const soundsData = data.docs.map((doc) => doc.data());
-
     return soundsData;
   };
 
-  const { data, isLoading, isError, error } = useQuery(['sounds'], getSounds);
+  const { data, isLoading, isError, error } = useQuery(['mainSounds'], getMainSounds);
 
   if (isLoading) {
     return <MainSoundSkeleton />;
