@@ -8,7 +8,6 @@ const UploadPage = () => {
   return (
     <Section>
       <Header firstNav={'Serenscape'} secondNav={'Upload'} />
-
       <UploadSound />
     </Section>
   );

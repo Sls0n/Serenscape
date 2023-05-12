@@ -23,6 +23,7 @@ import NavContext from './context/nav-context';
 import ThemeContext from './context/theme-context';
 import AudioContextProvider from './context/audio-context';
 import SelectedAudio from './pages/SelectedAudio';
+import OfficialPage from './pages/Official';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
       { path: '/explore', element: <ExplorePage /> },
       { path: '/favorites', element: <FavoritesPage /> },
       { path: '/upload', element: <UploadPage /> },
+      { path: '/official', element: <OfficialPage /> },
 
       { path: '/timer', element: <SleepTimerPage /> },
       { path: '/uploads', element: <MyUploads /> },

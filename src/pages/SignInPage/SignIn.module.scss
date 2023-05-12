@@ -7,8 +7,19 @@
   align-items: center;
   justify-content: center;
   padding: 4rem 8rem;
+
+  &__message {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
 }
 
-
-
-
+.link {
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-decoration: underline;
+  margin-top: 2rem;
+  transition: all 0.2s ease-in-out;
+}

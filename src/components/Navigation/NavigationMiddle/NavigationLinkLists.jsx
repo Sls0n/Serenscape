@@ -15,12 +15,12 @@ const NAVIGATION_1 = [
   { name: 'Home', icon: 'icon-home', link: '/' },
   { name: 'Explore', icon: 'icon-search', link: '/explore' },
   { name: 'Favorites', icon: 'icon-heart', link: '/favorites' },
-  { name: 'Upload', icon: 'icon-upload', link: '/upload' },
+  { name: 'Official', icon: 'icon-headphones', link: '/official' },
 ];
 
 const NAVIGATION_2 = [
   { name: 'Profile', icon: 'icon-award', link: '/profile' },
-  { name: 'Uploads', icon: 'icon-music', link: '/uploads' },
+  { name: 'Your uploads', icon: 'icon-music', link: '/uploads' },
   { name: 'Timer', icon: 'icon-clock', link: '/timer' },
 ];
 
@@ -58,16 +58,9 @@ const NavigationLinkLists = () => {
 
         {!isOpen && (
           <Button
-            onClick={
-              auth.currentUser
-                ? () => {
-                    window.location.reload();
-                    auth.signOut();
-                  }
-                : () => {
-                    window.location.href = '/signup';
-                  }
-            }
+            onClick={() => {
+              auth.currentUser ? (window.location.href = '/upload') : (window.location.href = '/signin');
+            }}
             text={
               <>
                 <div
@@ -78,7 +71,7 @@ const NavigationLinkLists = () => {
                     gap: '1rem',
                   }}
                   className={classes['header__up-auth']}>
-                  {auth.currentUser ? 'Exit account' : 'Create an account'}
+                  {auth.currentUser ? 'Upload music' : 'Upload music'}
                   <svg
                     style={{
                       width: '2rem',
@@ -89,7 +82,7 @@ const NavigationLinkLists = () => {
                       justifyContent: 'center',
                     }}
                     className={classes['header__up-auth-btn']}>
-                    <use xlinkHref={`${svg}#icon-${auth.currentUser ? 'log-out' : 'chevron-right'}`}></use>
+                    <use xlinkHref={`${svg}#icon-upload`}></use>
                   </svg>
                 </div>
               </>

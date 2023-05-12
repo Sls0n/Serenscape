@@ -6,8 +6,10 @@
 
   background: var(--color-bg-sidebar);
 
-  height: 100vh;
+  height: 100svh;
   font-size: 2rem;
+
+  overflow-y: auto;
 
   display: flex;
   flex-direction: column;
