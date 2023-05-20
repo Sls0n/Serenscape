@@ -31,7 +31,7 @@ const AudioFullScreen = () => {
 
         <AudioInformation />
 
-        <div className={classes['container__controls']}>
+        {/* <div className={classes['container__controls']}>
           <button className={classes['container__controls--left']}>
             <svg>
               <use xlinkHref={`${svg}#icon-heart`}></use>
@@ -47,7 +47,7 @@ const AudioFullScreen = () => {
               <use xlinkHref={`${svg}#icon-volume-2`}></use>
             </svg>
           </button>
-        </div>
+        </div> */}
 
         <div className={classes['container__progress']}>
           <div
