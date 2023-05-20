@@ -4,6 +4,14 @@ import Navigation from '../components/Navigation/Navigation';
 import { getAuth, onAuthStateChanged, setPersistence, browserLocalPersistence } from 'firebase/auth';
 import { PropagateLoader } from 'react-spinners';
 
+const loaderStyle = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  zIndex: '1000',
+};
+
 const RootLayout = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [isAuthFetched, setIsAuthFetched] = useState(false);
@@ -25,19 +33,7 @@ const RootLayout = () => {
 
   return (
     <>
-      <PropagateLoader
-        color={'#5950d6'}
-        height={50}
-        width={15}
-        loading={!isAuthFetched}
-        style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          zIndex: '1000',
-        }}
-      />
+      <PropagateLoader color="#5950d6" height={50} width={15} loading={!isAuthFetched} style={loaderStyle} />
 
       {isAuthFetched && (
         <>
