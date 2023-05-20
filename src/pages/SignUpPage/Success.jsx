@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import classes from './CSS/Success.module.scss';
+import classes from './Success.module.scss';
 import Confetti from 'react-confetti';
 
 const Success = () => {

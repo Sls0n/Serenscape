@@ -10,6 +10,7 @@ import svg from '../../../assets/svg/sprite.svg';
 import NavContext from '../../../context/nav-context';
 import ThemeContext from '../../../context/theme-context';
 import { getAuth } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 const NAVIGATION_1 = [
   { name: 'Home', icon: 'icon-home', link: '/' },
@@ -29,6 +30,7 @@ const NavigationLinkLists = () => {
   const { isDark, setDark } = useContext(ThemeContext);
 
   const auth = getAuth();
+  const navigate = useNavigate();
 
   const clickHandler = () => {
     setDark(!isDark);
@@ -59,7 +61,7 @@ const NavigationLinkLists = () => {
         {!isOpen && (
           <Button
             onClick={() => {
-              auth.currentUser ? (window.location.href = '/upload') : (window.location.href = '/signin');
+              auth.currentUser ? navigate('/upload') : navigate('/signin');
             }}
             text={
               <>

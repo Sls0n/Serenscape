@@ -12,7 +12,7 @@ import MyUploads from './pages/MyUploads';
 import ProfilePage from './pages/Profile';
 import SignInPage from './pages/SignInPage/SignIn';
 import SignUpPage from './pages/SignUpPage/SignUp';
-import Success from './pages/Success';
+import Success from './pages/SignUpPage/Success';
 
 import Navigation from './components/Navigation/Navigation';
 import Section from './components/Section/Section';
@@ -51,10 +51,6 @@ const router = createBrowserRouter([
     element: <SignUpPage />,
   },
 
-  {
-    path: '/success',
-    element: <Success />,
-  },
   {
     path: '/audio/:id',
     element: <SelectedAudio />,

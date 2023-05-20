@@ -4,13 +4,11 @@ import { Link } from 'react-router-dom';
 import classes from './SignUpForm.module.scss';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../config/firebase-config';
-import { useNavigate } from 'react-router-dom';
 import PropagateLoader from 'react-spinners/PropagateLoader';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../config/firebase-config';
 
 const SignUpForm = () => {
-  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -38,8 +36,6 @@ const SignUpForm = () => {
         email: user.email,
         password: data.password,
       });
-
-      navigate('/success');
     } catch (error) {
       console.log(error.message);
     } finally {
