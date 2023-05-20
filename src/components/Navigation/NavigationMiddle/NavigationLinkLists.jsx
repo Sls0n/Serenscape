@@ -21,7 +21,7 @@ const NAVIGATION_1 = [
 
 const NAVIGATION_2 = [
   { name: 'Profile', icon: 'icon-award', link: '/profile' },
-  { name: 'Your uploads', icon: 'icon-music', link: '/uploads' },
+  { name: 'My Uploads', icon: 'icon-music', link: '/uploads' },
   { name: 'Timer', icon: 'icon-clock', link: '/timer' },
 ];
 
