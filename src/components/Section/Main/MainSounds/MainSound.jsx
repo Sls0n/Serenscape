@@ -8,7 +8,7 @@ import { AudioContext } from '../../../../context/audio-context';
 import { Link } from 'react-router-dom';
 
 import { db } from '../../../../config/firebase-config';
-import { getDocs, collection, addDoc, deleteDoc } from 'firebase/firestore';
+import { getDocs, collection, addDoc, deleteDoc, query, where } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
 const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
@@ -30,9 +30,16 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
   };
 
   const getFavorites = async () => {
-    const data = await getDocs(favoriteCollectionRef);
-    const favoritesData = data.docs.map((doc) => doc.data());
+    if (!auth.currentUser) {
+      return [];
+    }
+    const favoriteCollectionRef = collection(db, 'favorites');
+    const userId = auth.currentUser.uid;
 
+    const q = query(favoriteCollectionRef, where('userId', '==', userId));
+    const data = await getDocs(q);
+
+    const favoritesData = data.docs.map((doc) => doc.data());
     return favoritesData;
   };
 
