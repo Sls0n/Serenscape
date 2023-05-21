@@ -17,6 +17,7 @@
     "react-hook-form": "^7.43.5",
     "react-router-dom": "^6.8.2",
     "react-spinners": "^0.13.8",
+    "react-timer-hook": "^3.0.6",
     "sass": "^1.58.3",
     "uuid": "^9.0.0"
   },
