@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import HomePage from './pages/Home';
@@ -12,7 +12,6 @@ import MyUploads from './pages/MyUploads';
 import ProfilePage from './pages/Profile';
 import SignInPage from './pages/SignInPage/SignIn';
 import SignUpPage from './pages/SignUpPage/SignUp';
-import Success from './pages/SignUpPage/Success';
 
 import Navigation from './components/Navigation/Navigation';
 import Section from './components/Section/Section';
@@ -22,6 +21,7 @@ import Main from './components/Section/Main/Main';
 import NavContext from './context/nav-context';
 import ThemeContext from './context/theme-context';
 import AudioContextProvider from './context/audio-context';
+import TimerContext from './context/timer-context';
 import SelectedAudio from './pages/SelectedAudio';
 import OfficialPage from './pages/Official';
 
@@ -60,6 +60,12 @@ const router = createBrowserRouter([
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDark, setDark] = useState(true);
+  const [hour, setHour] = useState(0);
+  const [minute, setMinute] = useState(0);
+  const [shouldStart, setShouldStart] = useState(false);
+
+  const timeRef = useRef(new Date());
+  const [time, setTime] = useState(timeRef.current);
 
   useEffect(() => {
     if (isDark) {
@@ -75,13 +81,25 @@ function App() {
     <AudioContextProvider>
       <NavContext.Provider value={{ isOpen, setIsOpen }}>
         <ThemeContext.Provider value={{ isDark, setDark }}>
-          <RouterProvider router={router}>
-            <Navigation />
-            <Section>
-              <Header />
-              <Main />
-            </Section>
-          </RouterProvider>
+          <TimerContext.Provider
+            value={{
+              hour,
+              minute,
+              shouldStart,
+              setHour,
+              setMinute,
+              setShouldStart,
+              time,
+              setTime,
+            }}>
+            <RouterProvider router={router}>
+              <Navigation />
+              <Section>
+                <Header />
+                <Main />
+              </Section>
+            </RouterProvider>
+          </TimerContext.Provider>
         </ThemeContext.Provider>
       </NavContext.Provider>
     </AudioContextProvider>

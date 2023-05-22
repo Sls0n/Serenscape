@@ -31,6 +31,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   gap: 2.5rem;
 
   &__hour {
@@ -76,4 +77,11 @@
       padding: 1rem;
     }
   }
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 }

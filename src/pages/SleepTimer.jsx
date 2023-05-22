@@ -2,15 +2,13 @@ import React from 'react';
 
 import Section from '../components/Section/Section';
 import Header from '../components/Header/Header';
-import Timer from '../components/Timer/Timer';
+import TimerForm from '../components/Timer/TimerForm';
 
 const SleepTimerPage = () => {
-  console.log('SleepTimerPage');
-
   return (
     <Section>
       <Header firstNav={'Serenscape'} secondNav={'Timer'} />
-      <Timer />
+      <TimerForm />
     </Section>
   );
 };
