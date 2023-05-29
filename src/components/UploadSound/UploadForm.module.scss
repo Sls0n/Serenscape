@@ -17,7 +17,7 @@
   &__error {
     font-size: 1.4rem;
     font-weight: 500;
-    color: #ff0033b9;
+    color: #df3528;
   }
 
   &__label {
@@ -43,16 +43,11 @@
     transition: border 0.2s, background-color 0.2s;
 
     &.error {
-      border: 2px solid rgba(#ff0033, 0.8);
+      border: 2px solid rgba(#df3528, 0.8);
 
       &:focus {
-        border: 2px solid rgba(#ff0033, 0.8);
+        border: 2px solid rgba(#df3528, 0.8);
       }
-    }
-
-    &:focus {
-      outline: none;
-      border: 2px solid var(--color-primary-1);
     }
 
     &:focus {
@@ -92,10 +87,10 @@
   transition: all 0.2s;
 
   &.error {
-    border: 2px dashed rgba(#ff0033, 0.8);
+    border: 2px dashed rgba(#df3528, 0.8);
 
     &:focus {
-      border: 2px solid rgba(#ff0033, 0.8);
+      border: 2px solid rgba(#df3528, 0.8);
     }
   }
 
@@ -136,10 +131,10 @@
   transition: all 0.2s;
 
   &.error {
-    border: 2px dashed rgba(#ff0033, 0.8);
+    border: 2px dashed rgba(#df3528, 0.8);
 
     &:focus {
-      border: 2px solid rgba(#ff0033, 0.8);
+      border: 2px solid rgba(#df3528, 0.8);
     }
   }
 

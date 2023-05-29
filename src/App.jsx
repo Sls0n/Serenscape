@@ -60,12 +60,10 @@ const router = createBrowserRouter([
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDark, setDark] = useState(true);
-  const [hour, setHour] = useState(0);
-  const [minute, setMinute] = useState(0);
-  const [shouldStart, setShouldStart] = useState(false);
 
-  const timeRef = useRef(new Date());
-  const [time, setTime] = useState(timeRef.current);
+  const [hour, setHour] = useState('');
+  const [minute, setMinute] = useState('');
+  const [time, setTime] = useState(null);
 
   useEffect(() => {
     if (isDark) {
@@ -80,18 +78,16 @@ function App() {
   return (
     <AudioContextProvider>
       <NavContext.Provider value={{ isOpen, setIsOpen }}>
-        <ThemeContext.Provider value={{ isDark, setDark }}>
-          <TimerContext.Provider
-            value={{
-              hour,
-              minute,
-              shouldStart,
-              setHour,
-              setMinute,
-              setShouldStart,
-              time,
-              setTime,
-            }}>
+        <TimerContext.Provider
+          value={{
+            hour,
+            minute,
+            setHour,
+            setMinute,
+            time,
+            setTime,
+          }}>
+          <ThemeContext.Provider value={{ isDark, setDark }}>
             <RouterProvider router={router}>
               <Navigation />
               <Section>
@@ -99,8 +95,8 @@ function App() {
                 <Main />
               </Section>
             </RouterProvider>
-          </TimerContext.Provider>
-        </ThemeContext.Provider>
+          </ThemeContext.Provider>
+        </TimerContext.Provider>
       </NavContext.Provider>
     </AudioContextProvider>
   );

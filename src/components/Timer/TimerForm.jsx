@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { useTimer } from 'react-timer-hook';
 import { AudioContext } from '../../context/audio-context';
 import TimerContext from '../../context/timer-context';
@@ -6,8 +6,21 @@ import TimerContext from '../../context/timer-context';
 import classes from './TimerForm.module.scss';
 
 const TimerForm = () => {
-  const { hour, minute, shouldStart, setHour, setMinute, setShouldStart, time, setTime } = useContext(TimerContext);
+  const [isRunningState, setIsRunningState] = useState(false);
+
+  const { hour, minute, setHour, setMinute, time, setTime } = useContext(TimerContext);
   const { isPlaying, pauseAudio } = useContext(AudioContext);
+
+  const { seconds, minutes, hours, restart } = useTimer({
+    expiryTimestamp: time,
+
+    onExpire: () => {
+      console.warn('Timer ended, onExpire called');
+      if (isPlaying) {
+        pauseAudio();
+      }
+    },
+  });
 
   const hourChangeHandler = (e) => {
     setHour(+e.target.value);
@@ -19,21 +32,28 @@ const TimerForm = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setShouldStart(true);
+    if (hour === '' && minute === '') {
+      return;
+    }
 
-    console.log(hour, minute);
-    setTime(new Date().setSeconds(new Date().getSeconds() + hour * 3600 + minute * 60));
+    const now = new Date();
+    now.setHours(now.getHours() + hour);
+    now.setMinutes(now.getMinutes() + minute);
+    setTime(now);
+    setIsRunningState(true);
+    restart(now);
+
+    setHour('');
+    setMinute('');
   };
 
-  const { seconds, minutes, hours, isRunning, start, restart } = useTimer({
-    expiryTimestamp: time,
-    onExpire: () => {
-      console.warn('onExpire called');
-      if (isPlaying) {
-        pauseAudio();
-      }
-    },
-  });
+  const resetHandler = () => {
+    setIsRunningState(false);
+    setTime(null);
+    setHour('');
+    setMinute('');
+    restart(0);
+  };
 
   return (
     <>
@@ -42,20 +62,32 @@ const TimerForm = () => {
           <div className={classes['form-container']}>
             <div className={classes['timer__hour']}>
               <span>Hour</span>
-              <input type="number" min="0" max="24" onChange={hourChangeHandler} />
+              <input type="number" min="0" max="24" value={hour} onChange={hourChangeHandler} />
             </div>
             <div className={classes['timer__minute']}>
               <span>Minute</span>
-              <input type="number" min="0" max="60" onChange={minuteChangeHandler} />
+              <input type="number" min="0" max="60" value={minute} onChange={minuteChangeHandler} />
             </div>
           </div>
-          <button className={classes['timer__button']}>Submit</button>
         </form>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '100px' }}>
+        <div style={{ textAlign: 'center', color: '#aaa' }}>
+          <div style={{ fontSize: '100px', color: '#ccc' }}>
             <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
           </div>
-          <p>{isRunning ? 'Running' : 'Not running'}</p>
+        </div>
+        <div className={classes['timer__button']}>
+          <button
+            style={{
+              opacity: isRunningState ? '0.5' : '1',
+              pointerEvents: isRunningState ? 'none' : 'auto',
+            }}
+            onClick={submitHandler}
+            className={classes['timer__button-1']}>
+            Start
+          </button>
+          <button onClick={resetHandler} className={classes['timer__button-2']}>
+            Reset
+          </button>
         </div>
       </div>
     </>
