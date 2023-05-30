@@ -16,6 +16,7 @@ const TimerForm = () => {
       console.warn('Timer ended, onExpire called');
       if (isPlaying) {
         pauseAudio();
+        setIsRunning(false);
       }
     },
   });
