@@ -131,18 +131,17 @@
     font-size: 1.6rem;
     background-color: transparent;
     font-weight: 500;
-    color: var(--color-btn-text);
-    border: 1px solid #df3528;
+    color: #db4b4b;
     border-radius: 1rem;
     padding: 1rem 2.5rem;
-    border: 1px solid #df3528;
+    border: 1px solid #db4b4b;
     cursor: pointer;
     text-align: center;
-    transition: background-color 0.2s;
-    will-change: background-color;
+    transition: background-color 0.2s, color 0.2s;
 
     &:hover {
-      background-color: #df3528;
+      background-color: #db4b4b;
+      color: #f2f2f2;
     }
   }
 }

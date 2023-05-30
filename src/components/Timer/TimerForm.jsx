@@ -6,7 +6,7 @@ import TimerContext from '../../context/timer-context';
 import classes from './TimerForm.module.scss';
 
 const TimerForm = () => {
-  const { hour, minute, setHour, setMinute, start, time, setTime, isRunning, setIsRunning } = useContext(TimerContext);
+  const { hour, minute, setHour, setMinute, time, setTime, isRunning, setIsRunning } = useContext(TimerContext);
   const { isPlaying, pauseAudio } = useContext(AudioContext);
 
   const { seconds, minutes, hours, restart } = useTimer({

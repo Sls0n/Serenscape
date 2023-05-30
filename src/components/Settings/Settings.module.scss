@@ -1,0 +1,141 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(3, 3, 3, 0.8);
+  z-index: 1000;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #1d1e22;
+    padding: 4rem;
+    border-radius: 2rem;
+    width: 60rem;
+    height: 40rem;
+    gap: 2rem;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-basis: 20%;
+
+    &-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #fcfcfc;
+    }
+
+    &-icon {
+      svg {
+        width: 3.5rem;
+        height: 3.5rem;
+        fill: #fcfcfc;
+      }
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-basis: 50%;
+    margin-top: 1rem;
+    gap: 2rem;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &-title {
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: #bbb;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    flex: 1;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    &-logOutBtn {
+      all: unset;
+      font-size: 1.6rem;
+      font-weight: 500;
+      background-color: transparent;
+      border: 1px solid #de5151;
+      color: #de5151;
+      border-radius: 1rem;
+      padding: 1rem 2.5rem;
+      cursor: pointer;
+      transition: box-shadow 0.3s;
+      will-change: box-shadow;
+
+      svg {
+        width: 2rem;
+        height: 2rem;
+        fill: #de5151;
+        margin-left: 1rem;
+        vertical-align: middle;
+      }
+    }
+
+    &-cancelBtn {
+      all: unset;
+      font-size: 1.6rem;
+      font-weight: 500;
+      background-color: #2f3037;
+      color: var(--color-btn-text);
+      border-radius: 1rem;
+      padding: 1rem 2.5rem;
+      cursor: pointer;
+      transition: box-shadow 0.3s;
+      will-change: box-shadow;
+
+      svg {
+        width: 2rem;
+        height: 2rem;
+        fill: var(--color-btn-text);
+        margin-left: 1rem;
+        vertical-align: middle;
+      }
+    }
+
+    &-saveBtn {
+      all: unset;
+      font-size: 1.6rem;
+      font-weight: 500;
+      background-color: var(--color-primary-1);
+      color: var(--color-btn-text);
+      border-radius: 1rem;
+      padding: 1rem 2.5rem;
+      cursor: pointer;
+      transition: box-shadow 0.3s;
+      will-change: box-shadow;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, createPortal } from 'react';
 
 import NavigationLink from './NavigationLink';
 import NavigationHeader from './NavigationHeader';
@@ -11,6 +11,7 @@ import NavContext from '../../../context/nav-context';
 import ThemeContext from '../../../context/theme-context';
 import { getAuth } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import Settings from '../../Settings/Settings';
 
 const NAVIGATION_1 = [
   { name: 'Home', icon: 'icon-home', link: '/' },
@@ -28,6 +29,7 @@ const NAVIGATION_2 = [
 const NavigationLinkLists = () => {
   const { isOpen } = useContext(NavContext);
   const { isDark, setDark } = useContext(ThemeContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const auth = getAuth();
   const navigate = useNavigate();
@@ -44,20 +46,28 @@ const NavigationLinkLists = () => {
         {NAVIGATION_1.map((item) => (
           <NavigationLink key={item.name} name={item.name} icon={item.icon} link={item.link} />
         ))}
-
         {!isOpen && <NavigationHeader heading="User settings" />}
-
         {NAVIGATION_2.map((item) => (
           <NavigationLink key={item.name} name={item.name} icon={item.icon} link={item.link} />
         ))}
-
         {isDark ? (
           <NavigationLinkLast onClick={clickHandler} name="Light mode" icon="icon-sun" />
         ) : (
           <NavigationLinkLast onClick={clickHandler} name="Dark mode" icon="icon-moon" />
         )}
-        <NavigationLinkLast onClick={() => {}} name="Settings" icon="icon-settings" />
-
+        <NavigationLinkLast
+          onClick={() => {
+            setIsModalOpen(true);
+          }}
+          name="Settings"
+          icon="icon-settings"
+        />
+        <Settings
+          open={isModalOpen}
+          closeFn={() => {
+            setIsModalOpen(false);
+          }}
+        />
         {!isOpen && (
           <Button
             onClick={() => {
