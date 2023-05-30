@@ -3,10 +3,12 @@ import { createContext } from 'react';
 const TimerContext = createContext({
   hour: 0,
   minute: 0,
-  shouldStart: false,
   setHour: () => {},
   setMinute: () => {},
-  setShouldStart: () => {},
+  time: null,
+  setTime: () => {},
+  isRunning: false,
+  setIsRunning: () => {},
 });
 
 export default TimerContext;

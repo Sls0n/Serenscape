@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useTimer } from 'react-timer-hook';
 import { AudioContext } from '../../context/audio-context';
 import TimerContext from '../../context/timer-context';
@@ -6,9 +6,7 @@ import TimerContext from '../../context/timer-context';
 import classes from './TimerForm.module.scss';
 
 const TimerForm = () => {
-  const [isRunningState, setIsRunningState] = useState(false);
-
-  const { hour, minute, setHour, setMinute, time, setTime } = useContext(TimerContext);
+  const { hour, minute, setHour, setMinute, time, setTime, isRunning, setIsRunning } = useContext(TimerContext);
   const { isPlaying, pauseAudio } = useContext(AudioContext);
 
   const { seconds, minutes, hours, restart } = useTimer({
@@ -40,7 +38,7 @@ const TimerForm = () => {
     now.setHours(now.getHours() + hour);
     now.setMinutes(now.getMinutes() + minute);
     setTime(now);
-    setIsRunningState(true);
+    setIsRunning(true);
     restart(now);
 
     setHour('');
@@ -48,7 +46,7 @@ const TimerForm = () => {
   };
 
   const resetHandler = () => {
-    setIsRunningState(false);
+    setIsRunning(false);
     setTime(null);
     setHour('');
     setMinute('');
@@ -78,8 +76,8 @@ const TimerForm = () => {
         <div className={classes['timer__button']}>
           <button
             style={{
-              opacity: isRunningState ? '0.5' : '1',
-              pointerEvents: isRunningState ? 'none' : 'auto',
+              opacity: isRunning ? '0.5' : '1',
+              pointerEvents: isRunning ? 'none' : 'auto',
             }}
             onClick={submitHandler}
             className={classes['timer__button-1']}>

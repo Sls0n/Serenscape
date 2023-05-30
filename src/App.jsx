@@ -64,6 +64,7 @@ function App() {
   const [hour, setHour] = useState('');
   const [minute, setMinute] = useState('');
   const [time, setTime] = useState(null);
+  const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
     if (isDark) {
@@ -86,6 +87,8 @@ function App() {
             setMinute,
             time,
             setTime,
+            isRunning,
+            setIsRunning,
           }}>
           <ThemeContext.Provider value={{ isDark, setDark }}>
             <RouterProvider router={router}>
