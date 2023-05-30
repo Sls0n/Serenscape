@@ -6,7 +6,7 @@ import TimerContext from '../../context/timer-context';
 import classes from './TimerForm.module.scss';
 
 const TimerForm = () => {
-  const { hour, minute, setHour, setMinute, time, setTime, isRunning, setIsRunning } = useContext(TimerContext);
+  const { hour, minute, setHour, setMinute, start, time, setTime, isRunning, setIsRunning } = useContext(TimerContext);
   const { isPlaying, pauseAudio } = useContext(AudioContext);
 
   const { seconds, minutes, hours, restart } = useTimer({
@@ -14,9 +14,10 @@ const TimerForm = () => {
 
     onExpire: () => {
       console.warn('Timer ended, onExpire called');
+      setIsRunning(false);
+
       if (isPlaying) {
         pauseAudio();
-        setIsRunning(false);
       }
     },
   });
@@ -48,10 +49,10 @@ const TimerForm = () => {
 
   const resetHandler = () => {
     setIsRunning(false);
-    setTime(null);
+    setTime(0);
     setHour('');
     setMinute('');
-    restart(0);
+    restart(new Date(0, 0, 0, 0, 0, 0, 0));
   };
 
   return (
