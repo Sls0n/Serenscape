@@ -12,6 +12,7 @@ import ThemeContext from '../../../context/theme-context';
 import { getAuth } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import Settings from '../../Settings/Settings';
+import Notification from '../../Notification/Notification';
 
 const NAVIGATION_1 = [
   { name: 'Home', icon: 'icon-home', link: '/' },
@@ -62,12 +63,14 @@ const NavigationLinkLists = () => {
           name="Settings"
           icon="icon-settings"
         />
+
         <Settings
           open={isModalOpen}
           closeFn={() => {
             setIsModalOpen(false);
           }}
         />
+
         {!isOpen && (
           <Button
             onClick={() => {

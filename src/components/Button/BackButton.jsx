@@ -8,7 +8,11 @@ const BackButton = () => {
   const navigate = useNavigate();
 
   return (
-    <Link onClick={() => navigate(-1)} className={classes.arrow}>
+    <Link
+      onClick={() => {
+        navigate(-1);
+      }}
+      className={classes.arrow}>
       <svg className={classes.arrowSvg}>
         <use xlinkHref={`${svg}#icon-chevron-left`}></use>
       </svg>
