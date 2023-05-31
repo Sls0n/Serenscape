@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useState, useReducer } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import classes from './MainSound.module.scss';
@@ -11,22 +11,7 @@ import { db } from '../../../../config/firebase-config';
 import { getDocs, collection, addDoc, deleteDoc, query, where } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import Notification from '../../../Notification/Notification';
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'SHOW_NOTIFICATION':
-      return {
-        ...state,
-        showNotification: true,
-        notificationMessage: action.payload,
-        notificationStatus: action.status,
-      };
-    case 'HIDE_NOTIFICATION':
-      return { ...state, showNotification: false };
-    default:
-      return state;
-  }
-};
+import useErrorHandler from '../../../../hooks/useErrorHandler';
 
 const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
   const auth = getAuth();
@@ -36,11 +21,7 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
 
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const [state, dispatch] = useReducer(reducer, {
-    showNotification: false,
-    notificationMessage: '',
-    notificationStatus: 'default',
-  });
+  const { state, renderError, removeError } = useErrorHandler();
 
   const favoriteCollectionRef = collection(db, 'favorites');
 
@@ -90,7 +71,7 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
         if (favoritesData.some((favorite) => favorite.id === id)) {
           const docToDelete = data.docs.find((doc) => doc.data().id === id);
           await deleteDoc(docToDelete.ref);
-          dispatch({ type: 'SHOW_NOTIFICATION', payload: 'Removed from favorites', status: 'error' });
+          renderError('Removed from favorites', 'warning');
           return;
         } else {
           setIsFavorite(true);
@@ -105,13 +86,14 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
             artist,
           });
 
-          dispatch({ type: 'SHOW_NOTIFICATION', payload: 'Added to favorites', status: 'success' });
+          renderError('Added to favorites', 'success');
+
           return;
         }
       }
     } catch (error) {
       console.log(error);
-      dispatch({ type: 'SHOW_NOTIFICATION', payload: error.message, status: 'error' });
+      renderError(error.message, 'error');
     }
   };
 
@@ -125,20 +107,11 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
     return title.trim().replace(/\s+/g, '-').toLowerCase() + '-' + id;
   }, [title, id]);
 
-  useEffect(() => {
-    if (state.showNotification) {
-      const timeout = setTimeout(() => {
-        dispatch({ type: 'HIDE_NOTIFICATION' });
-      }, 5000);
-      return () => clearTimeout(timeout);
-    }
-  }, [state.showNotification, dispatch]);
-
   return (
     <>
       <Notification
         open={state.showNotification}
-        closeFn={() => dispatch({ type: 'HIDE_NOTIFICATION' })}
+        closeFn={() => removeError({ type: 'HIDE_NOTIFICATION' })}
         message={state.notificationMessage}
         status={state.notificationStatus}
       />

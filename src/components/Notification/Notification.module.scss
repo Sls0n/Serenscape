@@ -13,8 +13,6 @@
     padding: 2rem;
     width: max-content;
     max-height: 5rem;
-    background-color: var(--color-primary-1);
-    background-color: #47c430;
     border-radius: 0.5rem;
     --shadow-color: 240deg 8% 1%;
     --shadow-elevation-high: 0.2px 0.1px 0.3px hsl(var(--shadow-color) / 0.45),
@@ -25,9 +23,9 @@
     box-shadow: var(--shadow-elevation-high);
 
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     align-items: center;
-    border: 1px solid #1012272f;
+    border: 2px solid #1012272f;
 
     &::after {
       content: '';
