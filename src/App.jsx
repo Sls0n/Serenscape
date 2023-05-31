@@ -59,7 +59,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useLocalStorage('isOpen', false);
   const [isDark, setDark] = useLocalStorage('isDark', true);
 
   const [hour, setHour] = useState('');

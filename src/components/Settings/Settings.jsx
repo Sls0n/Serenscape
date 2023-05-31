@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { createPortal } from 'react-dom';
 
 import classes from './Settings.module.scss';
 import svg from '../../assets/svg/sprite.svg';
 import ToggleSwitch from './ToggleSwitch';
 
+import NavContext from '../../context/nav-context';
+import ThemeContext from '../../context/theme-context';
+
 const Settings = ({ open, closeFn }) => {
+  const { isOpen, setIsOpen } = useContext(NavContext);
+  const { isDark, setDark } = useContext(ThemeContext);
+
   if (!open) return null;
 
-  const logState = (state) => {
-    console.log('Toggled:', state);
+  const themeHandler = () => {
+    setDark(!isDark);
+  };
+
+  const sidebarHandler = () => {
+    setIsOpen(!isOpen);
   };
 
   return createPortal(
@@ -27,12 +37,12 @@ const Settings = ({ open, closeFn }) => {
           <div className={classes['modal__body']}>
             <div className={classes['modal__body-item']}>
               <h3 className={classes['modal__body-item-title']}>Dark mode</h3>
-              <ToggleSwitch toggled={true} onClick={logState} />
+              <ToggleSwitch toggled={isDark} onClick={themeHandler} />
             </div>
 
             <div className={classes['modal__body-item']}>
               <h3 className={classes['modal__body-item-title']}>Smaller sidebar</h3>
-              <ToggleSwitch toggled={true} onClick={logState} />
+              <ToggleSwitch toggled={isOpen} onClick={sidebarHandler} />
             </div>
           </div>
           <div className={classes['modal__footer']}>
