@@ -19,7 +19,7 @@ const Settings = ({ open, closeFn }) => {
           <div className={classes['modal__header']}>
             <div className={classes['modal__header-icon']}>
               <svg>
-                <use href={`${svg}#icon-settings`}></use>
+                <use href={`${svg}#icon-tool`}></use>
               </svg>
             </div>
             <h2 className={classes['modal__header-title']}>Settings</h2>
@@ -27,12 +27,12 @@ const Settings = ({ open, closeFn }) => {
           <div className={classes['modal__body']}>
             <div className={classes['modal__body-item']}>
               <h3 className={classes['modal__body-item-title']}>Dark mode</h3>
-              <ToggleSwitch label="Toggle me" toggled={true} onClick={logState} />
+              <ToggleSwitch toggled={true} onClick={logState} />
             </div>
 
             <div className={classes['modal__body-item']}>
               <h3 className={classes['modal__body-item-title']}>Smaller sidebar</h3>
-              <ToggleSwitch label="Toggle me" toggled={true} onClick={logState} />
+              <ToggleSwitch toggled={true} onClick={logState} />
             </div>
           </div>
           <div className={classes['modal__footer']}>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import classes from './ToggleSwitch.module.scss';
 
-const ToggleSwitch = ({ label, toggled, onClick }) => {
+const ToggleSwitch = ({ toggled, onClick }) => {
   const [isToggled, toggle] = useState(toggled);
 
   const callback = () => {
@@ -18,5 +18,3 @@ const ToggleSwitch = ({ label, toggled, onClick }) => {
 };
 
 export default ToggleSwitch;
-
-// credits: https://webtips.dev/toggle-buttons-in-react

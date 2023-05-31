@@ -24,6 +24,7 @@ import AudioContextProvider from './context/audio-context';
 import TimerContext from './context/timer-context';
 import SelectedAudio from './pages/SelectedAudio';
 import OfficialPage from './pages/Official';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const router = createBrowserRouter([
   {
@@ -59,7 +60,7 @@ const router = createBrowserRouter([
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDark, setDark] = useState(true);
+  const [isDark, setDark] = useLocalStorage('isDark', true);
 
   const [hour, setHour] = useState('');
   const [minute, setMinute] = useState('');
