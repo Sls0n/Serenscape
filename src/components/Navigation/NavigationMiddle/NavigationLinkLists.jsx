@@ -1,4 +1,4 @@
-import React, { useContext, useState, createPortal } from 'react';
+import React, { useContext, useState } from 'react';
 
 import NavigationLink from './NavigationLink';
 import NavigationHeader from './NavigationHeader';
