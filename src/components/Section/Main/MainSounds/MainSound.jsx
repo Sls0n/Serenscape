@@ -109,14 +109,13 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
 
   return (
     <>
-      <Notification
-        open={state.showNotification}
-        closeFn={() => removeError({ type: 'HIDE_NOTIFICATION' })}
-        message={state.notificationMessage}
-        status={state.notificationStatus}
-      />
-
       <li className={classes['main__sound']}>
+        <Notification
+          open={state.showNotification}
+          closeFn={() => removeError({ type: 'HIDE_NOTIFICATION' })}
+          message={state.notificationMessage}
+          status={state.notificationStatus}
+        />
         <div
           className={`
         ${classes.box} ${(isPaused || isPlaying) && id === currentSoundId ? classes.isPlaying : ''}

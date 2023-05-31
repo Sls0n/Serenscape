@@ -38,7 +38,7 @@ const useErrorHandler = () => {
     if (state.showNotification) {
       timeout = setTimeout(() => {
         removeError();
-      }, 5000);
+      }, 4000);
     }
 
     return () => {
