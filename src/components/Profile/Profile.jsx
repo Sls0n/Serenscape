@@ -11,10 +11,15 @@ import { v4 } from 'uuid';
 import { PropagateLoader } from 'react-spinners';
 import { getFirestore, updateDoc, query, where, getDocs, collection } from 'firebase/firestore';
 
+import Notification from '../Notification/Notification';
+import useNotification from '../../hooks/useNotification';
+
 const Profile = () => {
   const [imageUpload, setImageUpload] = useState(null);
   const [imageURL, setImageURL] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const { state, renderNotification, removeNotification } = useNotification();
 
   const db = getFirestore();
 
@@ -42,6 +47,7 @@ const Profile = () => {
           });
         } catch (error) {
           console.log(error);
+          renderNotification('Error updating profile picture', 'error');
         }
       };
 
@@ -51,11 +57,13 @@ const Profile = () => {
       })
         .then(() => {
           console.log('Profile updated!');
+          renderNotification('Profile picture updated!', 'success');
           setLoading(false);
           setImageUpload(null);
         })
         .catch((error) => {
           console.log(error);
+          renderNotification('Error updating profile picture', 'error');
         });
     }
 
@@ -68,7 +76,10 @@ const Profile = () => {
 
   const uploadImage = (e) => {
     e.preventDefault();
-    if (imageUpload === null) return;
+    if (imageUpload === null) {
+      renderNotification('Please select an image', 'error');
+      return;
+    }
     setLoading(true);
 
     const storageRef = ref(storage, `profile/${imageUpload.name + v4()}`);
@@ -80,17 +91,25 @@ const Profile = () => {
           })
           .catch((error) => {
             console.log(error);
+            renderNotification('Error uploading profile picture', 'error');
           });
 
         setImageURL(null);
       })
       .catch((error) => {
         console.log(error);
+        renderNotification('Error uploading profile picture', 'error');
       });
   };
 
   return (
     <>
+      <Notification
+        open={state.showNotification}
+        closeFn={removeNotification}
+        message={state.notificationMessage}
+        status={state.notificationStatus}
+      />
       {auth.currentUser ? (
         <div className={classes.profile}>
           <h3 className={classes['profile__name']}>

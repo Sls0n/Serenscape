@@ -22,14 +22,14 @@ const reducer = (state, action) => {
   }
 };
 
-const useErrorHandler = () => {
+const useNotification = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const renderError = (message, status) => {
+  const renderNotification = (message, status) => {
     dispatch({ type: 'SHOW_NOTIFICATION', payload: message, status: status });
   };
 
-  const removeError = () => {
+  const removeNotification = () => {
     dispatch({ type: 'HIDE_NOTIFICATION' });
   };
 
@@ -37,7 +37,7 @@ const useErrorHandler = () => {
     let timeout;
     if (state.showNotification) {
       timeout = setTimeout(() => {
-        removeError();
+        removeNotification();
       }, 4000);
     }
 
@@ -46,7 +46,7 @@ const useErrorHandler = () => {
     };
   }, [state.showNotification]);
 
-  return { state, renderError, removeError };
+  return { state, renderNotification, removeNotification };
 };
 
-export default useErrorHandler;
+export default useNotification;

@@ -11,9 +11,13 @@ import { v4 } from 'uuid';
 import { useForm } from 'react-hook-form';
 import svg from '../../assets/svg/sprite.svg';
 import { PropagateLoader } from 'react-spinners';
+import useNotification from '../../hooks/useNotification';
+import Notification from '../Notification/Notification';
 
 const UploadForm = () => {
   const auth = getAuth();
+
+  const { state, renderNotification, removeNotification } = useNotification();
 
   const userId = auth.currentUser.uid;
 
@@ -37,7 +41,7 @@ const UploadForm = () => {
 
   const imageChangeHandler = (e) => {
     if (e.target.files[0].size > 5242880) {
-      alert('File size must be less than 5MB');
+      renderNotification('File size must be less than 5MB', 'error');
       return;
     }
 
@@ -46,7 +50,7 @@ const UploadForm = () => {
 
   const musicChangeHandler = (e) => {
     if (e.target.files[0].size > 10485760) {
-      alert('File size must be less than 10MB');
+      renderNotification('File size must be less than 10MB', 'error');
       return;
     }
 
@@ -54,7 +58,9 @@ const UploadForm = () => {
   };
 
   const uploadFiles = async () => {
-    if (imageUpload === null || musicUpload === null) return;
+    if (imageUpload === null || musicUpload === null) {
+      return;
+    }
 
     setIsLoading(true);
 
@@ -69,11 +75,13 @@ const UploadForm = () => {
           })
           .catch((error) => {
             setErrorMessage(error.message);
+            renderNotification('Something went wrong', 'error');
             console.log(error);
           });
       })
       .catch((error) => {
         setErrorMessage(error.message);
+        renderNotification('Something went wrong', 'error');
         console.log(error);
       });
 
@@ -84,6 +92,7 @@ const UploadForm = () => {
         })
         .catch((error) => {
           setErrorMessage(error.message);
+          renderNotification('Something went wrong', 'error');
           console.log(error);
         });
     });
@@ -104,9 +113,11 @@ const UploadForm = () => {
       })
         .then(() => {
           console.log('Document successfully written!');
+          renderNotification('Uploaded successfully', 'success');
         })
         .catch((error) => {
           console.error('Error writing document: ', error);
+          renderNotification('Something went wrong', 'error');
           setErrorMessage(error.message);
         });
 
@@ -128,6 +139,12 @@ const UploadForm = () => {
 
   return (
     <>
+      <Notification
+        open={state.showNotification}
+        closeFn={removeNotification}
+        message={state.notificationMessage}
+        status={state.notificationStatus}
+      />
       <h1 className={classes.header}>Upload Sound</h1>
 
       <form className={classes.form} action="submit" onSubmit={handleSubmit(uploadFiles)}>

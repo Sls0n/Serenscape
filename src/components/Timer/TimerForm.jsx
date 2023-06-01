@@ -5,9 +5,14 @@ import TimerContext from '../../context/timer-context';
 
 import classes from './TimerForm.module.scss';
 
+import Notification from '../Notification/Notification';
+import useNotification from '../../hooks/useNotification';
+
 const TimerForm = () => {
   const { hour, minute, setHour, setMinute, time, setTime, isRunning, setIsRunning } = useContext(TimerContext);
   const { isPlaying, pauseAudio } = useContext(AudioContext);
+
+  const { state, renderNotification, removeNotification } = useNotification();
 
   const { seconds, minutes, hours, restart } = useTimer({
     expiryTimestamp: time,
@@ -15,6 +20,7 @@ const TimerForm = () => {
     onExpire: () => {
       console.warn('Timer ended, onExpire called');
       setIsRunning(false);
+      renderNotification('Timer is completed!', 'default');
 
       if (isPlaying) {
         pauseAudio();
@@ -33,6 +39,7 @@ const TimerForm = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     if (hour === '' && minute === '') {
+      renderNotification('Please enter a valid time!', 'error');
       return;
     }
 
@@ -42,6 +49,8 @@ const TimerForm = () => {
     setTime(now);
     setIsRunning(true);
     restart(now);
+
+    renderNotification('Timer started!', 'default');
 
     setHour('');
     setMinute('');
@@ -53,10 +62,17 @@ const TimerForm = () => {
     setHour('');
     setMinute('');
     restart(new Date(0, 0, 0, 0, 0, 0, 0));
+    renderNotification('Reset timer!', 'default');
   };
 
   return (
     <>
+      <Notification
+        open={state.showNotification}
+        closeFn={removeNotification}
+        message={state.notificationMessage}
+        status={state.notificationStatus}
+      />
       <div className={classes['container']}>
         <form onSubmit={submitHandler} className={classes.timer}>
           <div className={classes['form-container']}>

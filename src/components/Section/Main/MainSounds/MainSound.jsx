@@ -11,7 +11,7 @@ import { db } from '../../../../config/firebase-config';
 import { getDocs, collection, addDoc, deleteDoc, query, where } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import Notification from '../../../Notification/Notification';
-import useErrorHandler from '../../../../hooks/useErrorHandler';
+import useNotification from '../../../../hooks/useNotification';
 
 const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
   const auth = getAuth();
@@ -21,7 +21,7 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
 
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const { state, renderError, removeError } = useErrorHandler();
+  const { state, renderNotification, removeNotification } = useNotification();
 
   const favoriteCollectionRef = collection(db, 'favorites');
 
@@ -59,7 +59,7 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
 
   const favoriteClickHandler = async () => {
     try {
-      if (!auth.currentUser) throw new Error('You must be logged in to add to favorites');
+      if (!auth.currentUser) throw new Error('You must be logged in to favorite a sound');
       setIsFavorite((prevState) => !prevState);
 
       const userId = auth.currentUser.uid;
@@ -71,7 +71,7 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
         if (favoritesData.some((favorite) => favorite.id === id)) {
           const docToDelete = data.docs.find((doc) => doc.data().id === id);
           await deleteDoc(docToDelete.ref);
-          renderError('Removed from favorites', 'warning');
+          renderNotification('Removed from favorites', 'default');
           return;
         } else {
           setIsFavorite(true);
@@ -86,14 +86,14 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
             artist,
           });
 
-          renderError('Added to favorites', 'success');
+          renderNotification('Added to favorites', 'success');
 
           return;
         }
       }
     } catch (error) {
       console.log(error);
-      renderError(error.message, 'error');
+      renderNotification(error.message, 'error');
     }
   };
 
@@ -112,7 +112,7 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
       <li className={classes['main__sound']}>
         <Notification
           open={state.showNotification}
-          closeFn={() => removeError({ type: 'HIDE_NOTIFICATION' })}
+          closeFn={removeNotification}
           message={state.notificationMessage}
           status={state.notificationStatus}
         />
@@ -153,8 +153,12 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
           </Link>
           {!isLoading ? (
             <button onClick={favoriteClickHandler} className={classes.box__heartIcon}>
-              <svg>
-                <use xlinkHref={`${svg}#icon-${!isFavorite && id === currentSoundId ? 'heart' : 'trash'}`}></use>
+              <svg
+                style={{
+                  fill: `${isFavorite && id === currentSoundId ? '#6461F8' : '#fff'}`,
+                  filter: `${isFavorite && id === currentSoundId ? 'drop-shadow(0px 0px 5px #6461F810)' : ''}`,
+                }}>
+                <use xlinkHref={`${svg}#icon-${!isFavorite && id === currentSoundId ? 'heart' : 'heart-filled'}`}></use>
               </svg>
             </button>
           ) : (

@@ -29,7 +29,6 @@ const SignInForm = () => {
     try {
       setIsLoading(true);
       await signInWithEmailAndPassword(auth, data.email, data.password);
-
       navigate('/');
     } catch (error) {
       if (error.code === 'auth/user-not-found') {
