@@ -25,7 +25,7 @@
     span {
       font-size: 2rem;
       font-weight: 700;
-      color: #ccc;
+      color: var(--color-ccc);
     }
 
     input {
@@ -35,9 +35,9 @@
       font-size: 2rem;
       font-weight: 700;
       outline: none;
-      color: #a6a6ad;
+      color: var(--color-input-text);
       border-radius: 3px;
-      border: 2px solid rgba(#969eaa, 0.2);
+      border: 2px solid var(--color-input);
 
       background-color: transparent;
       padding: 1rem;
@@ -67,7 +67,7 @@
     span {
       font-size: 2rem;
       font-weight: 700;
-      color: #ccc;
+      color: var(--color-ccc);
     }
 
     input {
@@ -77,9 +77,9 @@
       font-size: 2rem;
       font-weight: 700;
       outline: none;
-      color: #a6a6ad;
+      color: var(--color-input-text);
       border-radius: 3px;
-      border: 2px solid rgba(#969eaa, 0.2);
+      border: 2px solid var(--color-input);
 
       background-color: transparent;
       padding: 1rem;
@@ -144,4 +144,8 @@
       color: #f2f2f2;
     }
   }
+}
+
+.span {
+  color: var(--color-ccc);
 }

@@ -1,7 +1,7 @@
 :root body.light {
   --color-primary-1: #5950d6;
 
-  --color-bg: #FFFDF9;
+  --color-bg: #fffdf9;
   --color-bg-sidebar: #f0f2f7;
   --color-sidebar-icon: #333;
 
@@ -20,7 +20,7 @@
 
   --color-nav-link: #424242;
   --color-nav-header: #4c4c55;
-  --color-bg-nav-active: #DCDCE8;
+  --color-bg-nav-active: #dcdce8;
   --color-nav-active: #232323;
 
   --color-main-header: #62626e;
@@ -30,6 +30,15 @@
 
   --color-secondary-1: #67a4ff;
   --color-tertiary-1: #cf435d;
+
+  --color-menu: #333;
+  --color-artist: #333;
+  --color-ccc: #444;
+  --color-input: hsla(240, 3%, 6%, 0.5);
+  --color-input-text: #333;
+
+  --color-skel-1: #e6e7e9;
+  --color-skel-2: #e0e0ec;
 }
 
 :root body.dark {
@@ -66,6 +75,15 @@
 
   --color-secondary-1: #67a4ff;
   --color-tertiary-1: #cf435d;
+
+  --color-menu: #aaa;
+  --color-artist: #ccc;
+  --color-ccc: #ccc;
+  --color-input: hsla(216, 11%, 63%, 0.2);
+  --color-input-text: #a6a6ad;
+
+  --color-skel-1: #26262865;
+  --color-skel-2: #262628f3;
 }
 
 * {

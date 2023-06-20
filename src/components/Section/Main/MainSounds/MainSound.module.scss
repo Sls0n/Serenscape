@@ -53,7 +53,6 @@
     // object-fit: cover;
     border-radius: 2rem;
     transition: filter 0.3s;
-    
   }
 
   &__playIcon {
@@ -269,7 +268,7 @@
     color: var(--color-nav-link);
 
     span {
-      color: #ccc;
+      color: var(--color-artist);
     }
   }
 }

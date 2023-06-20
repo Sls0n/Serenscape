@@ -86,8 +86,8 @@ const TimerForm = () => {
             </div>
           </div>
         </form>
-        <div style={{ textAlign: 'center', color: '#aaa' }}>
-          <div style={{ fontSize: '100px', color: '#ccc' }}>
+        <div style={{ textAlign: 'center' }}>
+          <div className={classes.span} style={{ fontSize: '100px' }}>
             <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
           </div>
         </div>

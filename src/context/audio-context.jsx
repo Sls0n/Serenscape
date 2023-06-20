@@ -55,7 +55,8 @@ const AudioContextProvider = ({ children }) => {
   };
 
   return (
-    <AudioContext.Provider value={{ currentSoundId, isPlaying, isPaused, currentTime, totalTime, playAudio, pauseAudio }}>
+    <AudioContext.Provider
+      value={{ currentSoundId, isPlaying, isPaused, currentTime, totalTime, playAudio, pauseAudio }}>
       {children}
     </AudioContext.Provider>
   );

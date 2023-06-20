@@ -9,7 +9,7 @@
   &--empty {
     font-size: 1.8rem;
     font-weight: 500;
-    color: #ccc;
+    color: var(--color-ccc);
   }
 
   @media screen and (max-width: 768px) {
@@ -44,6 +44,6 @@
   transition: color 0.2s;
 
   &:hover {
-    color: #ccc;
+    color: var(--color-ccc);
   }
 }

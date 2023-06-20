@@ -9,7 +9,7 @@
   &--empty {
     font-size: 2rem;
     font-weight: 500;
-    color: #ccc;
+    color: var(--color-ccc);
     margin-top: 2rem;
   }
 
@@ -45,6 +45,6 @@
   transition: color 0.2s;
 
   &:hover {
-    color: #ccc;
+    color: var(--color-ccc);
   }
 }

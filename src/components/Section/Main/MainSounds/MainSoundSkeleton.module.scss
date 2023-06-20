@@ -26,11 +26,11 @@
 
 @keyframes skeleton-loading {
   0% {
-    background-color: #26262865;
+    background-color: var(--color-skel-1);
   }
 
   100% {
-    background-color: #262628f3;
+    background-color: var(--color-skel-2);
   }
 }
 

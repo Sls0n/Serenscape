@@ -35,7 +35,7 @@ const Notification = ({ open, closeFn, status, message }) => {
               exit={{ opacity: 0, y: -50, scale: 0.5 }}
               transition={{ duration: 0.3 }}
               className={classes.notification}>
-              <div className={classes.notification__status}>
+              <div className={classes.notification__status}> 
                 <svg>
                   <use
                     href={`${svg}#icon-${

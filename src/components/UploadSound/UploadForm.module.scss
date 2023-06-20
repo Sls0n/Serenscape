@@ -32,10 +32,10 @@
 
   &__input {
     font-size: 1.8rem;
-    color: #a6a6ad;
+    color: var(--color-input-text);
     box-sizing: border-box;
     border-radius: 3px;
-    border: 2px solid rgba(#969eaa, 0.2);
+    border: 2px solid var(--color-input);
     height: 5rem;
     width: 100%;
     background-color: transparent;
@@ -82,7 +82,7 @@
   width: 100%;
   height: 8rem;
   border-radius: 3px;
-  border: 2px dashed rgba(#969eaa, 0.2);
+  border: 2px dashed var(--color-input);
   background-color: transparent;
   transition: all 0.2s;
 
@@ -126,7 +126,7 @@
   width: 100%;
   height: 8rem;
   border-radius: 3px;
-  border: 2px dashed rgba(#969eaa, 0.2);
+  border: 2px dashed var(--color-input);
   background-color: transparent;
   transition: all 0.2s;
 
