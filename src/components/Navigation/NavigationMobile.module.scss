@@ -1,0 +1,31 @@
+.aside {
+  position: fixed;
+  width: 30rem;
+
+  z-index: 10000;
+
+  background: var(--color-bg-sidebar);
+
+  height: 100svh;
+  font-size: 3rem;
+
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: 2rem 4rem;
+  transition: background 0.3s;
+  will-change: background;
+
+  @media only screen and (max-width: 76.25em) {
+    padding: 4rem 4rem;
+  }
+
+  // when the width is more than 76.25em, we hide it
+  @media only screen and (min-width: 76.25em) {
+    display: none;
+  }
+}

@@ -102,8 +102,20 @@ html {
   font-size: 62.5%;
   scroll-behavior: smooth;
 
-  @media only screen and (max-width: 56.25em) {
+  @media only screen and (max-width: 76.25em) {
     font-size: 60%;
+  }
+
+  @media only screen and (max-width: 56.25em) {
+    font-size: 58%;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    font-size: 57%;
+  }
+
+  @media only screen and (max-width: 28.125em) {
+    font-size: 55%;
   }
 }
 
@@ -138,4 +150,38 @@ body {
 ::selection {
   background-color: var(--color-primary-1);
   color: #e2e2e2;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-bg-arrow) var(--color-bg);
+}
+
+body::-webkit-scrollbar {
+  width: 0.9rem;
+
+  &-track {
+    background: var(--color-bg);
+  }
+
+  &-thumb {
+    background-color: var(--color-bg-arrow);
+    border-radius: 0.3rem;
+  }
+
+  &-thumb:hover {
+    background-color: var(--color-bg-arrow);
+  }
+
+  &-thumb:active {
+    background-color: var(--color-bg-arrow);
+  }
+
+  &-thumb:window-inactive {
+    background-color: var(--color-bg-arrow);
+  }
+
+  &-thumb:window-inactive:hover {
+    background-color: var(--color-bg-arrow);
+  }
 }

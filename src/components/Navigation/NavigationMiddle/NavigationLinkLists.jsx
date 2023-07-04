@@ -12,7 +12,6 @@ import ThemeContext from '../../../context/theme-context';
 import { getAuth } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import Settings from '../../Settings/Settings';
-import Notification from '../../Notification/Notification';
 
 const NAVIGATION_1 = [
   { name: 'Home', icon: 'icon-home', link: '/' },
@@ -27,7 +26,7 @@ const NAVIGATION_2 = [
   { name: 'Timer', icon: 'icon-clock', link: '/timer' },
 ];
 
-const NavigationLinkLists = () => {
+const NavigationLinkLists = ({ showUploadBtn = true, showSettings = true }) => {
   const { isOpen } = useContext(NavContext);
   const { isDark, setDark } = useContext(ThemeContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -56,23 +55,29 @@ const NavigationLinkLists = () => {
         ) : (
           <NavigationLinkLast onClick={clickHandler} name="Dark mode" icon="icon-moon" />
         )}
-        <NavigationLinkLast
-          onClick={() => {
-            setIsModalOpen(true);
-          }}
-          name="Settings"
-          icon="icon-settings"
-        />
 
-        <Settings
-          open={isModalOpen}
-          closeFn={() => {
-            setIsModalOpen(false);
-          }}
-        />
+        {showSettings && (
+          <>
+            <NavigationLinkLast
+              onClick={() => {
+                setIsModalOpen(true);
+              }}
+              name="Settings"
+              icon="icon-settings"
+            />
+
+            <Settings
+              open={isModalOpen}
+              closeFn={() => {
+                setIsModalOpen(false);
+              }}
+            />
+          </>
+        )}
 
         {!isOpen && (
           <Button
+            showUploadBtn={showUploadBtn}
             onClick={() => {
               auth.currentUser ? navigate('/upload') : navigate('/signin');
             }}

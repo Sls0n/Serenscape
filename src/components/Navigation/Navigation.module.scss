@@ -19,6 +19,10 @@
   padding: 2rem 3rem;
   transition: background 0.3s;
   will-change: background;
+
+  @media only screen and (max-width: 76.25em) {
+    display: none;
+  }
 }
 
 .asideClosed {

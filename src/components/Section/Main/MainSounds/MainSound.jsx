@@ -97,7 +97,7 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
     }
   };
 
-  const currentTimePercentage = (currentTime / totalTime) * 89 + 5.5;
+  const currentTimePercentage = (currentTime / totalTime) * 89 + 7;
 
   const timeTrackerStyle = {
     width: `${currentTimePercentage}%`,

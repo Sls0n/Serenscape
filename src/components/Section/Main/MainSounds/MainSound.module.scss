@@ -10,6 +10,18 @@
 
   transition: all 0.3s ease-out;
 
+  @media only screen and (max-width: 60em) {
+    height: 30rem;
+    max-height: 19rem;
+    max-width: 30rem;
+  }
+
+  @media only screen and (max-width: 40em) {
+    height: 26rem;
+    max-height: 18rem;
+    max-width: 26rem;
+  }
+
   &.isPlaying {
     .box__img {
       filter: brightness(0.5);
@@ -164,7 +176,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 25%;
+    height: 22%;
     z-index: 10;
 
     border-radius: 0 0 2rem 2rem;

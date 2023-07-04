@@ -60,6 +60,8 @@ const router = createBrowserRouter([
 
 function App() {
   const [isOpen, setIsOpen] = useLocalStorage('isOpen', false);
+  const [isMobile, setIsMobile] = useState(false);
+
   const [isDark, setDark] = useLocalStorage('isDark', true);
 
   const [hour, setHour] = useState('');
@@ -79,7 +81,7 @@ function App() {
 
   return (
     <AudioContextProvider>
-      <NavContext.Provider value={{ isOpen, setIsOpen }}>
+      <NavContext.Provider value={{ isOpen, setIsOpen, isMobile, setIsMobile }}>
         <TimerContext.Provider
           value={{
             hour,

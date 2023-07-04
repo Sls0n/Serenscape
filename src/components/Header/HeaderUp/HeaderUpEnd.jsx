@@ -36,19 +36,19 @@ const HeaderUpEnd = () => {
             <use xlinkHref={`${svg}#${isDark ? 'icon-sun' : 'icon-moon'}`}></use>
           </svg>
         </button>
-        <div className={classes.volume}>
+        <Link to="/favorites" className={classes.favorites}>
           <svg className={classes['header__up-icon']}>
-            <use xlinkHref={`${svg}#icon-volume-2`}></use>
+            <use xlinkHref={`${svg}#icon-heart`}></use>
           </svg>
-        </div>
-        <input
+        </Link>
+        {/* <input
           type="range"
           min="0"
           max="100"
           defaultValue="50"
           className={classes['header__up-volume']}
           onChange={() => {}}
-        />
+        /> */}
 
         {isLogged ? (
           <div className={classes.user}>
@@ -102,7 +102,7 @@ const HeaderUpEnd = () => {
             text={
               <>
                 <div className={classes['header__up-auth']}>
-                  Sign In
+                  <span>Sign In</span>
                   <svg style={{}} className={classes['header__up-auth-btn']}>
                     <use xlinkHref={`${svg}#icon-log-in`}></use>
                   </svg>

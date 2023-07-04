@@ -6,6 +6,7 @@ export const AudioContext = createContext({
   isPaused: false,
   currentTime: 0,
   totalTime: 0,
+  currentVolume: 0,
   playAudio: () => {},
   pauseAudio: () => {},
 });

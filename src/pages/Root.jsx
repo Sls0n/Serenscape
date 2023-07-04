@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Navigation from '../components/Navigation/Navigation';
 import { getAuth, onAuthStateChanged, setPersistence, browserLocalPersistence } from 'firebase/auth';
 import { PropagateLoader } from 'react-spinners';
+import NavigationMobile from '../components/Navigation/NavigationMobile';
 
 const loaderStyle = {
   position: 'absolute',
@@ -38,6 +39,7 @@ const RootLayout = () => {
       {isAuthFetched && (
         <>
           <Navigation />
+          <NavigationMobile />
           <Outlet />
         </>
       )}

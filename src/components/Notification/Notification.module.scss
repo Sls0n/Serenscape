@@ -10,6 +10,11 @@
 
   z-index: 1000;
 
+  @media only screen and (max-width: 76.25em) {
+    left: 0;
+    width: 100%;
+  }
+
   .notification {
     position: absolute;
     padding: 2rem;

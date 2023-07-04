@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 3rem;
   flex-basis: auto;
 }
 
@@ -31,6 +31,10 @@
 
   svg {
     pointer-events: none;
+  }
+
+  @media only screen and (max-width: 40em) {
+    display: none;
   }
 }
 
@@ -104,12 +108,6 @@
         border-radius: 0;
       }
 
-      &:last-child {
-        &:hover {
-          background-color: rgba(235, 50, 66, 0.822);
-        }
-      }
-
       &:hover {
         background-color: var(--color-bg-nav-active);
       }
@@ -147,8 +145,12 @@
   fill: #f2f2f2;
 }
 
-.volume {
+.favorites {
   cursor: pointer;
+
+  @media only screen and (max-width: 40em) {
+    display: none;
+  }
 }
 
 .header__up-volume {

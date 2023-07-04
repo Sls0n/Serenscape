@@ -8,6 +8,10 @@
   padding: 1rem;
   cursor: pointer;
   margin-right: 2rem;
+
+  @media only screen and (max-width: 76.25em) {
+    display: none;
+  }
 }
 
 .arrowSvg {
