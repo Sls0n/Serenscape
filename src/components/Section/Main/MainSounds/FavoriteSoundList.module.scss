@@ -1,6 +1,6 @@
 .favorite__sounds {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-gap: 2.5rem;
   margin-top: 2rem;
 
@@ -12,22 +12,17 @@
     color: var(--color-ccc);
   }
 
-  @media screen and (max-width: 76.25em) {
-    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
-  }
-
-  @media screen and (max-width: 48em) {
-    grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+  @media screen and (max-width: 82em) {
     grid-gap: 2rem;
-    margin-top: 1.5rem;
   }
 
-  @media screen and (max-width: 35em) {
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  @media screen and (max-width: 60em) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  @media screen and (max-width: 25em) {
-    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  @media screen and (max-width: 40em) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 1.5rem;
   }
 }
 

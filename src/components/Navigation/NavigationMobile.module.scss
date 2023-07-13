@@ -20,12 +20,12 @@
   transition: background 0.3s;
   will-change: background;
 
-  @media only screen and (max-width: 76.25em) {
+  @media only screen and (max-width: 82em) {
     padding: 4rem 4rem;
   }
 
-  // when the width is more than 76.25em, we hide it
-  @media only screen and (min-width: 76.25em) {
+  // when the width is more than 82em, we hide it
+  @media only screen and (min-width: 82em) {
     display: none;
   }
 }
