@@ -97,11 +97,11 @@ const MainSound = ({ imageSource, title, audioSource, pfp, artist, id }) => {
     }
   };
 
-  const currentTimePercentage = (currentTime / totalTime) * 89 + 7;
-
-  const timeTrackerStyle = {
-    width: `${currentTimePercentage}%`,
-  };
+  const timeTrackerStyle = useMemo(() => {
+    return {
+      width: `${(currentTime / totalTime) * 100}%`,
+    };
+  }, [currentTime, totalTime]);
 
   const pathname = useMemo(() => {
     return title.trim().replace(/\s+/g, '-').toLowerCase() + '-' + id;

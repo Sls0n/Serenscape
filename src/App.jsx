@@ -70,6 +70,13 @@ function App() {
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
+    if (window.innerWidth < 768) {
+      setIsMobile(true);
+      setIsOpen(false);
+    }
+  }, []);
+
+  useEffect(() => {
     if (isDark) {
       document.body.classList.add('dark');
       document.body.classList.remove('light');
