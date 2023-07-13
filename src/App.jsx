@@ -61,6 +61,7 @@ const router = createBrowserRouter([
 function App() {
   const [isOpen, setIsOpen] = useLocalStorage('isOpen', false);
   const [isMobile, setIsMobile] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const [isDark, setDark] = useLocalStorage('isDark', true);
 
@@ -70,11 +71,20 @@ function App() {
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
-    if (window.innerWidth < 768) {
-      setIsMobile(true);
+    function reportWindowSize() {
+      setWindowWidth(window.innerWidth);
+    }
+    // Trigger this function on resize
+    window.addEventListener('resize', reportWindowSize);
+    //  Cleanup for componentWillUnmount
+    return () => window.removeEventListener('resize', reportWindowSize);
+  }, [window.innerWidth]);
+
+  useEffect(() => {
+    if (windowWidth < 768) {
       setIsOpen(false);
     }
-  }, []);
+  }, [windowWidth]);
 
   useEffect(() => {
     if (isDark) {
